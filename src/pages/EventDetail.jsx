@@ -37,7 +37,7 @@ The screening was followed by a panel discussion featuring Dr. Adaora Okonkwo (L
 
 Media coverage from the event reached over 2.3 million Nigerians through television, radio, and digital platforms. The premiere generated significant social media engagement with #AwakeCampaign trending for 48 hours.`,
       gallery: [
-        "https://images.unsplash.com/photo-1594736797933-d0eed6a18dfa?w=800&h=450&fit=crop", // Healthcare awareness event
+        "https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=800&h=450&fit=crop", // Healthcare awareness event
         "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=600&h=400&fit=crop", // Conference/panel discussion
         "https://images.unsplash.com/photo-1582213782179-e0d53f98f2ca?w=600&h=400&fit=crop", // Medical conference
         "https://images.unsplash.com/photo-1559757175-0eb30cd8c063?w=600&h=400&fit=crop", // Audience at event
