@@ -5,6 +5,7 @@ import AboutUs from './pages/AboutUs'
 import JoinTheMovement from './pages/JoinTheMovement'
 import Contact from './pages/Contact'
 import CampaignEvents from './pages/CampaignEvents'
+import EventDetail from './pages/EventDetail'
 import Layout from './layouts/Layout'
 
 function App() {
@@ -19,6 +20,7 @@ function App() {
               <Route path='/join-the-movement' element={<JoinTheMovement/>}></Route>
               <Route path='/contact' element={<Contact/>}></Route>
               <Route path='/campaign-events' element={<CampaignEvents/>}></Route>
+              <Route path='/campaign-events/:eventId' element={<EventDetail/>}></Route>
             </Route>
           </Routes>
       </BrowserRouter>
