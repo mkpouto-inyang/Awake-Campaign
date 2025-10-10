@@ -1,12 +1,20 @@
 import { useParams, useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import Button from "../components/Button";
+import { useAuth } from "../contexts/AuthContext";
+import LoginModal from "../components/LoginModal";
 
 const EventDetail = () => {
   const { eventId } = useParams();
   const navigate = useNavigate();
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [showLoginModal, setShowLoginModal] = useState(false);
+  const [editingField, setEditingField] = useState(null);
+  const [editValues, setEditValues] = useState({});
+  const [showImageManager, setShowImageManager] = useState(false);
+  const [newImageUrl, setNewImageUrl] = useState("");
+  const { isAuthenticated, user, logout } = useAuth();
 
   // Mock event data - in a real app, this would come from an API or state management
   const events = [
@@ -29,7 +37,7 @@ The screening was followed by a panel discussion featuring Dr. Adaora Okonkwo (L
 
 Media coverage from the event reached over 2.3 million Nigerians through television, radio, and digital platforms. The premiere generated significant social media engagement with #AwakeCampaign trending for 48 hours.`,
       gallery: [
-        "https://images.unsplash.com/photo-1576091160399-112ba8d25d1f?w=800&h=450&fit=crop", // Movie premiere/red carpet
+        "https://images.unsplash.com/photo-1594736797933-d0eed6a18dfa?w=800&h=450&fit=crop", // Healthcare awareness event
         "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=600&h=400&fit=crop", // Conference/panel discussion
         "https://images.unsplash.com/photo-1582213782179-e0d53f98f2ca?w=600&h=400&fit=crop", // Medical conference
         "https://images.unsplash.com/photo-1559757175-0eb30cd8c063?w=600&h=400&fit=crop", // Audience at event
@@ -67,7 +75,7 @@ The impact was immediate and measurable - 150 women registered for follow-up scr
       gallery: [
         "https://images.unsplash.com/photo-1559757175-0eb30cd8c063?w=800&h=450&fit=crop", // Community gathering
         "https://images.unsplash.com/photo-1582213782179-e0d53f98f2ca?w=600&h=400&fit=crop", // Health education
-        "https://images.unsplash.com/photo-1576671081837-49000212a370?w=600&h=400&fit=crop", // Community health worker
+        "https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?w=600&h=400&fit=crop", // Community health worker
         "https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=600&h=400&fit=crop", // Medical professionals
         "https://images.unsplash.com/photo-1584362917165-526a968579e8?w=600&h=400&fit=crop", // Community support
         "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=600&h=400&fit=crop", // Q&A session
@@ -82,7 +90,70 @@ The impact was immediate and measurable - 150 women registered for follow-up scr
     // Add more events as needed
   ];
 
-  const event = events.find((e) => e.id === parseInt(eventId));
+  const [eventsData, setEventsData] = useState(events);
+  const event = eventsData.find((e) => e.id === parseInt(eventId));
+
+  const startEditing = (field, currentValue) => {
+    setEditingField(field);
+    setEditValues({ ...editValues, [field]: currentValue });
+  };
+
+  const cancelEditing = () => {
+    setEditingField(null);
+    setEditValues({});
+  };
+
+  const saveEdit = (field) => {
+    const updatedEvents = eventsData.map((e) =>
+      e.id === parseInt(eventId) ? { ...e, [field]: editValues[field] } : e
+    );
+    setEventsData(updatedEvents);
+
+    // Save to localStorage for persistence
+    localStorage.setItem("awake_events", JSON.stringify(updatedEvents));
+
+    setEditingField(null);
+    setEditValues({});
+  };
+
+  const addImage = () => {
+    if (!newImageUrl.trim()) return;
+
+    const updatedEvents = eventsData.map((e) =>
+      e.id === parseInt(eventId)
+        ? { ...e, gallery: [...e.gallery, newImageUrl.trim()] }
+        : e
+    );
+    setEventsData(updatedEvents);
+    localStorage.setItem("awake_events", JSON.stringify(updatedEvents));
+    setNewImageUrl("");
+  };
+
+  const removeImage = (imageIndex) => {
+    const updatedEvents = eventsData.map((e) =>
+      e.id === parseInt(eventId)
+        ? {
+            ...e,
+            gallery: e.gallery.filter((_, index) => index !== imageIndex),
+          }
+        : e
+    );
+    setEventsData(updatedEvents);
+    localStorage.setItem("awake_events", JSON.stringify(updatedEvents));
+
+    // Reset current image index if needed
+    if (currentImageIndex >= event.gallery.length - 1) {
+      setCurrentImageIndex(0);
+    }
+  };
+
+  // Load events from localStorage on mount
+  useEffect(() => {
+    const savedEvents = localStorage.getItem("awake_events");
+    if (savedEvents) {
+      setEventsData(JSON.parse(savedEvents));
+    }
+  }, []);
 
   // Auto-transition images every 4 seconds
   useEffect(() => {
@@ -115,14 +186,37 @@ The impact was immediate and measurable - 150 women registered for follow-up scr
       {/* Header */}
       <div className="bg-white pt-8 pb-4">
         <div className="max-w-8xl mx-auto px-6">
-          <Button
-            variant="outline"
-            size="sm"
-            className="mb-8"
-            onClick={() => navigate("/campaign-events")}
-          >
-            ← Back to Events
-          </Button>
+          <div className="flex justify-between items-center mb-8">
+            <Button
+              variant="outline"
+              size="sm"
+              onClick={() => navigate("/campaign-events")}
+            >
+              ← Back to Events
+            </Button>
+
+            {/* Admin Controls */}
+            <div className="flex items-center gap-3">
+              {isAuthenticated ? (
+                <div className="flex items-center gap-3">
+                  <span className="text-sm text-gray-600">
+                    Welcome, {user.name}
+                  </span>
+                  <Button variant="outline" size="sm" onClick={logout}>
+                    Logout
+                  </Button>
+                </div>
+              ) : (
+                <Button
+                  variant="outline"
+                  size="sm"
+                  onClick={() => setShowLoginModal(true)}
+                >
+                  Admin Login
+                </Button>
+              )}
+            </div>
+          </div>
           {/* <div className="mb-6">
             <span className="inline-block px-4 py-2 bg-gray-100 rounded-full text-sm font-medium text-gray-600">
               {event.category === "screening" && "Documentary Screening"}
@@ -131,9 +225,57 @@ The impact was immediate and measurable - 150 women registered for follow-up scr
               {event.category === "workplace" && "Workplace Wellness"}
             </span>
           </div> */}
-          <h1 className="text-xl md:text-3xl font-bold mb-6 text-teal-700 leading-tight">
-            {event.title}
-          </h1>
+          {/* Editable Title */}
+          <div className="group relative">
+            {editingField === "title" ? (
+              <div className="flex flex-col gap-3">
+                <input
+                  type="text"
+                  value={editValues.title || ""}
+                  onChange={(e) =>
+                    setEditValues({ ...editValues, title: e.target.value })
+                  }
+                  className="text-xl md:text-3xl font-bold text-teal-700 leading-tight bg-transparent border-2 border-teal-300 rounded-lg px-3 py-2 focus:outline-none focus:border-teal-500"
+                  autoFocus
+                />
+                <div className="flex gap-2">
+                  <Button size="sm" onClick={() => saveEdit("title")}>
+                    Save
+                  </Button>
+                  <Button variant="outline" size="sm" onClick={cancelEditing}>
+                    Cancel
+                  </Button>
+                </div>
+              </div>
+            ) : (
+              <div className="flex items-center gap-3">
+                <h1 className="text-xl md:text-3xl font-bold mb-6 text-teal-700 leading-tight">
+                  {event.title}
+                </h1>
+                {isAuthenticated && (
+                  <button
+                    onClick={() => startEditing("title", event.title)}
+                    className="opacity-0 group-hover:opacity-100 transition-opacity duration-200 p-2 hover:bg-gray-100 rounded-lg"
+                    title="Edit title"
+                  >
+                    <svg
+                      className="w-4 h-4 text-gray-500"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"
+                      />
+                    </svg>
+                  </button>
+                )}
+              </div>
+            )}
+          </div>
         </div>
       </div>
       {/* Content */}
@@ -141,9 +283,43 @@ The impact was immediate and measurable - 150 women registered for follow-up scr
         <div className="max-w-8xl">
           {/* Event Images */}
           <div className="mb-16">
-            <h2 className="text-xl font-bold text-teal-700 mb-8">
-              Event Gallery
-            </h2>
+            <div className="flex justify-between items-center mb-8">
+              <h2 className="text-xl font-bold text-teal-700">Event Gallery</h2>
+              {isAuthenticated && (
+                <Button
+                  variant="outline"
+                  size="sm"
+                  onClick={() => setShowImageManager(!showImageManager)}
+                >
+                  {showImageManager ? "Hide" : "Manage Images"}
+                </Button>
+              )}
+            </div>
+
+            {/* Image Management Panel */}
+            {isAuthenticated && showImageManager && (
+              <div className="bg-gray-50 rounded-lg p-6 mb-8 border border-gray-200">
+                <h3 className="text-lg font-semibold text-gray-900 mb-4">
+                  Add New Image
+                </h3>
+                <div className="flex gap-3 mb-4">
+                  <input
+                    type="url"
+                    value={newImageUrl}
+                    onChange={(e) => setNewImageUrl(e.target.value)}
+                    placeholder="Enter image URL (e.g., https://images.unsplash.com/...)"
+                    className="flex-1 px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-teal-500"
+                  />
+                  <Button onClick={addImage} disabled={!newImageUrl.trim()}>
+                    Add Image
+                  </Button>
+                </div>
+                <p className="text-sm text-gray-600">
+                  Add high-quality images related to this event. Recommended
+                  size: 800x600px or larger.
+                </p>
+              </div>
+            )}
 
             {/* Main Image */}
             <div className="mb-8 relative group shadow-md">
@@ -234,7 +410,7 @@ The impact was immediate and measurable - 150 women registered for follow-up scr
               {event.gallery.map((image, index) => (
                 <div
                   key={index}
-                  className={`aspect-square rounded-lg overflow-hidden cursor-pointer transition-all duration-300 shadow-md hover:shadow-xl group ${
+                  className={`aspect-square rounded-lg overflow-hidden cursor-pointer transition-all duration-300 shadow-md hover:shadow-xl group relative ${
                     index === currentImageIndex
                       ? "ring-3 ring-teal-500 ring-offset-3 shadow-lg"
                       : "hover:scale-105"
@@ -246,11 +422,36 @@ The impact was immediate and measurable - 150 women registered for follow-up scr
                     alt={`${event.title} - Photo ${index + 1}`}
                     className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
                   />
-                  {/* Thumbnail overlay on hover */}
-                  <div className="absolute inset-0 transition-all duration-300 flex items-center justify-center">
-                    <span className="text-white text-xs font-medium opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                      Photo {index + 1}
-                    </span>
+
+                  {/* Admin Delete Button */}
+                  {isAuthenticated && event.gallery.length > 1 && (
+                    <button
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        removeImage(index);
+                      }}
+                      className="absolute top-2 right-2 bg-red-500 hover:bg-red-600 text-white p-1.5 rounded-full opacity-0 group-hover:opacity-100 transition-all duration-300 shadow-md"
+                      title="Delete image"
+                    >
+                      <svg
+                        className="w-3 h-3"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M6 18L18 6M6 6l12 12"
+                        />
+                      </svg>
+                    </button>
+                  )}
+
+                  {/* Photo Number */}
+                  <div className="absolute bottom-2 left-2 bg-black/50 text-white text-xs px-2 py-1 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    {index + 1}
                   </div>
                 </div>
               ))}
@@ -262,21 +463,101 @@ The impact was immediate and measurable - 150 women registered for follow-up scr
             <h2 className="text-xl font-bold text-teal-700 mb-4">
               Event Overview
             </h2>
-            <div className="prose prose-gray max-w-none mb-8">
-              {event.fullDescription.split("\n\n").map((paragraph, index) => (
-                <p
-                  key={index}
-                  className="mb-2 text-gray-700 leading-relaxed text-lg"
-                >
-                  {paragraph}
-                </p>
-              ))}
+
+            {/* Editable Description */}
+            <div className="group relative mb-8">
+              {editingField === "fullDescription" ? (
+                <div className="flex flex-col gap-3">
+                  <textarea
+                    value={editValues.fullDescription || ""}
+                    onChange={(e) =>
+                      setEditValues({
+                        ...editValues,
+                        fullDescription: e.target.value,
+                      })
+                    }
+                    className="w-full min-h-[200px] text-gray-700 leading-relaxed text-lg bg-transparent border-2 border-teal-300 rounded-lg px-4 py-3 focus:outline-none focus:border-teal-500 resize-vertical"
+                    autoFocus
+                  />
+                  <div className="flex gap-2">
+                    <Button
+                      size="sm"
+                      onClick={() => saveEdit("fullDescription")}
+                    >
+                      Save
+                    </Button>
+                    <Button variant="outline" size="sm" onClick={cancelEditing}>
+                      Cancel
+                    </Button>
+                  </div>
+                </div>
+              ) : (
+                <div className="relative">
+                  <div className="prose prose-gray max-w-none">
+                    {event.fullDescription
+                      .split("\n\n")
+                      .map((paragraph, index) => {
+                        // Check if paragraph contains bullet points or list items
+                        if (
+                          paragraph.includes("•") ||
+                          paragraph.includes("-") ||
+                          /^\d+\./.test(paragraph)
+                        ) {
+                          const lines = paragraph.split("\n");
+                          return (
+                            <ul
+                              key={index}
+                              className="mb-4 text-teal-700 leading-relaxed text-lg list-disc pl-6"
+                            >
+                              {lines.map((line, lineIndex) => (
+                                <li key={lineIndex} className="mb-1">
+                                  {line.replace(/^[•\-]|\d+\.\s*/g, "")}
+                                </li>
+                              ))}
+                            </ul>
+                          );
+                        }
+                        return (
+                          <p
+                            key={index}
+                            className="mb-2 text-gray-700 leading-relaxed text-lg"
+                          >
+                            {paragraph}
+                          </p>
+                        );
+                      })}
+                  </div>
+                  {isAuthenticated && (
+                    <button
+                      onClick={() =>
+                        startEditing("fullDescription", event.fullDescription)
+                      }
+                      className="absolute top-0 right-0 opacity-0 group-hover:opacity-100 transition-opacity duration-200 p-2 hover:bg-gray-100 rounded-lg"
+                      title="Edit description"
+                    >
+                      <svg
+                        className="w-4 h-4 text-gray-500"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"
+                        />
+                      </svg>
+                    </button>
+                  )}
+                </div>
+              )}
             </div>
 
             {/* <h3 className="text-xl font-bold text-teal-700 mb-4">
               Key Outcomes
             </h3> */}
-            <ul className="space-y-3 mb-2">
+            {/* <ul className="space-y-3 mb-2">
               {event.outcomes.map((outcome, index) => (
                 <li key={index} className="flex items-start">
                   <span className="w-3 h-3 bg-teal-500 rounded-full mt-2 mr-4 flex-shrink-0"></span>
@@ -285,7 +566,7 @@ The impact was immediate and measurable - 150 women registered for follow-up scr
                   </span>
                 </li>
               ))}
-            </ul>
+            </ul> */}
 
             {/* <h3 className="text-xl font-bold text-teal-700 mb-4">
               Event Partners
@@ -401,6 +682,12 @@ The impact was immediate and measurable - 150 women registered for follow-up scr
           </div>
         </div>
       )}
+
+      {/* Login Modal */}
+      <LoginModal
+        isOpen={showLoginModal}
+        onClose={() => setShowLoginModal(false)}
+      />
     </div>
   );
 };
