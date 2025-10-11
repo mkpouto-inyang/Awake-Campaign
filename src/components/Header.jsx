@@ -7,7 +7,7 @@ import heart from '../assets/icons/heart.svg';
 const Header = () => {
   return (
     <header className="bg-white shadow-sm sticky top-0 z-50">
-      <div className="flex justify-between items-center px-5 py-6 max-w-7xl mx-auto ">
+      <div className="flex justify-between items-center px-5 py-5 max-w-7xl mx-auto">
 
         <Logo />
 
@@ -27,9 +27,9 @@ const Header = () => {
           {/* Desktop: Donate button */}
           <Button
             iconSrc={heart}
-            size="md"
+            size="sm"
             variant="primary"
-            className="hidden lg:flex"
+            className="hidden lg:flex w-[120px] text-[12px] lg:text-sm py-2"
             onClick={() => console.log("donate")}
           >
             Donate

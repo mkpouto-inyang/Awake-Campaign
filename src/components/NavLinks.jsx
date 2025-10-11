@@ -17,7 +17,7 @@ const NavLinks = () => {
                 key={index} 
                 to={nav.path}
                 className={
-                    
+                     
                     ({isActive})=>{
                     isActive? "text-[#015660] font-medium underline":"text-black hover:text-[#015660]"
                 }}

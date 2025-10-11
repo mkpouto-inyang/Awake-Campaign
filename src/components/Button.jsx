@@ -15,7 +15,7 @@ const Button = ({
   disabled = false,
 }) => {
   const baseStyles =
-    "flex items-center justify-center font-medium transition duration-200 focus:outline-none";
+    "flex items-center justify-center font-medium transition duration-200 focus:outline-none ";
 
   const sizeMap = {
     sm: "px-3 py-1.5 text-sm",
