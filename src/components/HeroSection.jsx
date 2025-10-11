@@ -1,5 +1,6 @@
 import womenImage from '../assets/static-images/women-image.png';
 import cancerRibbon from '../assets/icons/cancer-ribbon.svg'
+import Button from './Button';
 
 const HeroSection = () => {
   return (
@@ -31,17 +32,32 @@ const HeroSection = () => {
         <img 
             src={cancerRibbon} 
             alt="cancer Ribbon"
-            className='w-4 h-4 md:w-7 md:h-7 mdlg:mt-[-30px]'
+            className='w-4 h-4 md:w-7 md:h-7 mdlg:mt-[-40px]'
         />
       </div>
 
       <div>
-         <p className='text-[11px] md:text-[18px] lg:text-[22px] mt-6 font-semibold text-teal-darkest'>Eyes Open. Take Action. Help Others Do the Same</p>
+         <p className='text-[11px] md:text-[18px] lg:text-[22px] mt-3 font-semibold text-teal-darkest'>Eyes Open. Take Action. Help Others Do the Same</p>
       </div>
 
-      <div>
-         <p className='text-[10px] md:text-[14px] lg:text-[18px] mt-6 '>Through film, Awake shines a light on cervical cancer in Nigeria. We raise awareness, spark conversations, and help women take action for their health.</p>
-      </div>
+        <div className="px-5">
+        <p className="text-[12px] smd:text-[13px] md:text-[14px] lg:text-[16px] xl:text-[18px] max-w-7xl mx-auto text-gray-700 leading-relaxed text-center mt-6 lg:mt-4">
+            Through film, <i>Awake</i> shines a light on cervical cancer in Nigeria.
+            We raise awareness, spark conversations, and help women take action for their health.
+        </p>
+        </div>
+
+        <div className="mt-12 px-4">
+            <Button
+                variant="primary"
+                className="
+                text-xs smd:text-sm md:text-base
+                px-6 md:px-8 lg:px-10
+                py-2 lg:py-3 rounded-[6px]"
+            >
+                Join the Movement
+            </Button>
+        </div>
     </section>
   );
 };
