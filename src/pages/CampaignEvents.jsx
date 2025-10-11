@@ -178,7 +178,7 @@ const CampaignEvents = () => {
             </span>
           </div> */}
           <h1 className="text-4xl md:text-6xl font-bold mb-6 text-gray-900 leading-tight">
-            Our Impact <span className="text-teal-600">Stories</span>
+            Our Impact <span className="text-teal-primary">Stories</span>
           </h1>
           <p className="text-xl text-gray-600 mb-6 max-w-3xl mx-auto leading-relaxed">
             Discover the powerful events and initiatives we've completed in our
