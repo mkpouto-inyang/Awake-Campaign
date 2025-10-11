@@ -1,9 +1,11 @@
 import womenImage from '../assets/static-images/women-image.png';
+import cancerRibbon from '../assets/icons/cancer-ribbon.svg'
 
 const HeroSection = () => {
   return (
     <section className="w-full bg-teal-light h-[800px] flex flex-col items-center">
-      <div className="relative text-center flex items-center justify-center w-fit">
+        <div></div>
+      <div className="relative text-center flex items-center  w-fit">
         {/* Shadow text (underneath) */}
         <h1
           className="absolute top-1.5 left-1 text-[70px] smd:text-[100px] md:text-[120px] mdlg:text-[140px] lg:text-[180px] lgxl:text-[220px] xl:text-[280px] font-bold text-black/40 blur-[5px] select-none"
@@ -23,6 +25,22 @@ const HeroSection = () => {
         >
           AWAKE
         </h1>
+      </div>
+
+      <div>
+        <img 
+            src={cancerRibbon} 
+            alt="cancer Ribbon"
+            className='w-4 h-4 md:w-7 md:h-7 mdlg:mt-[-30px]'
+        />
+      </div>
+
+      <div>
+         <p className='text-[11px] md:text-[18px] lg:text-[22px] mt-6 font-semibold text-teal-darkest'>Eyes Open. Take Action. Help Others Do the Same</p>
+      </div>
+
+      <div>
+         <p className='text-[10px] md:text-[14px] lg:text-[18px] mt-6 '>Through film, Awake shines a light on cervical cancer in Nigeria. We raise awareness, spark conversations, and help women take action for their health.</p>
       </div>
     </section>
   );

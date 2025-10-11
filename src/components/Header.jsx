@@ -13,8 +13,6 @@ const Header = () => {
 
         <NavLinks />
 
-        {/* Buttons */}
-    
           <Button
             iconSrc={hamburger}
             iconOnly
