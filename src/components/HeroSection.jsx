@@ -2,12 +2,21 @@ import womenImage from '../assets/static-images/women-image.png';
 
 const HeroSection = () => {
   return (
-    <section className="w-full bg-teal-light h-[800px]">
-      <div className=" px-4 text-center">
+    <section className="w-full bg-teal-light h-[800px] flex flex-col items-center">
+      <div className="relative text-center flex items-center justify-center w-fit">
+        {/* Shadow text (underneath) */}
         <h1
-          className="text-[70px] md:text-[140px] lg:text-[200px] font-bold text-transparent bg-clip-text bg-cover bg-center inline-block"
+          className="absolute top-1.5 left-1 text-[70px] md:text-[140px] lg:text-[280px] font-bold text-black/40 blur-[5px] select-none"
+          aria-hidden="true"
+        >
+          AWAKE
+        </h1>
+
+        {/* Foreground text (with image) */}
+        <h1
+          className="relative text-[70px] md:text-[140px] lg:text-[280px] font-bold text-transparent bg-clip-text bg-cover bg-center inline-block"
           style={{
-            backgroundImage: `url(${womenImage})`,
+            backgroundImage: `linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.2)), url(${womenImage})`,
             backgroundPosition: '50% 90%',
             backgroundSize: 'cover',
           }}
