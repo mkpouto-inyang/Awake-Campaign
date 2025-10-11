@@ -171,7 +171,7 @@ const CampaignEvents = () => {
     <div className="min-h-screen bg-white">
       {/* Hero Section */}
       <div className="bg-white pt-10 pb-12">
-        <div className="max-w-8xl mx-auto px-4 text-center">
+        <div className="max-w-7xl mx-auto px-4 text-center">
           {/* <div className="mb-2">
             <span className="inline-block px-4 py-2 bg-gray-100 rounded-full text-sm font-medium text-gray-600">
               Film-Driven Healthcare Campaign
@@ -188,8 +188,8 @@ const CampaignEvents = () => {
       </div>
 
       {/* Campaign Stats */}
-      <div className="bg-[#14b8a6] rounded-xl py-20">
-        <div className="max-w-8xl mx-auto px-4">
+      <div className="bg-[#14b8a6] max-w-7xl mx-auto rounded-xl py-20">
+        <div className="max-w-7xl mx-auto px-2">
           <div className="text-center mb-16">
             <h2 className="text-3xl font-bold text-white mb-4">
               Campaign Achievements
@@ -231,7 +231,7 @@ const CampaignEvents = () => {
 
       {/* Filters Section */}
       <div className="bg-white py-12 border-b" id="events-section">
-        <div className="max-w-8xl mx-auto px-4">
+        <div className="max-w-7xl mx-auto px-4">
           <div className="flex flex-col sm:flex-row gap-6 items-left justify-between">
             <div className="flex flex-col sm:flex-row gap-4">
               <div>
@@ -241,7 +241,7 @@ const CampaignEvents = () => {
                 <select
                   value={selectedCategory}
                   onChange={(e) => setSelectedCategory(e.target.value)}
-                  className="border border-gray-200 rounded-lg px-4 py-3 bg-white min-w-[200px] focus:ring-2 focus:ring-teal-500 focus:border-teal-500 transition-all duration-200"
+                  className="border border-gray-200 rounded-lg px-4 py-3 bg-white min-w-[200px] focus:border-teal-500 transition-all duration-200"
                 >
                   {eventCategories.map((category) => (
                     <option key={category.id} value={category.id}>
@@ -257,7 +257,7 @@ const CampaignEvents = () => {
                 <select
                   value={selectedMonth}
                   onChange={(e) => setSelectedMonth(e.target.value)}
-                  className="border border-gray-200 rounded-lg px-4 py-3 bg-white min-w-[180px] focus:ring-2 focus:ring-teal-500 focus:border-teal-500 transition-all duration-200"
+                  className="border border-gray-200 rounded-lg px-4 py-3 bg-white min-w-[180px] focus:border-teal-500 transition-all duration-200"
                 >
                   <option value="all">All Months</option>
                   <option value="2023-11">November 2023</option>
@@ -278,7 +278,7 @@ const CampaignEvents = () => {
 
       {/* Events Grid */}
       <div className="py-20 bg-white">
-        <div className="max-w-8xl mx-auto px-4">
+        <div className="max-w-7xl mx-auto px-4">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {filteredEvents.map((event) => (
               <div

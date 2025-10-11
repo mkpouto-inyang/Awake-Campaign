@@ -185,7 +185,7 @@ The impact was immediate and measurable - 150 women registered for follow-up scr
     <div className="min-h-screen bg-white">
       {/* Header */}
       <div className="bg-white pt-8 pb-4">
-        <div className="max-w-8xl mx-auto px-6">
+        <div className="max-w-7xl mx-auto px-6">
           <div className="flex justify-between items-center mb-8">
             <Button
               variant="outline"
@@ -279,8 +279,8 @@ The impact was immediate and measurable - 150 women registered for follow-up scr
         </div>
       </div>
       {/* Content */}
-      <div className="max-w-8xl mx-auto px-6 py-2">
-        <div className="max-w-8xl">
+      <div className="max-w-7xl mx-auto px-6 py-2">
+        <div className="max-w-7xl">
           {/* Event Images */}
           <div className="mb-16">
             <div className="flex justify-between items-center mb-8">
