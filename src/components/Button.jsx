@@ -24,7 +24,7 @@ const Button = ({
   };
 
   const variantMap = {
-    primary: "bg-teal-600 text-white hover:bg-teal-700",
+    primary: "bg-teal-primary text-white hover:bg-teal-700",
     outline: "border border-teal-600 text-teal-600 hover:bg-teal-50",
     white: "bg-white text-black hover:bg-gray-100 border border-gray-200",
     neutral: "bg-gray-100 text-gray-800 hover:bg-gray-200",
