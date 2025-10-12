@@ -4,7 +4,7 @@ import Button from './Button';
 
 const HeroSection = () => {
   return (
-    <section className="w-full bg-teal-light h-[800px] flex flex-col items-center">
+    <section className="w-full h-[800px] flex flex-col items-center" style={{ background: 'linear-gradient(180deg, rgba(228, 248, 243, 0.6) 71.64%, rgba(255, 255, 255, 0.6) 100%)' }}>
         <div></div>
       <div className="relative text-center flex items-center  w-fit">
         {/* Shadow text (underneath) */}

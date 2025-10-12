@@ -118,7 +118,7 @@
 
 /* Custom scrollbar for modern look */
 ::-webkit-scrollbar {
-  width: 8px;
+  width: 7px;
 }
 
 ::-webkit-scrollbar-track {
@@ -135,38 +135,37 @@
 }
 
 @theme {
-  --breakpoint-sm: 40rem;     /* 640px */
-  --breakpoint-smd: 42.5rem;   /* 680px — (custom) */
-  --breakpoint-md: 48rem;     /* 768px */
+  --breakpoint-sm: 40rem; /* 640px */
+  --breakpoint-smd: 42.5rem; /* 680px — (custom) */
+  --breakpoint-md: 48rem; /* 768px */
   --breakpoint-mdlg: 56.25rem; /* 900px (custom) */
-  --breakpoint-lg: 64rem;     /* 1024px */
+  --breakpoint-lg: 64rem; /* 1024px */
   --breakpoint-lgxl: 71rem; /* 1136px (custom) */
-  --breakpoint-xl: 80rem;     /* 1280px */
-  --breakpoint-2xl: 96rem;    /* 1536px */
+  --breakpoint-xl: 80rem; /* 1280px */
+  --breakpoint-2xl: 96rem; /* 1536px */
 
   --font-sans: "Outfit", sans-serif;
 
   --color-teal-primary: #00999e;
-  --color-teal-light: #E4F8F3;
-  --color-teal-middle: #CBFBF1;
+  --color-teal-light: #e4f8f3;
+  --color-teal-middle: #cbfbf1;
   --color-teal-dark: #008080;
   --color-teal-darkest: #015660;
 
-  --color-input-grey: #F3F3F5;
-  --color-outline-grey:#CCCCCC;
-  --color-placeholder-grey: #AAACB0;
+  --color-input-grey: #f3f3f5;
+  --color-outline-grey: #cccccc;
+  --color-placeholder-grey: #aaacb0;
 
-  --color-orange: #FF4F18;
-  --color-blue-dark: #060A14;
+  --color-orange: #ff4f18;
+  --color-blue-dark: #060a14;
 
   /* Text-specific tokens */
   --color-text-blue-dark: #0f3a5e;
-  --color-text-grey-dark: #4A5565;
-  --color-text-grey-light: #D9D9D9;
-  --color-text-grey-middle: #898D93;
+  --color-text-grey-dark: #4a5565;
+  --color-text-grey-light: #d9d9d9;
+  --color-text-grey-middle: #898d93;
 }
 
 body {
   font-family: var(--font-sans);
 }
-
