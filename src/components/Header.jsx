@@ -3,6 +3,7 @@ import NavLinks from "./NavLinks";
 import Button from "./Button";
 import hamburger from "../assets/icons/hamburger.svg";
 import heart from "../assets/icons/heart.svg";
+import '../../src/custom-css/animations.css'
 
 const Header = () => {
   return (
@@ -23,12 +24,16 @@ const Header = () => {
 
         {/* Desktop: Donate button */}
         <Button
-          iconSrc={heart}
           size="sm"
           variant="primary"
           className="hidden lg:flex w-[100px] text-[10px] lg:text-sm py-2"
           onClick={() => console.log("donate")}
         >
+          <img
+            src={heart}
+            alt="heart icon"
+            className="w-4 h-4 mr-2 horizontal-spin"
+          />
           Donate
         </Button>
       </div>

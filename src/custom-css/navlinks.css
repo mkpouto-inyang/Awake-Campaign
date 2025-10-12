@@ -1,0 +1,30 @@
+.nav-item {
+  position: relative;
+  width: max-content;
+}
+
+.nav-item::after {
+  content: "";
+  width: 0%;
+  left: 0;
+  height: 2px;
+  background-color: #00999e;
+  position: absolute;
+  bottom: -8px;
+  border-radius: 2px;
+  transition: width 0.3s ease;
+}
+
+.nav-item:hover {
+  color: #00999e;
+  font-weight: 500;
+}
+
+.nav-item:hover::after,
+.nav-item.active::after {
+  width: 100%;
+}
+
+.nav-item.active {
+  color: #00999e;
+}

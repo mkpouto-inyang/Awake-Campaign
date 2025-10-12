@@ -1,4 +1,5 @@
 import { NavLink } from "react-router-dom";
+import '../../src/custom-css/navlinks.css'
 
 const NavLinks = () => {
   const links = [
@@ -14,11 +15,9 @@ const NavLinks = () => {
         <NavLink
           key={index}
           to={nav.path}
-          className={({ isActive }) => {
-            isActive
-              ? "text-[#015660] font-medium underline"
-              : "text-black hover:text-[#015660]";
-          }}
+          className={({ isActive }) =>
+            isActive ? "nav-item active" : "nav-item"
+          }
         >
           {nav.label}
         </NavLink>

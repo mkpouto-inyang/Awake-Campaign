@@ -1,4 +1,5 @@
 import clsx from "clsx";
+import '../../src/custom-css/animations.css'
 
 const Button = ({
   children,
@@ -8,8 +9,8 @@ const Button = ({
   variant = "primary",
   rounded = "md",
   className = "",
-  iconSrc,         // image path for icon on the left
-  iconRightSrc,    // image path for icon on the right
+  iconSrc, 
+  iconRightSrc,  
   iconOnly = false,
   fullWidth = false,
   disabled = false,

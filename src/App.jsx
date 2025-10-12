@@ -3,7 +3,6 @@ import './App.css'
 import Home from './pages/Home'
 import AboutUs from './pages/AboutUs'
 import Contact from './pages/Contact'
-import JoinTheMovementLayout from './layouts/JoinTheMovementLayout'
 import Donate from './pages/Donate'
 import ShareYourStory from './pages/ShareYourStory'
 import AwakeChallenge from './pages/AwakeChallenge'
@@ -11,9 +10,9 @@ import CampaignEvents from './pages/CampaignEvents'
 import EventDetail from './pages/EventDetail'
 import Layout from './layouts/Layout'
 import { AuthProvider } from './contexts/AuthContext'
+import JoinTheMovementLayout from './layouts/JoinTheMovementLayout'
 
 function App() {
-
   return (
     <>
       <AuthProvider>
@@ -23,7 +22,7 @@ function App() {
                 <Route index element={<Home/>}></Route>
                 <Route path='/about-us' element={<AboutUs/>}></Route>
 
-                 <Route path="/join-the-movement" element={<JoinTheMovementLayout />}>
+                 <Route path="/join-the-movement" element={<JoinTheMovementLayout/>}>
 
                   <Route index element={<Donate />} />
                   <Route path="challenge" element={<AwakeChallenge />} />
