@@ -1,4 +1,4 @@
-import womenImage from '../assets/static-images/women-image.png';
+import womenImage from '../assets/static-images/Women-image.png';
 import cancerRibbon from '../assets/icons/cancer-ribbon.svg'
 import Button from './Button';
 
