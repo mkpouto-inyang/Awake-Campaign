@@ -5,27 +5,27 @@ import Button from './Button';
 const HeroSection = () => {
   return (
     <section className="w-full h-[800px] flex flex-col items-center" style={{ background: 'linear-gradient(180deg, rgba(228, 248, 243, 0.6) 71.64%, rgba(255, 255, 255, 0.6) 100%)' }}>
-        <div></div>
-      <div className="relative text-center flex items-center  w-fit">
-        {/* Shadow text (underneath) */}
-        <h1
-          className="absolute top-1.5 left-1 text-[70px] smd:text-[100px] md:text-[120px] mdlg:text-[140px] lg:text-[180px] lgxl:text-[220px] xl:text-[280px] font-bold text-black/40 blur-[5px] select-none"
-          aria-hidden="true"
-        >
-          AWAKE
-        </h1>
+          <div className="relative text-center flex items-center w-fit">
+            <div className="absolute top-0 left-[-20px] md:top-0 md:left-16 lg:top-24 lg:left-[-50px] w-48 h-48 sm:w-60 sm:h-60 md:w-72 md:h-72  bg-teal-primary opacity-35 rounded-full z-0 blur-[100px]
+  "></div>
 
-        {/* Foreground text (with image) */}
-        <h1
-          className="relative text-[70px] md:text-[120px] smd:text-[100px] mdlg:text-[140px] lg:text-[180px] lgxl:text-[220px] xl:text-[280px] font-bold text-transparent bg-clip-text bg-cover bg-center inline-block"
-          style={{
-            backgroundImage: `linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.2)), url(${womenImage})`,
-            backgroundPosition: '50% 90%',
-            backgroundSize: 'cover',
-          }}
-        >
-          AWAKE
-        </h1>
+            <h1
+              className="absolute top-1.5 left-1 text-[70px] smd:text-[100px] md:text-[120px] mdlg:text-[140px] lg:text-[180px] lgxl:text-[220px] xl:text-[280px] font-bold text-black/40 blur-[5px] select-none"
+              aria-hidden="true"
+            >
+              AWAKE
+            </h1>
+
+            <h1
+              className="relative text-[70px] md:text-[120px] smd:text-[100px] mdlg:text-[140px] lg:text-[180px] lgxl:text-[220px] xl:text-[280px] font-bold text-transparent bg-clip-text bg-cover bg-center inline-block"
+              style={{
+                backgroundImage: `linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.2)), url(${womenImage})`,
+                backgroundPosition: '50% 90%',
+                backgroundSize: 'cover',
+              }}
+            >
+              AWAKE
+            </h1>
       </div>
 
       <div>
@@ -48,6 +48,7 @@ const HeroSection = () => {
         </div>
 
         <div className="mt-12 px-4">
+
             <Button
                 variant="primary"
                 className="

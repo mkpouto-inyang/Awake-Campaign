@@ -7,8 +7,8 @@ import '../../src/custom-css/animations.css'
 
 const Header = () => {
   return (
-    <header className="bg-white shadow-sm w-full z-[9999]" style={{ position: 'fixed', top: 0, left: 0 }}>
-      <div className="flex justify-between items-center px-5 py-3 max-w-7xl mx-auto">
+    <header className="bg-white w-full z-[9999]" style={{ position: 'fixed', top: 0, left: 0 }}>
+      <div className="flex justify-between items-center px-5 py-5 max-w-7xl mx-auto">
         <Logo />
 
         <NavLinks />
