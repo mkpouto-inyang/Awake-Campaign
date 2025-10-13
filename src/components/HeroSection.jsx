@@ -16,13 +16,13 @@ const HeroSection = () => {
 
   return (
     <section
-      className="w-full flex flex-col items-center"
+      className="w-full flex flex-col items-center pb-[80px] md:pb-[150px]"
       style={{
         background:
           "linear-gradient(180deg, rgba(228, 248, 243, 0.6) 80%, rgba(255, 255, 255, 0.6) 100%)",
       }}
     >
-      <div className="relative text-center flex items-center w-fit">
+      <div className="relative text-center flex items-center w-fit mt-[20px] lg:mt-[0px]">
         <div
           className="absolute top-0 left-[-20px] md:top-0 md:left-16 lg:top-24 lg:left-[-50px] w-48 h-48 sm:w-60 sm:h-60 md:w-72 md:h-72  bg-teal-primary opacity-35 rounded-full z-0 blur-[100px]"
         ></div>
@@ -86,7 +86,7 @@ const HeroSection = () => {
 
        <div className="px-5 mb-8 lg:mb-20 mt-1">
         <p className="text-[12px] smd:text-[13px] md:text-[14px] lg:text-[16px] xl:text-[18px] max-w-7xl mx-auto text-teal-dark leading-relaxed text-center mt-6 lg:mt-4">
-          #AWAKE  #IamAwake  #IamAwakeToCervicalCancer
+          #AWAKE #IamAwake  #IamAwakeToCervicalCancer
         </p>
       </div>
 <div className="w-[90%] max-w-6xl mx-auto">
@@ -94,21 +94,21 @@ const HeroSection = () => {
   {/* Desktop view: one full-width card with 3 horizontal stats */}
   <div className="hidden md:flex p-6 sm:p-8 md:p-10 shadow-2xl bg-white justify-around items-center gap-6 rounded-[12px] mb-[60px]">
     <div className="text-center">
-      <p className="text-orange text-2xl md:text-3xl font-semibold">14,000+</p>
-      <p className="text-sm md:text-base text-blue-dark">People Educated</p>
+      <p className="text-orange text-2xl lg:text-3xl font-semibold">14,000+</p>
+      <p className="text-sm lg:text-base text-blue-dark">People Educated</p>
     </div>
     <div className="text-center">
-      <p className="text-orange text-2xl md:text-3xl font-semibold">7,000+</p>
-      <p className="text-sm md:text-base text-blue-dark">HPV Vaccines Administered</p>
+      <p className="text-orange text-2xl lg:text-3xl font-semibold">7,000+</p>
+      <p className="text-sm lg:text-base text-blue-dark">HPV Vaccines Administered</p>
     </div>
     <div className="text-center">
-      <p className="text-orange text-2xl md:text-3xl font-semibold">50+</p>
-      <p className="text-sm md:text-base text-blue-dark">Outreach Events Held</p>
+      <p className="text-orange text-2xl lg:text-3xl font-semibold">50+</p>
+      <p className="text-sm lg:text-base text-blue-dark">Outreach Events Held</p>
     </div>
   </div>
 
   {/* Mobile view: 3 individual stat cards */}
-  <div className="flex flex-col gap-6 md:hidden mt-4 mb-4">
+  <div className="flex flex-col gap-6 md:hidden mt-4 mb-10">
     <div className="p-5 shadow-md bg-white rounded-[8px] text-center">
       <p className="text-orange text-[20px] font-semibold mb-1">14,000+</p>
       <p className="text-[12px] text-blue-dark">People Educated</p>
@@ -124,7 +124,7 @@ const HeroSection = () => {
   </div>
 </div>
 
-<div className="w-[90%] max-w-6xl mx-auto mb-12">
+<div className="w-[90%] max-w-6xl mx-auto ">
   {/* Progress Summary */}
   <div className="flex justify-between items-center text-xs sm:text-sm mb-2">
     <span className="font-semibold text-gray-800">
@@ -153,7 +153,6 @@ const HeroSection = () => {
     </span>
   </div>
 </div>
-
 
     </section>
   );
