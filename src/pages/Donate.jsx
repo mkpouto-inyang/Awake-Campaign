@@ -6,7 +6,7 @@ const Donate = () => {
   const [customAmount, setCustomAmount] = useState("");
   const [email, setEmail] = useState("");
   const [paymentMethod, setPaymentMethod] = useState("online");
-  const [currentAmount, setCurrentAmount] = useState(800000);
+  const [currentAmount, setCurrentAmount] = useState(3200000);
 
   // Campaign progress data
   const goalAmount = 5000000; // 5.0M goal
