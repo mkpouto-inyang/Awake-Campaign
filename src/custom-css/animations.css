@@ -1,3 +1,4 @@
+/* Animation for heart icon */
 
 @keyframes horizontal-spin {
   from {
@@ -12,3 +13,39 @@
   animation: horizontal-spin 3s linear infinite;
   transform-style: preserve-3d; 
 }
+
+/* Animation for infinite scroll */
+.infinite-scroll-wrapper {
+  overflow: hidden;
+  width: 100%;
+  background-color: white;
+  padding: 20px 0;
+}
+
+.infinite-scroll-track {
+  display: flex;
+  width: max-content;
+  animation: scroll 20s linear infinite;
+  gap: 80px;
+}
+
+.logo-item {
+  width: 100px;
+  height: 100px;
+  object-fit: contain;
+}
+
+.infinite-scroll-track:hover {
+  animation-play-state: paused;
+}
+
+/* Infinite scroll animation */
+@keyframes scroll {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+

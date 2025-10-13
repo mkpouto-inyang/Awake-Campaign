@@ -5,7 +5,7 @@ import speechBubble from "../assets/icons/speechBubble.svg";
 const SolutionSection = () => {
   return (
     <div
-      className="px-4 md:px-6 text-white py-[60px] md:py-[80px] lg:py-[100px]"
+      className="px-4 md:px-6 text-white py-[60px] md:py-[80px] lg:py-[100px] mb-8"
       style={{
         background:
           "linear-gradient(180deg, rgba(228, 248, 243, 0.6) 80%, rgba(255, 255, 255, 0.6) 100%)",
