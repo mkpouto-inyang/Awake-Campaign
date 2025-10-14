@@ -15,32 +15,39 @@
 }
 
 /* Animation for infinite scroll */
-.infinite-scroll-wrapper {
+.logo-ticker {
   overflow: hidden;
   width: 100%;
-  background-color: white;
   padding: 20px 0;
+  background-color: white;
+  user-select: none;
 }
 
-.infinite-scroll-track {
+.logo-ticker ul {
   display: flex;
+  list-style: none;
+  gap: 60px;
+  animation: scroll-left 20s linear infinite;
   width: max-content;
-  animation: scroll 20s linear infinite;
-  gap: 80px;
+  margin: 0;
+  padding: 0;
 }
 
-.logo-item {
+.logo-ticker:hover ul {
+  animation-play-state: paused;
+}
+
+.logo-ticker li {
+  flex-shrink: 0;
+}
+
+.logo-ticker img {
   width: 100px;
   height: 100px;
   object-fit: contain;
 }
 
-.infinite-scroll-track:hover {
-  animation-play-state: paused;
-}
-
-/* Infinite scroll animation */
-@keyframes scroll {
+@keyframes scroll-left {
   0% {
     transform: translateX(0%);
   }
@@ -49,3 +56,37 @@
   }
 }
 
+/* Logos scrolling animation */
+.carousel{
+  margin: 100px auto;
+  width: 90%;
+  display: flex;
+  overflow-x: auto;
+}
+
+.carousel::-webkit-scrollbar{
+  display: none;
+}
+
+.card{
+  flex: 0 0 5em;
+  padding: 1em;
+  font-size: 3rem;
+  border-radius: .2em;
+  text-align: center;
+  align-content: center;
+}
+
+.group{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1em;
+  animation: spin 12s infinite linear;
+  padding-right: 1em;
+}
+
+@keyframes spin {
+  from {translate: 0;}
+  to {translate: -100%;}
+}
