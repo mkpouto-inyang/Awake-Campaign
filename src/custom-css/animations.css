@@ -58,7 +58,7 @@
 
 /* Logos scrolling animation */
 .carousel{
-  margin: 100px auto;
+  margin: 60px auto;
   width: 90%;
   display: flex;
   overflow-x: auto;
@@ -68,7 +68,7 @@
   display: none;
 }
 
-.card {
+.logo-card {
   flex: 0 0 4em;
   font-size: 3rem;
   border-radius: 0.2em;
@@ -81,15 +81,6 @@
   .card {
     flex: 0 0 2em;
   }
-}
-
-.group{
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 1em;
-  animation: spin 12s infinite linear;
-  padding-right: 1em;
 }
 
 .group {

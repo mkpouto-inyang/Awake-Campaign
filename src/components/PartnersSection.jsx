@@ -14,6 +14,13 @@ const PartnersSection = () => {
       </p>
 
       <InfiniteScroll/>
+
+      <p className="text-[12px] smd:text-[13px] md:text-[14px] lg:text-[16px] xl:text-[18px] max-w-6xl text-blue-dark leading-relaxed text-center px-2 xl:px-0 mx-auto mb-12 md:mb-20">
+        Interested in partnering with us?
+        <a href="/contact" className="text-orange underline hover:text-orange- ml-2">
+          Get in touch
+        </a>
+      </p>
     </div>
   );
 };
