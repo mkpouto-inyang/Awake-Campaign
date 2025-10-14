@@ -78,7 +78,7 @@
 
 /* Smaller screens */
 @media (max-width: 640px) {
-  .card {
+  .logo-card {
     flex: 0 0 2em;
   }
 }
