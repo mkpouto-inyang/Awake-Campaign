@@ -1,8 +1,7 @@
-import eventImage from "../assets/static-images/event-img-1.png";
-import Users from "../assets/icons/grayUsers.svg";
-import Calendar from "../assets/icons/calendar.svg";
-import Location from '../assets/icons/location.svg'
-import Button from "./Button";
+import eventImage1 from "../assets/static-images/event-img-1.png";
+import eventImage2 from "../assets/static-images/event-img-1.png";
+import eventImage3 from "../assets/static-images/event-img-1.png";
+import EventCard from "../components/EventCard";
 
 const WhatWeDoSection = () => {
   return (
@@ -19,44 +18,28 @@ const WhatWeDoSection = () => {
         lives
       </p>
 
-      <div className="flex gap-[48px] w-full justify-center mb-[80px]">
-        <div className="w-[400px] bg-teal-light rounded-[10px]">
-          <img src={eventImage} alt="" className="" />
-          <div className="p-[20px]">
-            <p>Community Screening</p>
-
-            <div className="flex gap-[16px]">
-                <img src={Calendar} alt="" />
-                <p>March 15, 2025</p>
-            </div>
-            <div className="flex gap-[16px]">
-                <img src={Location} alt="" />
-                <p>Downtown Health Center</p>
-            </div>
-            <div className="flex gap-[16px]">
-                <img src={Users} alt="" />
-                <p>To be determined</p>
-            </div>
-          </div>
-
-        <div className="p-5">
-          <button className=" border border-[D9D9D9] bg-white text-[#101828] mb-[70px] w-[98%]">
-            Learn More
-          </button>
-        </div>
-
-        </div>
-
-
-
-
-
-        <div className="w-[400px] px-[20px] bg-teal-light rounded-[10px]">
-          Box1
-        </div>
-        <div className="w-[400px] px-[20px] bg-teal-light rounded-[10px]">
-          Box1
-        </div>
+      <div className="flex flex-wrap gap-[48px] justify-center mb-[80px]">
+        <EventCard
+          title="Community Screening"
+          date="March 15, 2025"
+          location="Downtown Health Center"
+          attendees="To be determined"
+          image={eventImage1}
+        />
+        <EventCard
+          title="AWAKE Documentary Premiere"
+          date="March 15, 2025"
+          location="Downtown Health Center"
+          attendees="To be determined"
+          image={eventImage2}
+        />
+        <EventCard
+          title="Community Screening"
+          date="March 15, 2025"
+          location="Downtown Health Center"
+          attendees="200 people in attendance"
+          image={eventImage3}
+        />
       </div>
     </div>
   );
