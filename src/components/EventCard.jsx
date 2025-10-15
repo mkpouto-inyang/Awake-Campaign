@@ -1,11 +1,10 @@
-// src/components/EventCard.jsx
 import Calendar from "../assets/icons/calendar.svg";
 import Location from "../assets/icons/location.svg";
 import Users from "../assets/icons/grayUsers.svg";
 
 const EventCard = ({ title, date, location, attendees, image }) => {
   return (
-    <div className="w-[400px] rounded-[10px] shadow-lg bg-white pb-[40px]">
+    <div className=" max-w-[400px] rounded-[10px] shadow-lg bg-white mx-auto">
       <img src={image} alt={title} className="w-full h-auto rounded-t-[10px]" />
 
       <div className="p-[20px]">
@@ -30,7 +29,7 @@ const EventCard = ({ title, date, location, attendees, image }) => {
       </div>
 
       <div className="p-5">
-        <button className="border border-[#D9D9D9] bg-white text-[#101828] w-[98%] font-medium py-[12px] rounded-[6px]">
+        <button className="border border-[#D9D9D9] bg-white text-[#101828] w-full font-medium py-[12px] rounded-[6px]">
           Learn More
         </button>
       </div>
