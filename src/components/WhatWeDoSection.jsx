@@ -3,6 +3,7 @@ import { Navigation, Pagination, Autoplay, A11y } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
+import '../custom-css/swipableCards.css'
 
 import eventImage1 from "../assets/static-images/event-img-1.png";
 import eventImage2 from "../assets/static-images/event-img-1.png";
