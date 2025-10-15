@@ -11,7 +11,7 @@
 
 .horizontal-spin {
   animation: horizontal-spin 3s linear infinite;
-  transform-style: preserve-3d; 
+  transform-style: preserve-3d;
 }
 
 /* Animation for infinite scroll */
@@ -56,15 +56,14 @@
   }
 }
 
-/* Logos scrolling animation */
-.carousel{
+.carousel {
   margin: 60px auto;
   width: 90%;
   display: flex;
   overflow-x: auto;
 }
 
-.carousel::-webkit-scrollbar{
+.carousel::-webkit-scrollbar {
   display: none;
 }
 
@@ -76,29 +75,31 @@
   align-content: center;
 }
 
-/* Smaller screens */
 @media (max-width: 640px) {
   .logo-card {
     flex: 0 0 2em;
   }
 }
 
-.group {
+.carousel .group {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 2rem; /* Default gap */
+  gap: 2rem;
   animation: spin 12s infinite linear;
   padding-right: 1em;
 }
 
-/* Smaller screens */
 @media (max-width: 640px) {
   .group {
     gap: 1rem;
   }
 }
 @keyframes spin {
-  from {translate: 0;}
-  to {translate: -100%;}
+  from {
+    translate: 0;
+  }
+  to {
+    translate: -100%;
+  }
 }
