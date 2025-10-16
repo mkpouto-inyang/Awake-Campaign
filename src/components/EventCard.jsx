@@ -31,7 +31,7 @@ const EventCard = ({ title, date, location, attendees, image }) => {
         </div>
 
         <div className="p-5">
-            <button className="border border-[#D9D9D9] bg-white text-[#101828] w-full font-medium px-2 py-2 sm:px-6 sm:py-3 rounded-[6px] text-[12px] md:text-[14px] lg:text-[16px] ">
+            <button className="border border-[#D9D9D9] bg-white text-[#101828] w-full font-medium px-2 py-2 sm:px-6 sm:py-3 rounded-[6px] text-[12px] md:text-[14px] lg:text-[16px] mb-5">
             Learn More
             </button>
         </div>
