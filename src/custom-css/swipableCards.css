@@ -1,18 +1,92 @@
-.card-list{
-    margin-bottom: 100px;
+.card-list {
+  margin-bottom: 100px;
 }
 
-.card-list .card-item .card-link{
-    width: 400px;
-    display: block;
-    background-color: lightblue;
-    border-radius: 12px;
-    padding: 20px;
+.card-list .card-item .card-link {
+  width: 400px;
+  display: block;
+  background-color: lightblue;
+  border-radius: 12px;
+  padding: 20px;
 }
 
-.card-list .card-link .card-image{
-    width: 100%;
-    aspect-ratio: 16/9;
-    object-fit: cover;
+.card-list .card-link .card-image {
+  width: 100%;
+  aspect-ratio: 16/9;
+  object-fit: cover;
 }
 
+/* Add this to your CSS file (e.g., index.css or WhatWeDoSection.css) */
+
+/* Navigation Buttons */
+.swiper-button-next,
+.swiper-button-prev {
+  color: #00999e; /* blue-dark */
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  transition: all 0.3s ease;
+}
+
+.swiper-button-next:hover,
+.swiper-button-prev:hover {
+  color: #008080;
+  transform: scale(1.1);
+}
+
+.swiper-button-next::after,
+.swiper-button-prev::after {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+/* Hide navigation on mobile */
+/* @media (max-width: 768px) {
+  .swiper-button-next,
+  .swiper-button-prev {
+    display: none;
+  }
+} */
+
+/* Pagination Dots */
+.swiper-pagination-bullet {
+  width: 12px;
+  height: 12px;
+  background: #00999e; /* gray-300 */
+  opacity: 1;
+  transition: all 0.3s ease;
+}
+
+.swiper-pagination-bullet-active {
+  background: #023c3c; /* blue-dark */
+  width: 13px;
+  border-radius: 6px;
+}
+
+.swiper-pagination {
+  bottom: 4px !important;
+}
+
+/* Add space at the bottom for pagination */
+.swiper {
+  padding-bottom: 50px;
+}
+
+/* Smooth slide transitions */
+.swiper-slide {
+  transition: transform 0.3s ease;
+  height: auto;
+}
+
+.swiper-slide:hover {
+  transform: translateY(-5px);
+}
+
+/* Optional: Add subtle fade effect on inactive slides */
+.swiper-slide:not(.swiper-slide-active) {
+  opacity: 0.7;
+}
+
+.swiper-slide-active {
+  opacity: 1;
+}

@@ -4,7 +4,7 @@ import Users from "../assets/icons/grayUsers.svg";
 
 const EventCard = ({ title, date, location, attendees, image }) => {
   return (
-    <div className=" max-w-[400px] rounded-[10px] shadow-lg bg-white mx-auto">
+    <div className=" max-w-[400px] mb-12 rounded-[10px] shadow-lg bg-white mx-auto">
       <img src={image} alt={title} className="w-full h-auto rounded-t-[10px]" />
 
       <div className="p-[20px]">
