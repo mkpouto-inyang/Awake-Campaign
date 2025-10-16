@@ -101,7 +101,7 @@ const WhatWeDoSection = () => {
         <div className="flex justify-center mt-10 mb-20 px-12">
         <Button
             variant="orangeOutline"
-            className="flex items-center text-[12px] md:text-[16px] font-normal px-2 py-2 sm:px-6 sm:py-3 gap-2 w-[200px] md:w-[300px] lg:w-[350px]"
+            className="flex items-center text-[12px] md:text-[14px] lg:text-[16px] font-normal px-2 py-2 sm:px-6 sm:py-3 gap-2 w-[200px] md:w-[300px] lg:w-[350px]"
         >
             View All Campaign Events
             <img src={RightArrow} alt="Right Arrow" className="w-3 h-3 md:w-4 md:h-4" />
