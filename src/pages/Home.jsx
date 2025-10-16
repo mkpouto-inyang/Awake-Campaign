@@ -3,6 +3,7 @@ import JoinTheMovementSection from "../components/JoinTheMovementSection";
 import PartnersSection from "../components/PartnersSection";
 import ProblemSection from "../components/ProblemSection";
 import SolutionSection from "../components/SolutionSection";
+import TestimonialSection from "../components/TestimonialSection";
 import WhatWeDoSection from "../components/WhatWeDoSection";
 
 const Home = () => {
@@ -14,6 +15,7 @@ const Home = () => {
              <PartnersSection/>
              <WhatWeDoSection/>
              <JoinTheMovementSection/>
+             <TestimonialSection/>
         </div>
      );
 }
