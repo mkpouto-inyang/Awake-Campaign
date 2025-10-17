@@ -17,7 +17,7 @@ const Header = () => {
     setIsMobileMenuOpen(false);
   };
 
-  // Lock scroll on mobile menu open
+  // Lock body scroll when menu is open
   useEffect(() => {
     if (isMobileMenuOpen) {
       document.body.style.overflow = "hidden";
@@ -25,11 +25,11 @@ const Header = () => {
       document.body.style.overflow = "";
     }
 
-    // Cleanup on unmount
     return () => {
       document.body.style.overflow = "";
     };
   }, [isMobileMenuOpen]);
+
   return (
     <header
       className="bg-white w-full z-[9999]"
@@ -49,12 +49,12 @@ const Header = () => {
           onClick={toggleMobileMenu}
         />
 
-        {/* Desktop: Donate button */}
+        {/* Desktop: Donate Button */}
         <Button
           size="sm"
           variant="primary"
           className="hidden lg:flex w-[100px] text-[10px] lg:text-sm py-2"
-          onClick={() => window.location.href = "/join-the-movement"}
+          onClick={() => (window.location.href = "/join-the-movement")}
         >
           <img
             src={heart}
@@ -70,15 +70,13 @@ const Header = () => {
         <>
           {/* Backdrop */}
           <div
-            className="fixed inset-0 bg-transparent bg-opacity-50 backdrop-blur-sm z-[9998] lg:hidden"
+            className="fixed inset-0 bg-black/20 backdrop-blur-sm z-[9998] transition-opacity duration-300"
             onClick={closeMobileMenu}
           />
 
           {/* Mobile Menu Panel */}
           <div
-            className={`fixed top-0 right-0 h-full w-80 max-w-[85vw] bg-white z-[9999] lg:hidden transform transition-transform duration-300 ease-in-out ${
-              isMobileMenuOpen ? "translate-x-0" : "translate-x-full"
-            }`}
+            className={`fixed top-0 right-0 h-full w-80 max-w-[85vw] bg-white z-[9999] lg:hidden `}
           >
             <div className="flex flex-col h-full">
               {/* Header */}
@@ -108,28 +106,28 @@ const Header = () => {
               <nav className="flex flex-col pb-5 px-5 space-y-3 flex-1">
                 <a
                   href="/campaign-events"
-                  className="text-[14px] font-medium py-2 hover:text-teal-primary transition-colors"
+                  className="text-[14px] font-medium py-2 hover:text-teal-primary transition-colors animate-slide-up delay-[100ms]"
                   onClick={closeMobileMenu}
                 >
                   Campaign Events
                 </a>
                 <a
                   href="/join-the-movement"
-                  className="text-[14px]  font-medium py-2 hover:text-teal-primary transition-colors"
+                  className="text-[14px] font-medium py-2 hover:text-teal-primary transition-colors animate-slide-up delay-[200ms]"
                   onClick={closeMobileMenu}
                 >
                   Join the Movement
                 </a>
                 <a
                   href="/about-us"
-                  className="text-[14px]  font-medium py-2 hover:text-teal-primary transition-colors"
+                  className="text-[14px] font-medium py-2 hover:text-teal-primary transition-colors animate-slide-up delay-[300ms]"
                   onClick={closeMobileMenu}
                 >
                   About Us
                 </a>
                 <a
                   href="/contact"
-                  className="text-[14px]  font-medium py-2 hover:text-teal-primary transition-colors"
+                  className="text-[14px] font-medium py-2 hover:text-teal-primary transition-colors animate-slide-up delay-[400ms]"
                   onClick={closeMobileMenu}
                 >
                   Contact
@@ -137,7 +135,7 @@ const Header = () => {
               </nav>
 
               {/* Mobile Donate Button */}
-              <div className="p-5 ">
+              <div className="p-5">
                 <Button
                   size="md"
                   variant="primary"
