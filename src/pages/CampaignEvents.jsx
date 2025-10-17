@@ -189,7 +189,7 @@ const CampaignEvents = () => {
 
       {/* Campaign Stats */}
       <div className="bg-[#14b8a6] max-w-7xl mx-auto rounded-xl py-20">
-        <div className="max-w-7xl mx-auto px-2">
+        <div className="max-w-7xl mx-auto px-5 md:px-2">
           <div className="text-center mb-16">
             <h2 className="text-3xl font-bold text-white mb-4">
               Campaign Achievements
