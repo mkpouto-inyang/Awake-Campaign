@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Logo from "./Logo";
 import NavLinks from "./NavLinks";
 import Button from "./Button";
@@ -16,6 +16,20 @@ const Header = () => {
   const closeMobileMenu = () => {
     setIsMobileMenuOpen(false);
   };
+
+  // Lock scroll on mobile menu open
+  useEffect(() => {
+    if (isMobileMenuOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+
+    // Cleanup on unmount
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [isMobileMenuOpen]);
   return (
     <header
       className="bg-white w-full z-[9999]"
@@ -91,31 +105,31 @@ const Header = () => {
               </div>
 
               {/* Navigation Links */}
-              <nav className="flex flex-col p-5 space-y-3 flex-1">
+              <nav className="flex flex-col pb-5 px-5 space-y-3 flex-1">
                 <a
                   href="/campaign-events"
-                  className="text-base font-medium py-2 hover:text-teal-primary transition-colors"
+                  className="text-[14px] font-medium py-2 hover:text-teal-primary transition-colors"
                   onClick={closeMobileMenu}
                 >
                   Campaign Events
                 </a>
                 <a
                   href="/join-the-movement"
-                  className="text-base font-medium py-2 hover:text-teal-primary transition-colors"
+                  className="text-[14px]  font-medium py-2 hover:text-teal-primary transition-colors"
                   onClick={closeMobileMenu}
                 >
                   Join the Movement
                 </a>
                 <a
                   href="/about-us"
-                  className="text-base font-medium py-2 hover:text-teal-primary transition-colors"
+                  className="text-[14px]  font-medium py-2 hover:text-teal-primary transition-colors"
                   onClick={closeMobileMenu}
                 >
                   About Us
                 </a>
                 <a
                   href="/contact"
-                  className="text-base font-medium py-2 hover:text-teal-primary transition-colors"
+                  className="text-[14px]  font-medium py-2 hover:text-teal-primary transition-colors"
                   onClick={closeMobileMenu}
                 >
                   Contact
@@ -125,7 +139,7 @@ const Header = () => {
               {/* Mobile Donate Button */}
               <div className="p-5 ">
                 <Button
-                  size="lg"
+                  size="md"
                   variant="primary"
                   className="w-full flex items-center justify-center"
                   onClick={() => {
