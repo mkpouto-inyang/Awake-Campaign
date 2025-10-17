@@ -26,7 +26,7 @@ const testimonials = [
 
 const TestimonialSection = () => {
   return (
-    <section className="px-4 py-12 md:py-20 max-w-5xl mx-auto">
+    <section className="px-4 pt-12 pb-0 md:pt-20 max-w-5xl mx-auto">
       {/* Heading */}
       <div className="text-center mb-10 md:mb-16">
         <h1 className="font-bold text-[20px] md:text-[38px] lg:text-[50px] text-blue-dark mb-5">
