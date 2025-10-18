@@ -20,9 +20,9 @@
 /* Navigation Buttons */
 .swiper-button-next,
 .swiper-button-prev {
-  color: #00999e; /* blue-dark */
-  width: 20px;
-  height: 20px;
+  color: #00999e; /* teal-primary */
+  width: 14px;
+  height: 14px;
   border-radius: 50%;
   transition: all 0.3s ease;
 }
@@ -30,22 +30,60 @@
 .swiper-button-next:hover,
 .swiper-button-prev:hover {
   color: #008080;
-  transform: scale(1.1);
+  transform: scale(1.05);
 }
 
 .swiper-button-next::after,
 .swiper-button-prev::after {
-  font-size: 20px;
+  font-size: 12px;
   font-weight: bold;
 }
 
-/* Hide navigation on mobile */
-/* @media (max-width: 768px) {
+/* Mobile positioning and sizing */
+@media (max-width: 768px) {
   .swiper-button-next,
   .swiper-button-prev {
-    display: none;
+    width: 10px;
+    height: 10px;
+    margin-top: -6px; /* Center vertically */
   }
-} */
+
+  .swiper-button-next::after,
+  .swiper-button-prev::after {
+    font-size: 10px;
+  }
+
+  .swiper-button-next {
+    right: 8px;
+  }
+
+  .swiper-button-prev {
+    left: 8px;
+  }
+}
+
+/* Small mobile screens */
+@media (max-width: 480px) {
+  .swiper-button-next,
+  .swiper-button-prev {
+    width: 8px;
+    height: 8px;
+    margin-top: -5px;
+  }
+
+  .swiper-button-next::after,
+  .swiper-button-prev::after {
+    font-size: 8px;
+  }
+
+  .swiper-button-next {
+    right: 4px;
+  }
+
+  .swiper-button-prev {
+    left: 4px;
+  }
+}
 
 /* Pagination Dots */
 .swiper-pagination-bullet {

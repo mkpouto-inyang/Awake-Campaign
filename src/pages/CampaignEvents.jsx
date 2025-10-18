@@ -1,6 +1,10 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Button from "../components/Button";
+import Calendar from "../assets/icons/calendar.svg";
+import Location from "../assets/icons/location.svg";
+import Users from "../assets/icons/grayUsers.svg";
+import Clock from "../assets/icons/gray-clock.svg";
 
 const CampaignEvents = () => {
   const [selectedCategory, setSelectedCategory] = useState("all");
@@ -308,25 +312,29 @@ const CampaignEvents = () => {
                   </h3>
 
                   <div className="space-y-2 mb-4 text-sm text-gray-600">
-                    <div className="flex items-center">
-                      <span className="w-16 font-medium">Date:</span>
+                    <div className="flex items-center gap-3">
+                      <img src={Calendar} alt="Calendar Icon" className="w-4 h-4" />
+                      <span className="font-medium">Date:</span>
                       <span>{formatDate(event.date)}</span>
                     </div>
-                    <div className="flex items-center">
-                      <span className="w-16 font-medium">Time:</span>
+                    <div className="flex items-center gap-3">
+                      <img src={Clock} alt="Time Icon" className="w-4 h-4" />
+                      <span className="font-medium">Time:</span>
                       <span>{event.time}</span>
                     </div>
-                    <div className="flex items-center">
-                      <span className="w-16 font-medium">Venue:</span>
+                    <div className="flex items-center gap-3">
+                      <img src={Location} alt="Location Icon" className="w-4 h-4" />
+                      <span className="font-medium">Venue:</span>
                       <span className="line-clamp-1">{event.location}</span>
                     </div>
-                    <div className="flex items-center gap-2">
-                      <span className="w-16 font-medium">Attended: </span>
+                    <div className="flex items-center gap-3">
+                      <img src={Users} alt="Users Icon" className="w-4 h-4" />
+                      <span className="font-medium">Attended:</span>
                       <span>{event.attendees} people</span>
                     </div>
                   </div>
 
-                  <p className="text-gray-600 text-sm mb-4 leading-relaxed line-clamp-2">
+                  {/* <p className="text-gray-600 text-sm mb-4 leading-relaxed line-clamp-2">
                     {event.description}
                   </p>
 
@@ -335,7 +343,7 @@ const CampaignEvents = () => {
                       <span className="font-medium">Impact: </span>
                       {event.impact}
                     </div>
-                  </div>
+                  </div> */}
 
                   <div className="text-center">
                     <span className="text-teal-600 text-sm font-medium group-hover:text-teal-700 transition-colors">
