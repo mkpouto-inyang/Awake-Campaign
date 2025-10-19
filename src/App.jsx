@@ -11,6 +11,7 @@ import EventDetail from './pages/EventDetail'
 import Layout from './layouts/Layout'
 import { AuthProvider } from './contexts/AuthContext'
 import JoinTheMovementLayout from './layouts/JoinTheMovementLayout'
+import StudioPage from './pages/Studio'
 
 function App() {
   return (
@@ -32,6 +33,7 @@ function App() {
                 <Route path='/campaign-events' element={<CampaignEvents/>}></Route>
                 <Route path='/campaign-events/:eventId' element={<EventDetail/>}></Route>
               </Route>
+                <Route path='/studio/*' element={<StudioPage />}></Route>
             </Routes>
         </BrowserRouter>
       </AuthProvider>
