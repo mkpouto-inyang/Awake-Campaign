@@ -32,36 +32,27 @@ const AboutUs = () => {
   return (
     <section className="px-4 md:px-8 py-[100px] max-w-6xl mx-auto">
       {/* About Content */}
-      <div className="bg-white rounded-xl shadow-[0_4px_20px_rgba(0,0,0,0.08)] p-6 md:p-10 flex flex-col md:flex-row gap-6 md:gap-10 mb-16">
+      <div className="bg-white rounded-xl shadow-[0_4px_20px_rgba(0,0,0,0.08)] p-6 md:p-10 mb-16">
         {/* Image */}
-        <div className="flex-shrink-0 mx-auto md:mx-0">
-          <div className="w-32 h-32 md:w-40 md:h-40 rounded-full overflow-hidden flex items-center justify-center">
-            <img
-              src={teamImage}
-              alt="Founder"
-              className="w-full h-full object-cover"
-            />
-          </div>
+        <div className="float-left mr-6 mb-4 w-32 h-32 md:w-40 md:h-40 rounded-full overflow-hidden">
+          <img
+            src={teamImage}
+            alt="Founder"
+            className="w-full h-full object-cover"
+          />
         </div>
 
         {/* Text */}
-        <div className="text-sm md:text-base text-gray-800 leading-relaxed">
-          <p className="mb-4">
-            The AWAKE campaign is a bold, youth-led movement tackling cervical
-            cancer through awareness, action, and advocacy. Founded by Nigerian
-            filmmaker and spoken word artist Ireayoluwaintemi Olota — known
-            professionally as Ire Belles —
-          </p>
-          <p className="mb-4">
-            AWAKE began as a response to a silent crisis: the rising toll of
-            cervical cancer on women in Nigeria.
-          </p>
-          <p className="mb-4">
-            In collaboration with health advocate Sebbecly and powered by a
-            passionate team of creatives, health workers, and young
-            changemakers, AWAKE leverages the power of storytelling, film, and
-            community engagement to make cervical health education mainstream.
-          </p>
+        <div className="text-sm md:text-base text-gray-800 leading-relaxed whitespace-pre-line">
+          {`AWAKE is a bold, youth-led movement tackling cervical cancer through awareness, action, and advocacy.
+
+        Founded by Nigerian filmmaker and spoken word artist Ireayoluwaintemi Olota, known professionally as Ire Belles, the movement was born from a creative project with a powerful purpose — a documentary that shed light on the silent crisis of cervical cancer among women in Nigeria.
+
+        What began as a film has grown into a nationwide movement. In collaboration with Sebeccly Cancer Care, a leading health advocacy organization, and powered by a passionate team of creatives, health workers, and young changemakers, AWAKE uses storytelling, film, and community engagement to make cervical health education mainstream.
+
+        Through film screenings, campus outreaches, social media campaigns, and partnerships with health organizations, AWAKE continues to spark conversations, promote early testing and vaccination, and give women across Nigeria the knowledge and courage to take charge of their health.
+
+        AWAKE isn’t just about awareness — it’s about saving lives through information, creativity, and collective action.`}
         </div>
       </div>
 
