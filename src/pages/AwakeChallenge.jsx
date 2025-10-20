@@ -1,7 +1,8 @@
+import comingSoon from '../assets/icons/comingSoonImage.svg'
+
 const AwakeChallenge = () => (
-  <div className="text-center">
-    <h2 className="text-2xl font-bold mb-4">AWAKE Challenge</h2>
-    <p>Join the AWAKE Challenge to raise awareness in your community!</p>
+  <div className="flex justify-center ite">
+    <img src={comingSoon} alt="coming soon" className='w-[350px] h-[350px] lg:w-[450px] lg:h-[450px]'  />
   </div>
 );
 export default AwakeChallenge;

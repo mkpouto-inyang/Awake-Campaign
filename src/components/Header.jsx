@@ -31,10 +31,7 @@ const Header = () => {
   }, [isMobileMenuOpen]);
 
   return (
-    <header
-      className="bg-white w-full z-[9999]"
-      style={{ position: "fixed", top: 0, left: 0 }}
-    >
+    <header className="bg-white w-full shadow-md z-[9999] fixed top-0 left-0">
       <div className="flex justify-between items-center px-5 py-5 max-w-7xl mx-auto">
         <Logo />
 
@@ -106,28 +103,28 @@ const Header = () => {
               <nav className="flex flex-col pb-5 px-5 space-y-3 flex-1">
                 <a
                   href="/campaign-events"
-                  className="text-[14px] font-medium py-2 hover:text-teal-primary transition-colors animate-slide-up delay-[100ms]"
+                  className="text-[14px] py-2 hover:text-teal-primary transition-colors animate-slide-up delay-[100ms]"
                   onClick={closeMobileMenu}
                 >
                   Campaign Events
                 </a>
                 <a
                   href="/join-the-movement"
-                  className="text-[14px] font-medium py-2 hover:text-teal-primary transition-colors animate-slide-up delay-[200ms]"
+                  className="text-[14px] py-2 hover:text-teal-primary transition-colors animate-slide-up delay-[200ms]"
                   onClick={closeMobileMenu}
                 >
                   Join the Movement
                 </a>
                 <a
                   href="/about-us"
-                  className="text-[14px] font-medium py-2 hover:text-teal-primary transition-colors animate-slide-up delay-[300ms]"
+                  className="text-[14px] py-2 hover:text-teal-primary transition-colors animate-slide-up delay-[300ms]"
                   onClick={closeMobileMenu}
                 >
                   About Us
                 </a>
                 <a
                   href="/contact"
-                  className="text-[14px] font-medium py-2 hover:text-teal-primary transition-colors animate-slide-up delay-[400ms]"
+                  className="text-[14px] py-2 hover:text-teal-primary transition-colors animate-slide-up delay-[400ms]"
                   onClick={closeMobileMenu}
                 >
                   Contact
