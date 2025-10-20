@@ -19,7 +19,7 @@ export const eventsQuery = `*[_type == "event"] | order(date desc) {
 }`
 
 
-export const singleEventQuery = `*[_type == "event" && slug.current == $slug][0] {
+export const singleEventByIdQuery = `*[_type == "event" && _id == $id][0] {
   _id,
   title,
   date,
@@ -29,9 +29,11 @@ export const singleEventQuery = `*[_type == "event" && slug.current == $slug][0]
   "thumbnailUrl": thumbnail.asset->url,
   "gallery": gallery[].asset->url,
   overview,
+  category->{
+    title
+  },
   author->{
-    firstName,
-    lastName,
-    avatar
+    name,
+    image
   }
 }`
