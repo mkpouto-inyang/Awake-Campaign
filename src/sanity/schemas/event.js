@@ -9,6 +9,15 @@ export default {
             type: "string"
         },
         {
+            name: "category",
+            title: "Event Category",
+            type: "reference",
+            to: [{
+                type: "eventCategory"
+            }],
+            description: "Select a category for this event"
+        },
+        {
             name: "date",
             title: "Date",
             type: "datetime"
