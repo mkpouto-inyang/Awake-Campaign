@@ -196,7 +196,7 @@ The impact was immediate and measurable - 150 women registered for follow-up scr
             </Button>
 
             {/* Admin Controls */}
-            <div className="flex items-center gap-3">
+            {/* <div className="flex items-center gap-3">
               {isAuthenticated ? (
                 <div className="flex items-center gap-3">
                   <span className="text-sm text-gray-600">
@@ -215,7 +215,7 @@ The impact was immediate and measurable - 150 women registered for follow-up scr
                   Admin Login
                 </Button>
               )}
-            </div>
+            </div> */}
           </div>
           {/* <div className="mb-6">
             <span className="inline-block px-4 py-2 bg-gray-100 rounded-full text-sm font-medium text-gray-600">

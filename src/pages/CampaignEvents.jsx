@@ -172,15 +172,10 @@ const CampaignEvents = () => {
   };
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-white py-[80px]">
       {/* Hero Section */}
-      <div className="bg-white pt-10 pb-12">
+      {/* <div className="bg-white pt-10 pb-12">
         <div className="max-w-7xl mx-auto px-4 text-center">
-          {/* <div className="mb-2">
-            <span className="inline-block px-4 py-2 bg-gray-100 rounded-full text-sm font-medium text-gray-600">
-              Film-Driven Healthcare Campaign
-            </span>
-          </div> */}
           <h1 className="text-4xl md:text-6xl font-bold mb-6 text-gray-900 leading-tight">
             Our Impact <span className="text-teal-primary">Stories</span>
           </h1>
@@ -189,7 +184,7 @@ const CampaignEvents = () => {
             mission to prevent cervical cancer across Nigeria
           </p>
         </div>
-      </div>
+      </div> */}
 
       {/* Campaign Stats */}
       <div className="bg-teal-primary max-w-7xl mx-auto rounded-xl py-20">
@@ -200,7 +195,7 @@ const CampaignEvents = () => {
             </h2>
             <p className="text-lg text-gray-800 max-w-3xl mx-auto">
               Measurable impact we've achieved in cervical cancer prevention
-              across Nigeria
+              across Nigeria through powerful events and initiatives
             </p>
           </div>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
@@ -245,7 +240,7 @@ const CampaignEvents = () => {
                 <select
                   value={selectedCategory}
                   onChange={(e) => setSelectedCategory(e.target.value)}
-                  className="border border-gray-200 rounded-lg px-4 py-3 bg-white min-w-[200px] focus:border-teal-500 transition-all duration-200"
+                  className="border border-gray-200 rounded-lg px-4 py-3 bg-white min-w-[200px] focus:border-teal-primary transition-all duration-200"
                 >
                   {eventCategories.map((category) => (
                     <option key={category.id} value={category.id}>
@@ -261,7 +256,7 @@ const CampaignEvents = () => {
                 <select
                   value={selectedMonth}
                   onChange={(e) => setSelectedMonth(e.target.value)}
-                  className="border border-gray-200 rounded-lg px-4 py-3 bg-white min-w-[180px] focus:border-teal-500 transition-all duration-200"
+                  className="border border-gray-200 rounded-lg px-4 py-3 bg-white min-w-[180px] focus:border-teal-primary transition-all duration-200"
                 >
                   <option value="all">All Months</option>
                   <option value="2023-11">November 2023</option>
@@ -346,7 +341,7 @@ const CampaignEvents = () => {
                   </div> */}
 
                   <div className="text-center">
-                    <span className="text-teal-600 text-sm font-medium group-hover:text-teal-700 transition-colors">
+                    <span className="text-teal-primary text-sm font-medium group-hover:text-teal-primary transition-colors">
                       View details →
                     </span>
                   </div>
