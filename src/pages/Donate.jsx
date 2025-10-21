@@ -8,6 +8,18 @@ const Donate = () => {
   const [paymentMethod, setPaymentMethod] = useState("online");
   const [currentAmount, setCurrentAmount] = useState(3200000);
 
+  // Donation Payments
+  // TODO: ADD A 'THANK YOU FOR YOUR DONATION PAGE'
+  const generatePaystackPrefilledLink = (email) => {
+    let amountInKobo = getCurrentAmount() 
+    return `https://paystack.shop/pay/donate-to-awake?email=${encodeURIComponent(email)}&amount=${amountInKobo}`
+  } 
+
+  const handleDonation = () => {
+    const paystackPrefilledLink = generatePaystackPrefilledLink(email)
+    window.open(paystackPrefilledLink, '_blank', 'noopener,noreferrer')
+  }
+
   // Campaign progress data
   const goalAmount = 5000000; // 5.0M goal
   const progressPercentage = (currentAmount / goalAmount) * 100;
@@ -249,6 +261,7 @@ const Donate = () => {
                 <Button
                   className="w-full py-4 text-base font-semibold"
                   disabled={!email || (!selectedAmount && !customAmount)}
+                  onClick={handleDonation}
                 >
                   Donate {formatCurrency(getCurrentAmount() || 0)}
                 </Button>
