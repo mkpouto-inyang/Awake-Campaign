@@ -5,11 +5,16 @@ import Calendar from "../assets/icons/calendar.svg";
 import Location from "../assets/icons/location.svg";
 import Users from "../assets/icons/grayUsers.svg";
 import Clock from "../assets/icons/gray-clock.svg";
+import { client } from "../lib/sanityClient"
+import { eventsQuery } from "../lib/queries";
 
 const CampaignEvents = () => {
   const [selectedCategory, setSelectedCategory] = useState("all");
   const [selectedMonth, setSelectedMonth] = useState("all");
   const navigate = useNavigate();
+
+  // LOGGING THE RESULTS OF THE EVENT QUERY
+  client.fetch(eventsQuery).then(console.log)
 
   const handleEventClick = (eventId) => {
     navigate(`/campaign-events/${eventId}`);
