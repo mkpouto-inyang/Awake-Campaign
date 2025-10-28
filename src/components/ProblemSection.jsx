@@ -1,8 +1,8 @@
 const ProblemSection = () => {
   return (
     <div className="px-[16px] md:px-[24px] bg-blue-dark text-white py-[60px] md:py-[80px] lg:py-[130px] ">
-      <div className="flex justify-center">
-        <h1 className="font-bold text-[20px] md:text-[38px] mdlg:text-[40px] lg:text-[50px] ">
+      <div className="flex justify-center ">
+        <h1 className="font-bold text-[20px] md:text-[38px] mdlg:text-[40px] lg:text-[50px] autoShow ">
           The Problem We’re Facing
         </h1>
       </div>

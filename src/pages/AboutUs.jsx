@@ -57,7 +57,7 @@ const AboutUs = () => {
       </div>
 
       {/* Meet the Team Heading */}
-      <div className="text-center mb-10">
+      <div className="text-center mb-10 ">
         <h2 className="text-[28px] md:text-[36px] font-bold text-blue-dark">
           Meet <span className="text-teal-primary">the Team</span>
         </h2>
