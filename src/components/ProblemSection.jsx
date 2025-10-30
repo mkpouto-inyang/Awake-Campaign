@@ -1,4 +1,5 @@
 import '../custom-css/animations.css'
+import CountUpNumber from './CountUpNumber';
 
 const ProblemSection = () => {
   return (
@@ -19,7 +20,7 @@ const ProblemSection = () => {
       <div className=" mt-10 mb-10 flex flex-wrap justify-center gap-x-[20px] lg:gap-x-[44px] gap-y-8 max-w-6xl mx-auto">
         <div className="autoScaleIn p-5 md:p-[40px] shadow-md bg-white rounded-[8px] text-center flex-[1_0_250px] max-w-[340px]">
           <p className="text-orange text-[20px] lg:text-3xl font-semibold mb-1">
-            12,000+
+            <CountUpNumber target={12000} duration={800}/>+
           </p>
           <p className=" text-[12px] md:text-sm lg:text-base text-blue-dark">
             New cases annually in Nigeria
@@ -28,7 +29,7 @@ const ProblemSection = () => {
 
         <div className="autoScaleIn p-5 md:p-[40px] shadow-md bg-white rounded-[8px] text-center flex-[1_0_250px] max-w-[340px]">
           <p className="text-orange text-[20px] lg:text-3xl font-semibold">
-            8,000+
+            <CountUpNumber target={8000} duration={800}/>+
           </p>
           <p className="text-[12px] md:text-sm lg:text-base text-blue-dark">
             Deaths per year
@@ -37,7 +38,9 @@ const ProblemSection = () => {
 
         <div className="autoScaleIn p-5 md:p-[40px] shadow-md bg-white rounded-[8px] text-center flex-[1_0_250px] max-w-[340px]">
           <p className="text-orange text-[20px] lg:text-3xl font-semibold">
-            1 in 53
+            1 in {' '} 
+            <CountUpNumber target={53} duration={800}/>
+            
           </p>
           <p className="text-[12px] md:text-sm lg:text-base text-blue-dark">
             Women at Risk
