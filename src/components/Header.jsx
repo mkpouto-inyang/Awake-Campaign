@@ -73,7 +73,6 @@ const Header = () => {
 
           {/* Slide-in Panel */}
           <div className="fixed top-0 right-0 h-full w-80 max-w-[85vw] bg-white z-[9999] lg:hidden flex flex-col">
-            {/* Header */}
             <div className="flex justify-between items-center p-5">
               <Logo />
               <button
@@ -96,7 +95,6 @@ const Header = () => {
               </button>
             </div>
 
-            {/* Nav Links (scrollable middle) */}
             <div className="flex-1 overflow-y-auto">
               <nav className="flex flex-col px-5 space-y-3">
                 {navLinksData.map((nav, index) => (
@@ -116,7 +114,6 @@ const Header = () => {
               </nav>
             </div>
 
-            {/* Donate Button (always visible) */}
             <div className="p-5">
               <Button
                 size="md"
@@ -143,3 +140,17 @@ const Header = () => {
 };
 
 export default Header;
+
+
+
+        //    <div className="relative bg-white rounded-xl shadow-md px-5 py-6 w-full max-w-sm self-start animate-slideInFromLeft">
+        //   <div className="absolute -left-6 top-1/2 -translate-y-1/2 w-10 h-10 bg-teal-100 rounded-full flex items-center justify-center animate-slideUpIcon">
+        //     <img src={speechBubble} alt="Advocacy" className="w-5" />
+        //   </div>
+        //   <h3 className="text-blue-dark font-semibold text-base mb-1">
+        //     Advocacy
+        //   </h3>
+        //   <p className="text-[13px] text-blue-dark">
+        //     Inspire nationwide dialogue that sparks collective advocacy
+        //   </p>
+        // </div>

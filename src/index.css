@@ -1,8 +1,13 @@
 @import "tailwindcss";
 
-body{
+/* body{
   overflow-x: hidden;
-}
+} */
+
+/* * {
+  outline: 1px solid red;
+} */
+
 /* Custom animations for Campaign Events page */
 @keyframes fade-in {
   from {

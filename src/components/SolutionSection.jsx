@@ -67,8 +67,7 @@ const SolutionSection = () => {
 
       {/* MOBILE Layout */}
       <div className="md:hidden px-4 flex flex-col gap-10 items-center mt-10">
-        {/* Awareness Card (Left icon) */}
-        <div className="relative bg-white rounded-xl shadow-md px-5 py-6 w-full max-w-sm self-start animate-slideInFromLeft">
+        {/* <div className="relative bg-white rounded-xl shadow-md px-5 py-6 w-full max-w-sm self-start overflow-hidden animate-slideInFromLeft">
           <div className="absolute -left-6 top-1/2 -translate-y-1/2 w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center animate-slideUpIcon">
             <img src={userGroup} alt="Awareness" className="w-5" />
           </div>
@@ -79,23 +78,37 @@ const SolutionSection = () => {
             Educate at least 1 million Nigerians through documentary screenings
             & media
           </p>
-        </div>
+        </div> */}
 
-        {/* Prevention Card (Right icon) */}
-        <div className="relative bg-white rounded-xl shadow-md px-5 py-6 w-full max-w-sm self-end animate-slideInFromRight">
-          <div className="absolute -right-6 top-1/2 -translate-y-1/2 w-10 h-10 bg-orange-100 rounded-full flex items-center justify-center animate-slideUpIcon">
-            <img src={shield} alt="Prevention" className="w-5" />
+        <div className="relative bg-white rounded-xl shadow-md px-5 py-6 w-full max-w-sm self-start animate-slideInFromLeft">
+          <div className="absolute -left-6 top-1/2 -translate-y-1/2 w-10 h-10 bg-teal-100 rounded-full flex items-center justify-center animate-slideUpIcon">
+            <img src={speechBubble} alt="Advocacy" className="w-5" />
           </div>
           <h3 className="text-blue-dark font-semibold text-base mb-1">
-            Prevention
+            Advocacy
           </h3>
           <p className="text-[13px] text-blue-dark">
-            Screen 1000 women and vaccinate 500 women in Lagos for cervical
-            cancer
+            Inspire nationwide dialogue that sparks collective advocacy
           </p>
         </div>
 
-        {/* Advocacy Card (Left icon) */}
+        <div className="relative w-full max-w-sm self-end animate-slideInFromRight overflow-visible">
+          {/* Transparent wrapper that holds icon and card */}
+          <div className=" bg-white rounded-xl shadow-md px-5 py-6 overflow-hidden w-[95%]">
+            <div className="absolute right-0 top-1/2 -translate-y-1/2 w-10 h-10 bg-orange-100 rounded-full flex items-center justify-center animate-slideUpIcon">
+              <img src={shield} alt="Prevention" className="w-5" />
+            </div>
+
+            <h3 className="text-blue-dark font-semibold text-base mb-1">
+              Prevention
+            </h3>
+            <p className="text-[13px] text-blue-dark">
+              Screen 1000 women and vaccinate 500 women in Lagos for cervical
+              cancer
+            </p>
+          </div>
+        </div>
+
         <div className="relative bg-white rounded-xl shadow-md px-5 py-6 w-full max-w-sm self-start animate-slideInFromLeft">
           <div className="absolute -left-6 top-1/2 -translate-y-1/2 w-10 h-10 bg-teal-100 rounded-full flex items-center justify-center animate-slideUpIcon">
             <img src={speechBubble} alt="Advocacy" className="w-5" />
