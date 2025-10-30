@@ -1,13 +1,16 @@
 import { useState, useEffect } from "react";
+import { NavLink, useNavigate } from "react-router-dom";
 import Logo from "./Logo";
 import NavLinks from "./NavLinks";
 import Button from "./Button";
 import hamburger from "../assets/icons/hamburger.svg";
 import heart from "../assets/icons/heart.svg";
 import "../../src/custom-css/animations.css";
+import { navLinksData } from "../navLinksData";
 
 const Header = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const navigate = useNavigate(); // needed for programmatic navigation
 
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
@@ -19,12 +22,7 @@ const Header = () => {
 
   // Lock body scroll when menu is open
   useEffect(() => {
-    if (isMobileMenuOpen) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "";
-    }
-
+    document.body.style.overflow = isMobileMenuOpen ? "hidden" : "";
     return () => {
       document.body.style.overflow = "";
     };
@@ -35,8 +33,10 @@ const Header = () => {
       <div className="flex justify-between items-center px-5 py-5 max-w-7xl mx-auto">
         <Logo />
 
+        {/* Desktop Nav */}
         <NavLinks />
 
+        {/* Mobile Hamburger */}
         <Button
           iconSrc={hamburger}
           iconOnly
@@ -46,12 +46,12 @@ const Header = () => {
           onClick={toggleMobileMenu}
         />
 
-        {/* Desktop: Donate Button */}
+        {/* Desktop Donate Button */}
         <Button
           size="sm"
           variant="primary"
           className="hidden lg:flex w-[100px] text-[10px] lg:text-sm py-2"
-          onClick={() => (window.location.href = "/join-the-movement")}
+          onClick={() => navigate("/join-the-movement")}
         >
           <img
             src={heart}
@@ -67,89 +67,73 @@ const Header = () => {
         <>
           {/* Backdrop */}
           <div
-            className="fixed inset-0 bg-black/20 backdrop-blur-sm z-[9998] transition-opacity duration-300"
+            className="fixed inset-0 bg-black/20 backdrop-blur-sm z-[9998]"
             onClick={closeMobileMenu}
           />
 
-          {/* Mobile Menu Panel */}
-          <div
-            className={`fixed top-0 right-0 h-full w-80 max-w-[85vw] bg-white z-[9999] lg:hidden `}
-          >
-            <div className="flex flex-col h-full">
-              {/* Header */}
-              <div className="flex justify-between items-center p-5">
-                <Logo />
-                <button
-                  onClick={closeMobileMenu}
-                  className="p-2 hover:bg-gray-100 rounded-lg"
+          {/* Slide-in Panel */}
+          <div className="fixed top-0 right-0 h-full w-80 max-w-[85vw] bg-white z-[9999] lg:hidden flex flex-col">
+            {/* Header */}
+            <div className="flex justify-between items-center p-5">
+              <Logo />
+              <button
+                onClick={closeMobileMenu}
+                className="p-2 hover:bg-gray-100 rounded-lg"
+              >
+                <svg
+                  className="w-4 h-4"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
                 >
-                  <svg
-                    className="w-4 h-4"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M6 18L18 6M6 6l12 12"
-                    />
-                  </svg>
-                </button>
-              </div>
-
-              {/* Navigation Links */}
-              <nav className="flex flex-col pb-5 px-5 space-y-3 flex-1">
-                <a
-                  href="/campaign-events"
-                  className="text-[14px] py-2 hover:text-teal-primary transition-colors animate-slide-up delay-[100ms]"
-                  onClick={closeMobileMenu}
-                >
-                  Campaign Events
-                </a>
-                <a
-                  href="/join-the-movement"
-                  className="text-[14px] py-2 hover:text-teal-primary transition-colors animate-slide-up delay-[200ms]"
-                  onClick={closeMobileMenu}
-                >
-                  Join the Movement
-                </a>
-                <a
-                  href="/about-us"
-                  className="text-[14px] py-2 hover:text-teal-primary transition-colors animate-slide-up delay-[300ms]"
-                  onClick={closeMobileMenu}
-                >
-                  About Us
-                </a>
-                <a
-                  href="/contact"
-                  className="text-[14px] py-2 hover:text-teal-primary transition-colors animate-slide-up delay-[400ms]"
-                  onClick={closeMobileMenu}
-                >
-                  Contact
-                </a>
-              </nav>
-
-              {/* Mobile Donate Button */}
-              <div className="p-5">
-                <Button
-                  size="md"
-                  variant="primary"
-                  className="w-full flex items-center justify-center"
-                  onClick={() => {
-                    window.location.href = "/join-the-movement";
-                    closeMobileMenu();
-                  }}
-                >
-                  <img
-                    src={heart}
-                    alt="heart icon"
-                    className="w-4 h-4 mr-2 horizontal-spin"
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M6 18L18 6M6 6l12 12"
                   />
-                  Donate
-                </Button>
-              </div>
+                </svg>
+              </button>
+            </div>
+
+            {/* Nav Links (scrollable middle) */}
+            <div className="flex-1 overflow-y-auto">
+              <nav className="flex flex-col px-5 space-y-3">
+                {navLinksData.map((nav, index) => (
+                  <NavLink
+                    key={index}
+                    to={nav.path}
+                    className={({ isActive }) =>
+                      `text-[14px] py-2 hover:text-teal-primary transition-colors animate-slide-up ${
+                        isActive ? "font-semibold text-teal-primary" : ""
+                      }`
+                    }
+                    onClick={closeMobileMenu}
+                  >
+                    {nav.label}
+                  </NavLink>
+                ))}
+              </nav>
+            </div>
+
+            {/* Donate Button (always visible) */}
+            <div className="p-5">
+              <Button
+                size="md"
+                variant="primary"
+                className="w-full flex items-center justify-center"
+                onClick={() => {
+                  closeMobileMenu();
+                  navigate("/join-the-movement");
+                }}
+              >
+                <img
+                  src={heart}
+                  alt="heart icon"
+                  className="w-4 h-4 mr-2 horizontal-spin"
+                />
+                Donate
+              </Button>
             </div>
           </div>
         </>

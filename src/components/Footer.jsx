@@ -15,21 +15,21 @@ const Footer = () => {
       <div className="max-w-7xl mx-auto px-5 py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-10 lg:gap-8">
           {/* AWAKE Campaign Section */}
-          <div className="md:col-span-2 lg:col-span-1 lg:pr-8">
-            <div className="flex items-center gap-2 mb-6">
-              <img src={heart} alt="heart" className="w-6 h-6 text-orange" />
-              <h3 className="text-[20px] md:text-[25px] lg:text-[30px] font-bold">
+          <div className="md:col-span-2 lg:col-span-1 lg:pr-8 ">
+            <div className="flex items-center gap-2 mb-6 autoShow">
+              <img src={heart} alt="heart" className="w-6 h-6 text-orange autoShow" />
+              <h3 className="text-[20px] md:text-[25px] lg:text-[30px] font-bold autoShow">
                 AWAKE Campaign
               </h3>
             </div>
-            <p className="text-[12px] smd:text-[13px] md:text-[14px] lg:text-[16px] xl:text-[18px] text-text-grey-light mb-8 leading-relaxed">
+            <p className="text-[12px] smd:text-[13px] md:text-[14px] lg:text-[16px] xl:text-[18px] text-text-grey-light mb-8 leading-relaxed autoShow">
               We are on a mission to use the power of film to creatively save
               lives — raising awareness, driving education, and inspiring
               community action to protect women in Nigeria from cervical cancer.
             </p>
             <Button
               variant="primary"
-              className="bg-teal-primary hover:bg-teal-dark text-white px-4 md:px-6 lg:px-8 py-2 md:py-2.5 lg:py-3 rounded-lg font-medium text-[12px] md:text-[14px] lg:text-[16px]"
+              className="autoShow bg-teal-primary hover:bg-teal-dark text-white px-4 md:px-6 lg:px-8 py-2 md:py-2.5 lg:py-3 rounded-lg font-medium text-[12px] md:text-[14px] lg:text-[16px]"
               onClick={() => (window.location.href = "/join-the-movement")}
             >
               Donate Now
@@ -37,38 +37,38 @@ const Footer = () => {
           </div>
 
           {/* Quick Links Section */}
-          <div className="md:pl-4 lg:pl-8">
-            <h3 className="text-[16px] md:text-[18px] lg:text-[20px] font-bold mb-6">
+          <div className="md:pl-4 lg:pl-8 ">
+            <h3 className="text-[16px] md:text-[18px] lg:text-[20px] font-bold mb-6 autoShow">
               Quick Links
             </h3>
             <nav className="space-y-4">
               <NavLink
                 to="/"
-                className="block text-[12px] md:text-[14px] lg:text-[16px] text-text-grey-light hover:text-white transition-colors"
+                className="block text-[12px] md:text-[14px] lg:text-[16px] text-text-grey-light hover:text-white transition-colors autoShow"
               >
                 Home
               </NavLink>
               <NavLink
                 to="/campaign-events"
-                className="block text-[12px] md:text-[14px] lg:text-[16px] text-text-grey-light hover:text-white transition-colors"
+                className="block text-[12px] md:text-[14px] lg:text-[16px] text-text-grey-light hover:text-white transition-colors autoShow"
               >
                 Campaign Events
               </NavLink>
               <NavLink
                 to="/join-the-movement"
-                className="block text-[12px] md:text-[14px] lg:text-[16px] text-text-grey-light hover:text-white transition-colors"
+                className="block text-[12px] md:text-[14px] lg:text-[16px] text-text-grey-light hover:text-white transition-colors autoShow"
               >
                 Join the Movement
               </NavLink>
               <NavLink
                 to="/find-centers"
-                className="block text-[12px] md:text-[14px] lg:text-[16px] text-text-grey-light hover:text-white transition-colors"
+                className="block text-[12px] md:text-[14px] lg:text-[16px] text-text-grey-light hover:text-white transition-colors autoShow"
               >
                 Find Centers
               </NavLink>
               <NavLink
                 to="/about-us"
-                className="block text-[12px] md:text-[14px] lg:text-[16px] text-text-grey-light hover:text-white transition-colors"
+                className="block text-[12px] md:text-[14px] lg:text-[16px] text-text-grey-light hover:text-white transition-colors autoShow"
               >
                 About Us
               </NavLink>
@@ -77,32 +77,32 @@ const Footer = () => {
 
           {/* Contact & Social Section */}
           <div className="md:pl-4 lg:pl-8">
-            <h3 className="text-[16px] md:text-[18px] lg:text-[20px] font-bold mb-6">
+            <h3 className="text-[16px] md:text-[18px] lg:text-[20px] font-bold mb-6 autoShow">
               Contact Us
             </h3>
             <div className="space-y-4 mb-8">
               <div className="flex items-center gap-3">
-                <img src={email} alt="email" className="w-5 h-5" />
+                <img src={email} alt="email" className="w-5 h-5 autoShow" />
                 <a
                   href="mailto:info@awakecampaign.com"
-                  className="text-[12px] md:text-[14px] lg:text-[16px] text-text-grey-light hover:text-white transition-colors"
+                  className="text-[12px] md:text-[14px] lg:text-[16px] text-text-grey-light hover:text-white transition-colors autoShow"
                 >
                   info@awakecampaign.com
                 </a>
               </div>
               <div className="flex items-center gap-3">
-                <img src={phone} alt="phone" className="w-5 h-5" />
-                <div className="text-[12px] md:text-[14px] lg:text-[16px] text-text-grey-light">
-                  <div>08022298713,</div>
-                  <div>08022298713</div>
+                <img src={phone} alt="phone" className="w-5 h-5 autoShow" />
+                <div className="text-[12px] md:text-[14px] lg:text-[16px] text-text-grey-light autoShow">
+                  <div className="autoShow">08022298713,</div>
+                  <div className="autoShow">08022298713</div>
                 </div>
               </div>
             </div>
 
-            <h4 className="text-[14px] md:text-[16px] lg:text-[18px] font-bold mb-4">
+            <h4 className="text-[14px] md:text-[16px] lg:text-[18px] font-bold mb-4 autoShow">
               Follow Us
             </h4>
-            <div className="flex gap-4">
+            <div className="flex gap-4 autoShow">
               <a href="#" className="hover:opacity-80 transition-opacity">
                 <img src={instagram} alt="Instagram" className="w-6 h-6" />
               </a>
@@ -121,7 +121,7 @@ const Footer = () => {
       </div>
 
       {/* Newsletter Section */}
-      <div className="border-t max-w-7xl mx-auto py-7 border-text-grey-dark">
+      <div className="border-t max-w-7xl mx-auto py-7 border-text-grey-dark autoShow">
         <div className="max-w-7xl mx-auto px-5 py-12">
           <div className="text-center max-w-4xl mx-auto">
             <h3 className="text-[20px] md:text-[25px] lg:text-[30px] font-bold mb-4">
@@ -152,7 +152,7 @@ const Footer = () => {
       </div>
 
       {/* Bottom Section */}
-      <div className="border-t max-w-7xl py-8 mx-auto border-text-grey-dark">
+      <div className="border-t max-w-7xl py-8 mx-auto border-text-grey-dark autoShow">
         <div className="max-w-7xl mx-auto px-5 py-8">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             <div className="text-[12px] md:text-[14px] lg:text-[16px] text-text-grey-light text-center md:text-left">

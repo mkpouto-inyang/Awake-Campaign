@@ -39,20 +39,20 @@ const screeningData = [
 
 const ScreeningCentres = () => {
   return (
-    <section className="px-4 md:py-7 lg:pb-[100px] pb-10 md:pb-14 max-w-6xl mx-auto">
+    <section className="px-4 md:py-7 lg:pb-[100px] pb-10 md:pb-14 max-w-6xl mx-auto ">
       {/* Heading */}
       <div className="text-center mb-6 md:mb-10 lg:mb-14">
-        <h1 className="font-bold text-[20px] md:text-[38px] lg:text-[50px] text-blue-dark mb-5">
+        <h1 className="font-bold text-[20px] md:text-[38px] lg:text-[50px] text-blue-dark mb-5 autoShow">
           Find Screening Centers
         </h1>
-        <p className="text-[12px] md:text-[14px] lg:text-[18px] text-[#4A5565] max-w-3xl mx-auto">
+        <p className="text-[12px] md:text-[14px] lg:text-[18px] text-[#4A5565] max-w-3xl mx-auto autoShow">
           Locate cervical cancer screening centers near you. Early detection
           saves lives. Schedule your screenings today.
         </p>
       </div>
 
       {/* Search Bar */}
-      <div className="w-full p-4 sm:p-6 md:p-8 shadow-xl bg-white rounded-[8px] mb-6 sm:mb-10">
+      <div className="w-full p-4 sm:p-6 md:p-8 shadow-xl bg-white rounded-[8px] mb-6 sm:mb-10 autoShow">
         <div className="flex flex-col md:flex-row gap-4 items-center w-full">
           <input
             type="text"
@@ -77,8 +77,11 @@ const ScreeningCentres = () => {
 
       {/* Use Current Location */}
       <div className="text-center mb-10">
-        <button className="flex items-center gap-2 text-orange-500 hover:text-orange-600 text-[13px] md:text-sm font-medium mx-auto">
-          <img src={locationArrow} alt="location arrow" />
+        <button className="flex items-center gap-2  text-teal-primary text-[12px] md:text-[14px] font-medium mx-auto ">
+          <svg width="16" height="16" viewBox="0 0 21 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M18.2657 1.98829L1.98469 8.31429L6.81369 10.3203C8.22502 10.9061 9.34636 12.0278 9.93169 13.4393L11.9377 18.2673L18.2657 1.98829ZM20.1127 2.67029L13.7847 18.9513C13.3847 19.9813 12.2337 20.5083 11.2137 20.1313C10.9651 20.0397 10.7381 19.8976 10.5471 19.7139C10.356 19.5303 10.2051 19.3091 10.1037 19.0643L8.09669 14.2343C7.70579 13.2939 6.95825 12.5467 6.01769 12.1563L1.18969 10.1503C0.18569 9.73329 -0.27231 8.57429 0.16669 7.56029C0.27454 7.31243 0.430343 7.08835 0.625133 6.90094C0.819923 6.71353 1.04985 6.56649 1.30169 6.46829L17.5827 0.14029C17.9364 -0.00185326 18.324 -0.0369348 18.6975 0.0394048C19.071 0.115745 19.4138 0.30014 19.6833 0.569678C19.9528 0.839216 20.1372 1.18201 20.2136 1.55548C20.2899 1.92894 20.2548 2.3166 20.1127 2.67029Z" fill="#00999e"/>
+          </svg>
+
           Use Current Location
         </button>
       </div>
@@ -93,14 +96,14 @@ const ScreeningCentres = () => {
           {screeningData.map((center, index) => (
             <div
               key={index}
-              className="p-5 bg-white shadow-md rounded-md flex flex-col justify-between"
+              className="p-5 bg-white shadow-md rounded-md flex flex-col justify-between animate-slide-up"
             >
               <div>
-                <div className="flex justify-between items-start mb-2">
+                <div className="flex justify-between items-start mb-5">
                   <p className="font-semibold text-[#101828] text-[14px] md:text-[15px] lg:text-base leading-tight">
                     {center.name}
                   </p>
-                  <span className="text-teal-600 text-sm font-medium">
+                  <span className="text-teal-600 text-[12px] lg:text-sm font-medium ml-1">
                     {center.distance}
                   </span>
                 </div>
@@ -123,12 +126,12 @@ const ScreeningCentres = () => {
 
               {/* Action Buttons */}
               <div className="flex flex-col sm:flex-row gap-3 mt-5">
-                <button className="flex-1 flex items-center justify-center gap-2 px-3 py-2 bg-[#F9FAFB] hover:bg-gray-100 border border-gray-200 rounded-md text-sm text-gray-800 font-medium">
-                  <img src={directionIcon} alt="directions" className="w-4 h-4" />
+                <button className="flex-1 flex items-center justify-center gap-2 px-3 py-2 bg-[#F9FAFB] hover:bg-gray-100 border border-gray-200 rounded-md text-[12px] lg:text-sm text-gray-800 font-medium">
+                  <img src={directionIcon} alt="directions" className="w-[10px] h-[10px] lg:w-4 lg:h-4" />
                   Get Directions
                 </button>
-                <button className="flex-1 flex items-center justify-center gap-2 px-3 py-2 bg-[#F9FAFB] hover:bg-gray-100 border border-gray-200 rounded-md text-sm text-gray-800 font-medium">
-                  <img src={greyPhoneIcon} alt="call" className="w-4 h-4" />
+                <button className="flex-1 flex items-center justify-center gap-2 px-3 py-2 bg-[#F9FAFB] hover:bg-gray-100 border border-gray-200 rounded-md text-[12px] lg:text-sm text-gray-800 font-medium">
+                  <img src={greyPhoneIcon} alt="call" className="w-[10px] h-[10px] lg:w-4 lg:h-4" />
                   Call
                 </button>
               </div>

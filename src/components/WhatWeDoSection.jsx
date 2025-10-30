@@ -54,19 +54,19 @@ const eventData = [
 const WhatWeDoSection = () => {
   return (
     <section className=" mb-5 max-w-[1200px] mx-auto">
-      <div className="flex justify-center">
+      <div className="flex justify-center autoShow">
         <h1 className="font-bold text-[20px] md:text-[38px] lg:text-[50px] text-blue-dark text-center mb-5 lg:mb-10 mt-[40px] lg:mt-[70px]">
           What We're Doing
         </h1>
       </div>
 
-      <p className="text-[12px] md:text-[14px] lg:text-[18px] w-[88%] max-w-4xl text-[#4A5565] leading-relaxed text-center mx-auto mb-12 md:mb-20">
+      <p className="text-[12px] md:text-[14px] lg:text-[18px] w-[88%] max-w-4xl text-[#4A5565] leading-relaxed text-center mx-auto mb-12 md:mb-20 autoShow">
         The AWAKE campaign is a comprehensive approach to cervical cancer
         prevention, combining awareness, education, and direct action to save
         lives.
       </p>
 
-    <div className="px-4 smd:px-5 md:px-6 lg:px-8">
+    <div className="px-5 md:px-6 lg:px-8 autoScaleIn">
       <Swiper
         modules={[Navigation, Pagination, Autoplay, A11y]}
         spaceBetween={30}
@@ -101,7 +101,7 @@ const WhatWeDoSection = () => {
         <div className="flex justify-center mt-10 mb-20 px-12">
         <Button
             variant="orangeOutline"
-            className="flex items-center text-[12px] md:text-[14px] lg:text-[16px] font-normal px-2 py-2 sm:px-6 sm:py-3 gap-2 w-[200px] md:w-[300px] lg:w-[350px]"
+            className="flex items-center text-[12px] md:text-[14px] lg:text-[16px] font-normal px-2 py-2 sm:px-6 sm:py-3 gap-2 w-[200px] md:w-[300px] lg:w-[350px] autoShow"
         >
             View All Campaign Events
             <img src={RightArrow} alt="Right Arrow" className="w-3 h-3 md:w-4 md:h-4" />

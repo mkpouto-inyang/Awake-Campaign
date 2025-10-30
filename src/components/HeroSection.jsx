@@ -2,6 +2,7 @@ import womenImage from "../assets/static-images/women-image.png";
 import cancerRibbon from "../assets/icons/cancer-ribbon.svg";
 import Button from "./Button";
 import { useState } from "react";
+import "../custom-css/animations.css"
 
 const HeroSection = () => {
    const [currentAmount, setCurrentAmount] = useState(800000);
@@ -27,26 +28,28 @@ const HeroSection = () => {
           className="absolute top-0 left-[-20px] md:top-0 md:left-16 lg:top-24 lg:left-[-50px] w-48 h-48 sm:w-60 sm:h-60 md:w-72 md:h-72  bg-teal-primary opacity-35 rounded-full z-0 blur-[100px]"
         ></div>
 
-        <h1
-          className="absolute top-1.5 left-1 text-[70px] smd:text-[100px] md:text-[120px] mdlg:text-[140px] lg:text-[180px] lgxl:text-[220px] xl:text-[280px] font-bold text-black/40 blur-[5px] select-none"
-          aria-hidden="true"
-        >
-          AWAKE
-        </h1>
+        <div className="animate-slide-up">
+            <h1
+              className="absolute top-1.5 left-1 text-[70px] smd:text-[100px] md:text-[120px] mdlg:text-[140px] lg:text-[180px] lgxl:text-[220px] xl:text-[280px] font-bold text-black/40 blur-[5px] select-none"
+              aria-hidden="true"
+            >
+              AWAKE
+            </h1>
 
-        <h1
-          className="relative text-[70px] md:text-[120px] smd:text-[100px] mdlg:text-[140px] lg:text-[180px] lgxl:text-[220px] xl:text-[280px] font-bold text-transparent bg-clip-text bg-cover bg-center inline-block"
-          style={{
-            backgroundImage: `linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.2)), url(${womenImage})`,
-            backgroundPosition: "50% 90%",
-            backgroundSize: "cover",
-          }}
-        >
-          AWAKE
-        </h1>
+            <h1
+              className="relative text-[70px] md:text-[120px] smd:text-[100px] mdlg:text-[140px] lg:text-[180px] lgxl:text-[220px] xl:text-[280px] font-bold text-transparent bg-clip-text bg-cover bg-center inline-block"
+              style={{
+                backgroundImage: `linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.2)), url(${womenImage})`,
+                backgroundPosition: "50% 90%",
+                backgroundSize: "cover",
+              }}
+            >
+              AWAKE
+            </h1>
+        </div>
       </div>
 
-      <div>
+      <div className="animate-slide-up">
         <img
           src={cancerRibbon}
           alt="cancer Ribbon"
@@ -54,13 +57,13 @@ const HeroSection = () => {
         />
       </div>
 
-      <div>
+      <div className="animate-slide-up">
         <p className="text-[11px] md:text-[18px] lg:text-[22px] mt-3 font-semibold text-teal-darkest">
           Eyes Open. Take Action. Help Others Do the Same
         </p>
       </div>
 
-      <div className="px-5">
+      <div className="px-5 animate-slide-up">
         <p className="text-[12px] smd:text-[13px] md:text-[14px] lg:text-[16px] xl:text-[18px] max-w-7xl mx-auto text-gray-700 leading-relaxed text-center mt-6 lg:mt-4">
           Through film, <i>Awake</i> shines a light on cervical cancer in
           Nigeria. We raise awareness, spark conversations, and help women take
@@ -68,7 +71,7 @@ const HeroSection = () => {
         </p>
       </div>
 
-      <div className="mt-12 px-4 mb-12 ">
+      <div className="mt-12 px-4 mb-12 animate-slide-up">
         <Button
           variant="primary"
           className="
@@ -81,15 +84,15 @@ const HeroSection = () => {
       </div>
 
       <div
-        className="w-[90%] max-w-6xl h-[300px] sm:h-[250px] md:h-[400px] lg:h-[550px] xl:h-[700px] bg-black rounded-2xl lg:rounded-3xl mx-auto shadow-2xl"
+        className=" animate-slide-up w-[90%] max-w-6xl h-[300px] sm:h-[250px] md:h-[400px] lg:h-[550px] xl:h-[700px] bg-black rounded-2xl lg:rounded-3xl mx-auto shadow-2xl "
       ></div>
 
-       <div className="px-5 mb-8 lg:mb-20 mt-1">
+       <div className="px-5 mb-8 lg:mb-20 mt-1 animate-slide-up">
         <p className="text-[12px] smd:text-[13px] md:text-[14px] lg:text-[16px] xl:text-[18px] max-w-7xl mx-auto text-teal-dark leading-relaxed text-center mt-6 lg:mt-4">
           #AWAKE #IamAwake  #IamAwakeToCervicalCancer
         </p>
       </div>
-<div className="w-[90%] max-w-6xl mx-auto">
+<div className="w-[90%] max-w-6xl mx-auto autoShow">
 
   {/* Desktop view: one full-width card with 3 horizontal stats */}
   <div className="hidden md:flex p-6 sm:p-8 md:p-10 shadow-2xl bg-white justify-around items-center gap-6 rounded-[12px] mb-[60px]">
@@ -124,7 +127,7 @@ const HeroSection = () => {
   </div>
 </div>
 
-<div className="w-[90%] max-w-6xl mx-auto ">
+<div className="w-[90%] max-w-6xl mx-auto autoShow">
   {/* Progress Summary */}
   <div className="flex justify-between items-center text-xs sm:text-sm mb-2">
     <span className="font-semibold text-gray-800">
@@ -134,7 +137,7 @@ const HeroSection = () => {
   </div>
 
   {/* Progress Bar */}
-  <div className="relative bg-white rounded-full shadow-inner h-2 sm:h-3 md:h-4 w-full overflow-hidden">
+  <div className="relative bg-white rounded-full shadow-inner h-2 sm:h-3 md:h-4 w-full overflow-hidden autoShow">
     <div
       className="bg-teal-primary h-full rounded-full transition-all duration-700 ease-in-out"
       style={{ width: `${progressPercentage}%` }}
