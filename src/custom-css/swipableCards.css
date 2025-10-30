@@ -87,8 +87,8 @@
 
 /* Pagination Dots */
 .swiper-pagination-bullet {
-  width: 10px;
-  height: 10px;
+  width: 8px;
+  height: 8px;
   background: #00999e; /* gray-300 */
   opacity: 1;
   transition: all 0.3s ease;
@@ -96,8 +96,8 @@
 
 .swiper-pagination-bullet-active {
   background: #023c3c; /* blue-dark */
-  width: 10px;
-  height: 10px;
+  width: 8px;
+  height: 8px;
   border-radius: 6px;
 }
 

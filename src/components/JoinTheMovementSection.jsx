@@ -7,7 +7,7 @@ import shareIcon from "../assets/icons/share.svg"
 const JoinTheMovementSection = () => {
   return (
     <>
-<section className="bg-[#E4F8F3]/70 pt-[80px] pb-[100px] px-4">
+<section className="bg-[#E4F8F3]/70 pt-[80px] pb-[100px] px-5">
   <div className="max-w-[1200px] mx-auto">
     <div className="flex justify-center autoShow">
       <h1 className="font-bold text-[20px] md:text-[38px] lg:text-[50px] text-blue-dark text-center mb-3 lg:mb-6">

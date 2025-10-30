@@ -2,14 +2,14 @@ import '../custom-css/animations.css'
 
 const ProblemSection = () => {
   return (
-    <div className="px-[16px] md:px-[24px] bg-blue-dark text-white py-[60px] md:py-[80px] lg:py-[130px] ">
+    <div className="px-[20px] md:px-[24px] bg-blue-dark text-white py-[60px] md:py-[80px] lg:py-[130px] ">
       <div className="flex justify-center ">
         <h1 className="font-bold text-[20px] md:text-[38px] mdlg:text-[40px] lg:text-[50px] autoShow ">
           The Problem We’re Facing
         </h1>
       </div>
 
-      <p className=" autoShow text-[12px] smd:text-[13px] md:text-[14px] lg:text-[16px] xl:text-[18px] max-w-6xl  text-text-grey-light leading-relaxed text-center mt-6 lg:mt-4 px-2 xl:px-0 mx-auto mb-12 md:mb-20">
+      <p className=" autoShow text-[12px] smd:text-[13px] md:text-[14px] lg:text-[16px] xl:text-[18px] max-w-6xl  text-text-grey-light leading-relaxed text-center mt-6 lg:mt-4 px-2 xl:px-0 mx-auto mb-12 md:mb-20 md:w-[87%]">
         Cervical cancer is the second most common cancer among women in Nigeria,
         yet it’s largely preventable and treatable when detected early.
         Thousands of women lose their lives each year due to lack of awareness,

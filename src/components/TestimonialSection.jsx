@@ -26,19 +26,18 @@ const testimonials = [
 
 const TestimonialSection = () => {
   return (
-    <section className="px-4 pt-12 pb-0 md:pt-20 max-w-5xl mx-auto">
+    <section className="px-5 pt-12 pb-0 md:pt-20 max-w-5xl mx-auto">
       {/* Heading */}
       <div className="text-center mb-10 md:mb-16 ">
         <h1 className="font-bold text-[20px] md:text-[38px] lg:text-[50px] text-blue-dark mb-5 autoShow">
           Real Stories. Real Impact.
         </h1>
-        <p className="text-[12px] md:text-[14px] lg:text-[18px] text-[#4A5565] max-w-3xl mx-auto autoShow">
+        <p className="text-[12px] md:text-[14px] lg:text-[18px] text-[#4A5565] max-w-3xl mx-auto autoShow  md:w-[80%]">
           Hear from individuals whose lives have been touched by awareness,
           screening, and the power of sharing their voice.
         </p>
       </div>
 
-      {/* Mobile: Carousel view */}
       {/* Mobile: Carousel view */}
       <div className="block md:hidden autoShow">
         <Swiper
@@ -68,7 +67,7 @@ const TestimonialSection = () => {
       </div>
 
       {/* Desktop: Stacked layout */}
-      <div className="hidden md:flex flex-col gap-10">
+      <div className="hidden md:flex flex-col gap-10 w-[88%] mx-auto">
         {testimonials.map((item, index) => (
           <div
             key={index}
@@ -77,10 +76,10 @@ const TestimonialSection = () => {
             <div
               className={`absolute ${index % 2 === 0 ? "left-0 rounded-r" : "right-0 rounded-l"} top-6 bottom-6 w-1 bg-teal-400`}
             ></div>
-            <p className="text-gray-800 text-base leading-relaxed pl-4">
+            <p className="text-gray-800 text-sm xl:text-base leading-relaxed pl-4">
               {item.quote}
             </p>
-            <p className="text-teal-700 font-semibold text-base text-right mt-4 pr-2">
+            <p className="text-teal-700 font-semibold text-sm text-right mt-4 pr-2">
               {item.author}
               {item.age ? `, ${item.age}` : ""}
             </p>

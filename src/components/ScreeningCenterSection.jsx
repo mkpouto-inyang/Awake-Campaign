@@ -39,7 +39,7 @@ const screeningData = [
 
 const ScreeningCentres = () => {
   return (
-    <section className="px-4 md:py-7 lg:pb-[100px] pb-10 md:pb-14 max-w-6xl mx-auto ">
+    <section className="px-5 md:py-7 lg:pb-[100px] pb-10 md:pb-14 max-w-6xl mx-auto ">
       {/* Heading */}
       <div className="text-center mb-6 md:mb-10 lg:mb-14">
         <h1 className="font-bold text-[20px] md:text-[38px] lg:text-[50px] text-blue-dark mb-5 autoShow">
@@ -88,7 +88,7 @@ const ScreeningCentres = () => {
 
       {/* Screening Centres Found */}
       <div className="mb-6">
-        <h2 className="font-semibold text-[16px] md:text-[18px] mb-4">
+        <h2 className="font-semibold text-sm md:text-[18px] mb-4">
           4 Screening Centres Found
         </h2>
 

@@ -66,7 +66,7 @@ const WhatWeDoSection = () => {
         lives.
       </p>
 
-    <div className="px-5 md:px-6 lg:px-8 autoScaleIn">
+    <div className="px-7 md:px-9 autoScaleIn">
       <Swiper
         modules={[Navigation, Pagination, Autoplay, A11y]}
         spaceBetween={30}
