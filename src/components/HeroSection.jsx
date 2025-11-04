@@ -1,9 +1,10 @@
 import womenImage from "../assets/static-images/women-image.png";
 import cancerRibbon from "../assets/icons/cancer-ribbon.svg";
 import Button from "./Button";
-import { useState } from "react";
 import "../custom-css/animations.css";
 import CountUpNumber from "./CountUpNumber";
+import { useState } from "react";
+import { AnimatedProgressBar } from "./AnimatedProgressBar";
 
 const HeroSection = () => {
   const [currentAmount, setCurrentAmount] = useState(800000);
@@ -133,9 +134,7 @@ const HeroSection = () => {
             <p className="text-orange text-[20px] font-semibold mb-1">
               <CountUpNumber target={0} />
             </p>
-            <p className="text-[12px] text-blue-dark">
-              Women Screened
-            </p>
+            <p className="text-[12px] text-blue-dark">Women Screened</p>
           </div>
 
           <div className="p-5 shadow-md bg-white rounded-[8px] text-center">
@@ -156,25 +155,8 @@ const HeroSection = () => {
           <span className="font-semibold text-gray-700">₦10 million goal</span>
         </div>
 
-        {/* Progress Bar */}
-        <div className="relative bg-white rounded-full shadow-inner h-2 sm:h-3 md:h-4 w-full overflow-hidden autoShow">
-          <div
-            className="bg-teal-primary h-full rounded-full transition-all duration-700 ease-in-out"
-            style={{ width: `${progressPercentage}%` }}
-          ></div>
-
-          {/* Floating Label */}
-          <span
-            className="absolute top-full mt-2 text-[11px] sm:text-xs font-semibold text-gray-800 transition-all duration-500"
-            style={{
-              left: `${progressPercentage}%`,
-              transform: "translateX(-50%)",
-              whiteSpace: "nowrap",
-            }}
-          >
-            {formatCurrency(currentAmount)}
-          </span>
-        </div>
+        {/* Animated Progress Bar */}
+        <AnimatedProgressBar current={currentAmount} goal={goalAmount} />
       </div>
     </section>
   );
