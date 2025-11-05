@@ -265,3 +265,24 @@
   animation-timeline: view();
   animation-range: entry 20% cover 30%;
 }
+
+/* Loading-spinner */
+/* Custom Spinner Styles */
+.spinner {
+  width: 32px;
+  height: 32px;
+  border: 4px solid #14b8a6; 
+  border-top: 4px solid transparent;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+/* Keyframes for spinning */
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
