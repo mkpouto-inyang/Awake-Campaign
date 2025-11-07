@@ -10,10 +10,6 @@ import { LoadScript } from "@react-google-maps/api";
 
 const Home = () => {
   return (
-    <LoadScript
-      googleMapsApiKey={import.meta.env.VITE_GOOGLE_MAPS_API_KEY}
-      libraries={["places"]}
-    >
       <div>
         <HeroSection />
         <ProblemSection />
@@ -24,7 +20,6 @@ const Home = () => {
         <TestimonialSection />
         <ScreeningCentres />
       </div>
-    </LoadScript>
   );
 };
 

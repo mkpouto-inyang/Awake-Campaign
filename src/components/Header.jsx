@@ -140,17 +140,3 @@ const Header = () => {
 };
 
 export default Header;
-
-
-
-        //    <div className="relative bg-white rounded-xl shadow-md px-5 py-6 w-full max-w-sm self-start animate-slideInFromLeft">
-        //   <div className="absolute -left-6 top-1/2 -translate-y-1/2 w-10 h-10 bg-teal-100 rounded-full flex items-center justify-center animate-slideUpIcon">
-        //     <img src={speechBubble} alt="Advocacy" className="w-5" />
-        //   </div>
-        //   <h3 className="text-blue-dark font-semibold text-base mb-1">
-        //     Advocacy
-        //   </h3>
-        //   <p className="text-[13px] text-blue-dark">
-        //     Inspire nationwide dialogue that sparks collective advocacy
-        //   </p>
-        // </div>

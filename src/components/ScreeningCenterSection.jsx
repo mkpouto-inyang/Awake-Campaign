@@ -171,6 +171,10 @@ const handleSuggestionClick = async (selectedText) => {
             </ul>
           )}
 
+          {/* <button className="w-full md:w-auto flex items-center justify-center gap-2 px-4 py-2 md:px-6 md:py-[10px] text-white bg-black hover:bg-gray-800 rounded-md text-[13px] md:text-sm">
+            <img src={searchIcon} alt="search icon" className="w-4 h-4" />
+            Search
+          </button> */}
         </div>
       </div>
 
