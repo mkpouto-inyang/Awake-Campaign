@@ -115,7 +115,7 @@ const Footer = () => {
       </div>
 
       {/* Newsletter Section */}
-      <div className="border-t max-w-7xl mx-auto py-7 border-text-grey-dark autoShow">
+      {/* <div className="border-t max-w-7xl mx-auto py-7 border-text-grey-dark autoShow">
         <div className="max-w-7xl mx-auto px-5 py-12">
           <div className="text-center max-w-4xl mx-auto">
             <h3 className="text-[20px] md:text-[25px] lg:text-[30px] font-bold mb-4">
@@ -143,7 +143,7 @@ const Footer = () => {
             </div>
           </div>
         </div>
-      </div>
+      </div> */}
 
       {/* Bottom Section */}
       <div className="border-t max-w-7xl py-8 mx-auto border-text-grey-dark autoShow">
