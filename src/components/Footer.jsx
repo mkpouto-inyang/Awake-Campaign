@@ -61,12 +61,6 @@ const Footer = () => {
                 Join the Movement
               </NavLink>
               <NavLink
-                to="/find-centers"
-                className="block text-[12px] md:text-[14px] lg:text-[16px] text-text-grey-light hover:text-white transition-colors autoShow"
-              >
-                Find Centers
-              </NavLink>
-              <NavLink
                 to="/about-us"
                 className="block text-[12px] md:text-[14px] lg:text-[16px] text-text-grey-light hover:text-white transition-colors autoShow"
               >
