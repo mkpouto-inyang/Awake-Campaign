@@ -87,7 +87,7 @@
   align-items: center;
   justify-content: center;
   gap: 2rem;
-  animation: spin 12s infinite linear;
+  animation: scroll-horizontal 12s infinite linear;
   padding-right: 1em;
 }
 
@@ -96,7 +96,7 @@
     gap: 1rem;
   }
 }
-@keyframes spin {
+@keyframes scroll-horizontal {
   from {
     translate: 0;
   }
@@ -267,7 +267,6 @@
 }
 
 /* Loading-spinner */
-/* Custom Spinner Styles */
 .spinner {
   width: 32px;
   height: 32px;
