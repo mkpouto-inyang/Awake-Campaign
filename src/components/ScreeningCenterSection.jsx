@@ -2,7 +2,7 @@ import { useState, useRef } from "react";
 import {
   GoogleMap,
   useJsApiLoader,
-  StandaloneSearchBox
+  StandaloneSearchBox,
 } from "@react-google-maps/api";
 
 import searchIcon from "../assets/icons/search.svg";
@@ -25,7 +25,7 @@ const ScreeningCentres = () => {
   const { isLoaded } = useJsApiLoader({
     id: "google-map-script",
     googleMapsApiKey: import.meta.env.VITE_GOOGLE_MAPS_API_KEY,
-    libraries: ["places"]
+    libraries: ["places"],
   });
 
   const handleUseCurrentLocation = () => {
@@ -42,7 +42,7 @@ const ScreeningCentres = () => {
       (position) => {
         const coords = {
           lat: position.coords.latitude,
-          lng: position.coords.longitude
+          lng: position.coords.longitude,
         };
         setLocation(coords);
         getNearbyPlaces(coords);
@@ -59,9 +59,9 @@ const ScreeningCentres = () => {
       const res = await fetch("http://localhost:3001/api/nearby", {
         method: "POST",
         headers: {
-          "Content-Type": "application/json"
+          "Content-Type": "application/json",
         },
-        body: JSON.stringify({ lat, lng })
+        body: JSON.stringify({ lat, lng }),
       });
 
       const data = await res.json();
@@ -71,9 +71,10 @@ const ScreeningCentres = () => {
       }
 
       const results = data.places.map((place) => ({
-        name: place.displayName?.text,
-        address: place.formattedAddress,
-        location: place.location
+        name: place.name,
+        address: place.address,
+        location: place.location,
+        phone: place.phone || "Phone info unavailable"
       }));
 
       setScreeningResults(results);
@@ -97,9 +98,9 @@ const ScreeningCentres = () => {
       const res = await fetch("http://localhost:3001/api/autocomplete", {
         method: "POST",
         headers: {
-          "Content-Type": "application/json"
+          "Content-Type": "application/json",
         },
-        body: JSON.stringify({ input: newValue, location })
+        body: JSON.stringify({ input: newValue, location }),
       });
 
       const data = await res.json();
@@ -231,7 +232,7 @@ const ScreeningCentres = () => {
                       {center.name}
                     </p>
                   </div>
-                  <div className="text-[13px] text-[#4A5565] flex flex-col gap-2">
+                  <div className="text-[13px] text-[#4A5565] flex flex-col gap-4">
                     <div className="flex items-start gap-2">
                       <img
                         src={locationPin}
@@ -246,35 +247,11 @@ const ScreeningCentres = () => {
                         alt="phone"
                         className="w-4 h-4 mt-[2px]"
                       />
-                      <p>Phone info coming soon</p>
-                    </div>
-                    <div className="flex items-start gap-2">
-                      <img
-                        src={greyClockIcon}
-                        alt="clock"
-                        className="w-4 h-4 mt-[2px]"
-                      />
-                      <p>Hours info coming soon</p>
+                      <p>{center.phone || "Phone info coming soon"}</p>
                     </div>
                   </div>
                 </div>
                 <div className="flex flex-col sm:flex-row gap-3 mt-5">
-                  <button className="flex-1 flex items-center justify-center gap-2 px-3 py-2 bg-[#F9FAFB] hover:bg-gray-100 border border-gray-200 rounded-md text-[12px] lg:text-sm text-gray-800 font-medium">
-                    <img
-                      src={directionIcon}
-                      alt="directions"
-                      className="w-[10px] h-[10px] lg:w-4 lg:h-4"
-                    />
-                    Get Directions
-                  </button>
-                  <button className="flex-1 flex items-center justify-center gap-2 px-3 py-2 bg-[#F9FAFB] hover:bg-gray-100 border border-gray-200 rounded-md text-[12px] lg:text-sm text-gray-800 font-medium">
-                    <img
-                      src={greyPhoneIcon}
-                      alt="call"
-                      className="w-[10px] h-[10px] lg:w-4 lg:h-4"
-                    />
-                    Call
-                  </button>
                 </div>
               </div>
             ))}
