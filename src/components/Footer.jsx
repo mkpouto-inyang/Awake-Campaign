@@ -49,7 +49,7 @@ const Footer = () => {
                 Home
               </NavLink>
               <NavLink
-                to="/campaign-events"
+                // to="/campaign-events"
                 className="block text-[12px] md:text-[14px] lg:text-[16px] text-text-grey-light hover:text-white transition-colors autoShow"
               >
                 Campaign Events

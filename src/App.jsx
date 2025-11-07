@@ -62,7 +62,7 @@ function App() {
                 <Route path="share-your-story" element={<ShareYourStory />} />
               </Route>
               <Route path="/contact" element={<Contact />} />
-              <Route path="/campaign-events" element={<CampaignEvents />} />
+              {/* <Route path="/campaign-events" element={<CampaignEvents />} /> */}
               <Route path="/campaign-events/:eventId" element={<EventDetail />} />
             </Route>
             <Route path="/studio/*" element={<StudioPage />} />

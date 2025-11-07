@@ -25,9 +25,9 @@ const JoinTheMovementSection = () => {
             <div className="bg-white shadow-md rounded-[10px] w-[320px] lg:w-[360px] p-6 flex flex-col justify-between min-h-[350px] autoShow">
               <div className="flex flex-col items-center gap-5">
                 <div className="bg-[#D5F5EC] rounded-full p-3">
-                  <img src={donateHeart} alt="Donate" className="w-6 h-6" />
+                  <img src={donateHeart} alt="Donate" className="w-5 h-5" />
                 </div>
-                <h3 className="text-[#101828] font-semibold text-xl lg:text-2xl text-center">
+                <h3 className="text-[#101828] font-semibold text-[18px] lg:text-2xl text-center">
                   Donate
                 </h3>
                 <p className="text-[#4A5565] text-sm lg:text-base text-center">
@@ -50,26 +50,20 @@ const JoinTheMovementSection = () => {
             <div className="bg-white shadow-md rounded-[10px] w-[320px] lg:w-[360px] p-6 flex flex-col justify-between min-h-[350px] autoShow">
               <div className="flex flex-col items-center gap-4">
                 <div className="bg-[#D5F5EC] rounded-full p-3">
-                  <img src={award} alt="Challenge" className="w-6 h-6" />
+                  <img src={award} alt="Challenge" className="w-5 h-5" />
                 </div>
-                <h3 className="text-[#101828] font-semibold text-xl lg:text-2xl text-center">
+                <h3 className="text-[#101828] font-semibold text-[18px] lg:text-2xl text-center">
                   Join the Challenge
                 </h3>
-                <p className="bg-[#FBF6CB] text-[#101828] px-4 py-1 text-sm rounded-full">
+                {/* <p className="bg-[#FBF6CB] text-[#101828] px-4 py-1 text-sm rounded-full">
                   Winner gets ₦ 200,000
-                </p>
+                </p> */}
                 <p className="text-[#4A5565] text-sm lg:text-base text-center">
                   Create a mini project to spread cervical cancer awareness in
                   your community, incorporating the AWAKE film.
                 </p>
               </div>
 
-              {/* <Button
-                variant="primary"
-                className="mt-6 mb-4 w-full text-[14px] lg:text-base"
-              >
-                Take the Challenge
-              </Button> */}
               <Link to="/join-the-movement/challenge">
                 <Button
                   variant="primary"
@@ -84,9 +78,9 @@ const JoinTheMovementSection = () => {
             <div className="bg-white shadow-md rounded-[10px] w-[320px] lg:w-[360px] p-6 flex flex-col justify-between min-h-[370px] autoShow">
               <div className="flex flex-col items-center gap-5">
                 <div className="bg-[#D5F5EC] rounded-full p-3">
-                  <img src={shareIcon} alt="Share Story" className="w-6 h-6" />
+                  <img src={shareIcon} alt="Share Story" className="w-5 h-5" />
                 </div>
-                <h3 className="text-[#101828] font-semibold text-xl lg:text-2xl text-center">
+                <h3 className="text-[#101828] font-semibold text-[18px] lg:text-2xl text-center">
                   Share Your Story
                 </h3>
                 <p className="text-[#4A5565] text-sm lg:text-base text-center">
