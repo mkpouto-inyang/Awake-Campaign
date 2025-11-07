@@ -113,24 +113,27 @@ const ScreeningCentres = () => {
     }
   };
 
-  const handleSuggestionClick = async (selectedText) => {
-    setInputValue(selectedText);
-    setSuggestions([]);
-
-    try {
-      const geocoder = new window.google.maps.Geocoder();
-      geocoder.geocode({ address: selectedText }, (results, status) => {
-        if (status === "OK" && results[0]) {
-          const { lat, lng } = results[0].geometry.location;
-          const coords = { lat: lat(), lng: lng() };
-          setLocation(coords);
-          getNearbyPlaces(coords);
-        }
-      });
-    } catch (err) {
-      console.error("Geocoding failed", err);
-    }
-  };
+const handleSuggestionClick = async (selectedText) => {
+  setInputValue(selectedText);
+  setSuggestions([]);
+  setLoading(true); 
+  try {
+    const geocoder = new window.google.maps.Geocoder();
+    geocoder.geocode({ address: selectedText }, (results, status) => {
+      if (status === "OK" && results[0]) {
+        const { lat, lng } = results[0].geometry.location;
+        const coords = { lat: lat(), lng: lng() };
+        setLocation(coords);
+        getNearbyPlaces(coords); // This will hide spinner when done
+      } else {
+        setLoading(false); // Stop spinner if no valid results
+      }
+    });
+  } catch (err) {
+    console.error("Geocoding failed", err);
+    setLoading(false); 
+  }
+};
 
   return (
     <section className="px-5 md:py-7 lg:pb-[100px] pb-10 md:pb-14 max-w-6xl mx-auto">
@@ -168,10 +171,6 @@ const ScreeningCentres = () => {
             </ul>
           )}
 
-          <button className="w-full md:w-auto flex items-center justify-center gap-2 px-4 py-2 md:px-6 md:py-[10px] text-white bg-black hover:bg-gray-800 rounded-md text-[13px] md:text-sm">
-            <img src={searchIcon} alt="search icon" className="w-4 h-4" />
-            Search
-          </button>
         </div>
       </div>
 
@@ -218,7 +217,7 @@ const ScreeningCentres = () => {
       {screeningResults.length > 0 && (
         <div className="mb-6">
           <h2 className="font-semibold text-sm md:text-[18px] mb-4">
-            {screeningResults.length} Screening Centres Found
+            {screeningResults.length} Screening Centre{screeningResults.length !== 1 ? "s" : ""} Found
           </h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
             {screeningResults.map((center, index) => (
