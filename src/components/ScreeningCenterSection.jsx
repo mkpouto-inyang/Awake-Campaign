@@ -1,14 +1,9 @@
 import { useState, useRef } from "react";
 import {
   GoogleMap,
-  useJsApiLoader,
-  StandaloneSearchBox,
+  useJsApiLoader
 } from "@react-google-maps/api";
-
-import searchIcon from "../assets/icons/search.svg";
 import locationPin from "../assets/icons/location.svg";
-import greyClockIcon from "../assets/icons/greyClockIcon.svg";
-import directionIcon from "../assets/icons/blackLocationArrow.svg";
 import greyPhoneIcon from "../assets/icons/greyPhoneIcon.svg";
 
 const ScreeningCentres = () => {
@@ -170,11 +165,6 @@ const handleSuggestionClick = async (selectedText) => {
               ))}
             </ul>
           )}
-
-          {/* <button className="w-full md:w-auto flex items-center justify-center gap-2 px-4 py-2 md:px-6 md:py-[10px] text-white bg-black hover:bg-gray-800 rounded-md text-[13px] md:text-sm">
-            <img src={searchIcon} alt="search icon" className="w-4 h-4" />
-            Search
-          </button> */}
         </div>
       </div>
 
