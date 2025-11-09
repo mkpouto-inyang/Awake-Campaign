@@ -1,7 +1,8 @@
 import { useState } from "react";
 import Button from "../components/Button";
 import { AnimatedProgressBar } from "../components/AnimatedProgressBar";
-
+import CustomQR from "../assets/static-images/CustomQrCode.png";
+import qrIcon from "../assets/icons/qrIcon.svg"
 
 const Donate = () => {
   const [selectedAmount, setSelectedAmount] = useState(7000);
@@ -13,14 +14,14 @@ const Donate = () => {
   // Donation Payments
   // TODO: ADD A 'THANK YOU FOR YOUR DONATION PAGE'
   const generatePaystackPrefilledLink = (email) => {
-    let amountInKobo = getCurrentAmount() 
-    return `https://paystack.shop/pay/donate-to-awake?email=${encodeURIComponent(email)}&amount=${amountInKobo}`
-  } 
+    let amountInKobo = getCurrentAmount();
+    return `https://paystack.shop/pay/donate-to-awake?email=${encodeURIComponent(email)}&amount=${amountInKobo}`;
+  };
 
   const handleDonation = () => {
-    const paystackPrefilledLink = generatePaystackPrefilledLink(email)
-    window.open(paystackPrefilledLink, '_blank', 'noopener,noreferrer')
-  }
+    const paystackPrefilledLink = generatePaystackPrefilledLink(email);
+    window.open(paystackPrefilledLink, "_blank", "noopener,noreferrer");
+  };
 
   // Campaign progress data
   const goalAmount = 10000000; // 5.0M goal
@@ -72,31 +73,31 @@ const Donate = () => {
   return (
     <div className="max-w-7xl mx-auto px-1 py-3">
       {/* Progress Section */}
-     <div className="text-center mb-10 px-2">
-  <p className="text-[14px] sm:text-[15px] md:text-[16px] text-gray-600 mb-10 lg:[mb-6] max-w-2xl mx-auto leading-relaxed">
+      <div className="text-center mb-10 px-2">
+        <p className="text-[14px] sm:text-[15px] md:text-[16px] text-gray-600 mb-10 lg:[mb-6] max-w-2xl mx-auto leading-relaxed">
           Every donation directly funds cervical cancer screenings, HPV
           vaccinations, and community outreach programs that save women's lives.
         </p>
-        
-         <div className="w-[87%] max-w-6xl mx-auto autoShow">
-                {/* Progress Summary */}
-                <div className="flex justify-between items-center text-xs sm:text-sm mb-2">
-                  <span className="font-semibold text-gray-800">
-                    {formatCurrency(currentAmount)} raised
-                  </span>
-                  <span className="font-semibold text-gray-700">₦10 million goal</span>
-                </div>
-        
-                {/* Animated Progress Bar */}
-                <AnimatedProgressBar current={currentAmount} goal={goalAmount} />
-              </div>
+
+        <div className="w-[87%] max-w-6xl mx-auto autoShow">
+          {/* Progress Summary */}
+          <div className="flex justify-between items-center text-xs sm:text-sm mb-2">
+            <span className="font-semibold text-gray-800">
+              {formatCurrency(currentAmount)} raised
+            </span>
+            <span className="font-semibold text-gray-700">
+              ₦10 million goal
+            </span>
+          </div>
+
+          {/* Animated Progress Bar */}
+          <AnimatedProgressBar current={currentAmount} goal={goalAmount} />
+        </div>
       </div>
 
       {/* Donation Section Title */}
       <div className="text-center mb-8">
-        <h2
-          className="text-xl lg:text-2xl font-bold text-gray-900 mb-7 leading-none mt-[60px]"
-        >
+        <h2 className="text-xl lg:text-2xl font-bold text-gray-900 mb-7 leading-none mt-[60px]">
           Choose how you'd like to donate
         </h2>
         {/* <p className="text-sm text-gray-600">
@@ -106,7 +107,6 @@ const Donate = () => {
 
       {/* Payment Method Selection and Content */}
       <div className="px-2 sm:px-4 md:px-6">
-
         {/* Payment Method Selection */}
         <div className="space-y-4 mb-8">
           {/* Quick Online Donations */}
@@ -134,14 +134,10 @@ const Donate = () => {
                     />
                   </svg>
                   <div>
-                    <h3
-                      className="font-medium text-gray-900 leading-none text-base"
-                     
-                    >
+                    <h3 className="font-medium text-gray-900 leading-none text-base">
                       Quick Online Donations
                     </h3>
-                    <p
-                      className="text-xs lg:text-sm text-gray-600 mt-3 leading-none" >
+                    <p className="text-xs lg:text-sm text-gray-600 mt-3 leading-none">
                       Select preset or custom amounts • Instant payment
                     </p>
                   </div>
@@ -241,226 +237,50 @@ const Donate = () => {
             )}
           </div>
 
-          {/* Bank Transfer */}
-          <div>
-            <div
-              className={`border rounded-lg p-6 cursor-pointer transition-all duration-200 ${
-                paymentMethod === "bank"
-                  ? "border-teal-primary bg-white"
-                  : "border-gray-200 hover:border-gray-300"
-              }`}
-              onClick={() => handlePaymentMethodChange("bank")}
-            >
-              <div className="flex items-center justify-between">
-                <div className="flex items-center space-x-7">
-                  <svg
-                    width="20"
-                    height="20"
-                    viewBox="0 0 27 27"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <g clipPath="url(#clip0_162_45)">
-                      <path
-                        d="M4.5 24.75V4.5C4.5 3.90326 4.73705 3.33097 5.15901 2.90901C5.58097 2.48705 6.15326 2.25 6.75 2.25H15.75C16.3467 2.25 16.919 2.48705 17.341 2.90901C17.7629 3.33097 18 3.90326 18 4.5V24.75M4.5 24.75H18M4.5 24.75H2.25C1.65326 24.75 1.08097 24.5129 0.65901 24.091C0.237053 23.669 0 23.0967 0 22.5V15.75C0 15.1533 0.237053 14.581 0.65901 14.159C1.08097 13.7371 1.65326 13.5 2.25 13.5H4.5M18 24.75H20.25C20.8467 24.75 21.419 24.5129 21.841 24.091C22.2629 23.669 22.5 23.0967 22.5 22.5V12.375C22.5 11.7783 22.2629 11.206 21.841 10.784C21.419 10.3621 20.8467 10.125 20.25 10.125H18M9 6.75H13.5M9 11.25H13.5M9 15.75H13.5M9 20.25H13.5"
-                        stroke="#009689"
-                        strokeWidth="2"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                      />
-                    </g>
-                    <defs>
-                      <clipPath id="clip0_162_45">
-                        <rect width="27" height="27" fill="white" />
-                      </clipPath>
-                    </defs>
-                  </svg>
-                  <div>
-                    <h3
-                      className="font-medium text-gray-900 leading-none"
-                      style={{
-                        fontFamily: "Outfit",
-                        fontWeight: 500,
-                        fontSize: "16px",
-                        lineHeight: "100%",
-                        letterSpacing: "0%",
-                      }}
-                    >
-                      Bank Transfer
-                    </h3>
-                    <p
-                      className="text-xs lg:text-sm text-gray-600 mt-3 leading-none"
-                    >
-                      Direct transfer to our account • Any amount
-                    </p>
-                  </div>
-                </div>
-                <svg
-                  className={`w-5 h-5 transform transition-transform duration-200 ${
-                    paymentMethod === "bank" ? "rotate-180" : ""
-                  }`}
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
+          {/* payment options */}
+          <div className="">
+            <div className="bg-white border rounded-xl shadow-md grid grid-cols-1 md:grid-cols-2 gap-8 p-6">
+              {/* QR Section */}
+              <div className="flex flex-col items-center border border-gray-300 rounded-xl p-[40px] w-fit">
+                  <img
+                  src={qrIcon}
+                  alt="QR Icon"
+                  className="w-5 h-5 "
+                />
+                <h3 className="font-medium text-center text-gray-700 mb-4 mt-2">
+                  Scan to Pay
+                </h3>
+                <img
+                  src={CustomQR}
+                  alt="Donate QR"
+                  className="w-[250px] h-[250px] object-contain"
+                />
+                <p className="text-sm text-gray-500 mt-2">
+                  Open your camera app to scan
+                </p>
+              </div>
+
+              {/* Click to Donate Section */}
+              <div className="flex flex-col justify-center items-center text-center bg-blue-300">
+                <h3 className="text-gray-700 font-medium mb-2">
+                  Click to Donate
+                </h3>
+                <p className="text-xs text-gray-500 mb-4">
+                  You'll be redirected to our secure payment page
+                </p>
+                <a
+                  href="https://paystack.com/pay/your-link-here"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="bg-teal-primary text-white px-6 py-3 rounded-md text-sm font-medium hover:bg-teal-600 transition"
                 >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M19 9l-7 7-7-7"
-                  />
-                </svg>
+                  Donate Now
+                </a>
+                <p className="text-xs text-gray-400 mt-2">
+                  Secured by Paystack
+                </p>
               </div>
             </div>
-
-            {/* Bank Transfer Content */}
-            {paymentMethod === "bank" && (
-              <div className="border border-teal-primary rounded-lg p-6 bg-white mt-4">
-                <h3 className="text-base font-semibold text-gray-900 mb-6">
-                  Bank Account Details
-                </h3>
-
-                <div className="space-y-4 border border-[#009689] bg-[#EFFBF8] p-4 rounded-lg">
-                  {/* Bank Name */}
-                  <div className="bg-white rounded-lg px-6 py-3 border border-teal-200">
-                    <label className="block text-xs font-medium text-gray-600 mb-1">
-                      Bank Name
-                    </label>
-                    <div className="flex items-center justify-between">
-                      <span className="text-sm lg:text-base font-normal text-gray-900">
-                        First Bank of Nigeria
-                      </span>
-                      <button
-                        onClick={() => copyToClipboard("First Bank of Nigeria")}
-                        className=" hover:bg-gray-100 rounded-lg transition-colors duration-200"
-                        title="Copy bank name"
-                      >
-                        <svg
-                          width="20"
-                          height="20"
-                          viewBox="0 0 30 30"
-                          fill="none"
-                          xmlns="http://www.w3.org/2000/svg"
-                        >
-                          <path
-                            d="M8.75 12.0837C8.75 11.1996 9.10123 10.3516 9.72643 9.72643C10.3516 9.10123 11.1996 8.75 12.0837 8.75H22.9163C23.354 8.75 23.7876 8.83623 24.192 9.00377C24.5965 9.1713 24.964 9.41687 25.2736 9.72643C25.5831 10.036 25.8287 10.4035 25.9962 10.808C26.1638 11.2124 26.25 11.646 26.25 12.0837V22.9163C26.25 23.354 26.1638 23.7876 25.9962 24.192C25.8287 24.5965 25.5831 24.964 25.2736 25.2736C24.964 25.5831 24.5965 25.8287 24.192 25.9962C23.7876 26.1638 23.354 26.25 22.9163 26.25H12.0837C11.646 26.25 11.2124 26.1638 10.808 25.9962C10.4035 25.8287 10.036 25.5831 9.72643 25.2736C9.41687 24.964 9.1713 24.5965 9.00377 24.192C8.83623 23.7876 8.75 23.354 8.75 22.9163V12.0837Z"
-                            stroke="#0B0C1E"
-                            strokeWidth="2"
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                          />
-                          <path
-                            d="M5.015 20.9212C4.63125 20.7032 4.31206 20.3875 4.08988 20.0061C3.86769 19.6248 3.75042 19.1914 3.75 18.75V6.25C3.75 4.875 4.875 3.75 6.25 3.75H18.75C19.6875 3.75 20.1975 4.23125 20.625 5"
-                            stroke="#0B0C1E"
-                            strokeWidth="2"
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                          />
-                        </svg>
-                      </button>
-                    </div>
-                  </div>
-
-                  {/* Account Name */}
-                  <div className="bg-white rounded-lg px-6 py-3 border border-teal-200 ">
-                    <label className="block text-sm font-medium text-gray-600 mb-1">
-                      Account Name
-                    </label>
-                    <div className="flex items-center justify-between">
-                      <span className="font-normal text-gray-900 text-sm lg:text-base">
-                        AWAKE Campaign Initiative
-                      </span>
-                      <button
-                        onClick={() =>
-                          copyToClipboard("AWAKE Campaign Initiative")
-                        }
-                        className="hover:bg-gray-100 rounded-lg transition-colors duration-200"
-                        title="Copy account name"
-                      >
-                        <svg
-                          width="20"
-                          height="20"
-                          viewBox="0 0 30 30"
-                          fill="none"
-                          xmlns="http://www.w3.org/2000/svg"
-                        >
-                          <path
-                            d="M8.75 12.0837C8.75 11.1996 9.10123 10.3516 9.72643 9.72643C10.3516 9.10123 11.1996 8.75 12.0837 8.75H22.9163C23.354 8.75 23.7876 8.83623 24.192 9.00377C24.5965 9.1713 24.964 9.41687 25.2736 9.72643C25.5831 10.036 25.8287 10.4035 25.9962 10.808C26.1638 11.2124 26.25 11.646 26.25 12.0837V22.9163C26.25 23.354 26.1638 23.7876 25.9962 24.192C25.8287 24.5965 25.5831 24.964 25.2736 25.2736C24.964 25.5831 24.5965 25.8287 24.192 25.9962C23.7876 26.1638 23.354 26.25 22.9163 26.25H12.0837C11.646 26.25 11.2124 26.1638 10.808 25.9962C10.4035 25.8287 10.036 25.5831 9.72643 25.2736C9.41687 24.964 9.1713 24.5965 9.00377 24.192C8.83623 23.7876 8.75 23.354 8.75 22.9163V12.0837Z"
-                            stroke="#0B0C1E"
-                            strokeWidth="2"
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                          />
-                          <path
-                            d="M5.015 20.9212C4.63125 20.7032 4.31206 20.3875 4.08988 20.0061C3.86769 19.6248 3.75042 19.1914 3.75 18.75V6.25C3.75 4.875 4.875 3.75 6.25 3.75H18.75C19.6875 3.75 20.1975 4.23125 20.625 5"
-                            stroke="#0B0C1E"
-                            strokeWidth="2"
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                          />
-                        </svg>
-                      </button>
-                    </div>
-                  </div>
-
-                  {/* Account Number */}
-                  <div className="bg-white rounded-lg px-6 py-3 border border-teal-200">
-                    <label className="block text-sm font-medium text-gray-600 mb-1">
-                      Account Number
-                    </label>
-                    <div className="flex items-center justify-between">
-                      <span className="font-normal text-gray-900 text-md text-sm lg:text-base">
-                        3091234567
-                      </span>
-                      <button
-                        onClick={() => copyToClipboard("3091234567")}
-                        className="hover:bg-gray-100 rounded-lg transition-colors duration-200"
-                        title="Copy account number"
-                      >
-                        <svg
-                          width="20"
-                          height="20"
-                          viewBox="0 0 30 30"
-                          fill="none"
-                          xmlns="http://www.w3.org/2000/svg"
-                        >
-                          <path
-                            d="M8.75 12.0837C8.75 11.1996 9.10123 10.3516 9.72643 9.72643C10.3516 9.10123 11.1996 8.75 12.0837 8.75H22.9163C23.354 8.75 23.7876 8.83623 24.192 9.00377C24.5965 9.1713 24.964 9.41687 25.2736 9.72643C25.5831 10.036 25.8287 10.4035 25.9962 10.808C26.1638 11.2124 26.25 11.646 26.25 12.0837V22.9163C26.25 23.354 26.1638 23.7876 25.9962 24.192C25.8287 24.5965 25.5831 24.964 25.2736 25.2736C24.964 25.5831 24.5965 25.8287 24.192 25.9962C23.7876 26.1638 23.354 26.25 22.9163 26.25H12.0837C11.646 26.25 11.2124 26.1638 10.808 25.9962C10.4035 25.8287 10.036 25.5831 9.72643 25.2736C9.41687 24.964 9.1713 24.5965 9.00377 24.192C8.83623 23.7876 8.75 23.354 8.75 22.9163V12.0837Z"
-                            stroke="#0B0C1E"
-                            strokeWidth="2"
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                          />
-                          <path
-                            d="M5.015 20.9212C4.63125 20.7032 4.31206 20.3875 4.08988 20.0061C3.86769 19.6248 3.75042 19.1914 3.75 18.75V6.25C3.75 4.875 4.875 3.75 6.25 3.75H18.75C19.6875 3.75 20.1975 4.23125 20.625 5"
-                            stroke="#0B0C1E"
-                            strokeWidth="2"
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                          />
-                        </svg>
-                      </button>
-                    </div>
-                  </div>
-                </div>
-
-                {/* <div className="mt-6 p-4 bg-blue-50 border border-blue-200 rounded-lg">
-                  <div className="flex items-start space-x-2">
-                    <svg className="w-5 h-5 text-blue-600 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                    </svg>
-                    <div className="text-sm">
-                      <p className="text-blue-800 font-medium mb-1">Important Instructions:</p>
-                      <ul className="text-blue-700 space-y-1 list-disc list-inside">
-                        <li>Please use your full name as the transfer reference</li>
-                        <li>Send a screenshot of your transfer receipt to donations@awakecampaign.org</li>
-                        <li>You'll receive a confirmation email within 24 hours</li>
-                      </ul>
-                    </div>
-                  </div>
-                </div> */}
-              </div>
-            )}
           </div>
         </div>
       </div>
