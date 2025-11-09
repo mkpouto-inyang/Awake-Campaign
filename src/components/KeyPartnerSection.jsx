@@ -14,14 +14,20 @@ const KeyPartnerSection = () => {
         <div className="relative bg-teal-dark rounded-2xl shadow-xl max-w-4xl w-full text-center px-6 md:px-12 pb-10 md:pb-14">
           {/* Floating Logo */}
           <div className="absolute -top-12 left-1/2 transform -translate-x-1/2">
-
-            <div className="w-20 h-20 rounded-full bg-white flex items-center justify-center overflow-hidden ">
-              <img
-                src={sebecclyLogo}
-                alt="Sebeccly Logo"
-                className="w-full h-full object-cover"
-              />
-            </div>
+            <a
+              href="https://www.instagram.com/sebecclycancersupport/?hl=en"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-block"
+            >
+              <div className="w-20 h-20 rounded-full bg-white flex items-center justify-center overflow-hidden">
+                <img
+                  src={sebecclyLogo}
+                  alt="Sebeccly Logo"
+                  className="w-full h-full object-cover"
+                />
+              </div>
+            </a>
           </div>
 
           {/* Text Content */}

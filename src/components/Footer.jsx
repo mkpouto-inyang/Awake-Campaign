@@ -17,7 +17,11 @@ const Footer = () => {
           {/* AWAKE Campaign Section */}
           <div className="md:col-span-2 lg:col-span-1 lg:pr-8 ">
             <div className="flex items-center gap-2 mb-6 autoShow">
-              <img src={heart} alt="heart" className="w-6 h-6 text-orange autoShow" />
+              <img
+                src={heart}
+                alt="heart"
+                className="w-6 h-6 text-orange autoShow"
+              />
               <h3 className="text-[20px] md:text-[25px] lg:text-[30px] font-bold autoShow">
                 AWAKE Campaign
               </h3>
@@ -97,16 +101,31 @@ const Footer = () => {
               Follow Us
             </h4>
             <div className="flex gap-4 autoShow">
-              <a href="#" className="hover:opacity-80 transition-opacity">
+              <a
+                href="https://www.instagram.com/iamawakeng/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:opacity-80 transition-opacity"
+              >
                 <img src={instagram} alt="Instagram" className="w-6 h-6" />
               </a>
-              <a href="#" className="hover:opacity-80 transition-opacity">
+              <a href="" className="hover:opacity-80 transition-opacity">
                 <img src={facebook} alt="Facebook" className="w-6 h-6" />
               </a>
-              <a href="#" className="hover:opacity-80 transition-opacity">
+              <a
+                href="https://x.com/iamawakeng"
+                className="hover:opacity-80 transition-opacity"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 <img src={twitter} alt="Twitter" className="w-6 h-6" />
               </a>
-              <a href="#" className="hover:opacity-80 transition-opacity">
+              <a
+                href="https://www.tiktok.com/@iamawakeng"
+                className="hover:opacity-80 transition-opacity"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 <img src={tiktok} alt="TikTok" className="w-6 h-6" />
               </a>
             </div>
