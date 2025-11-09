@@ -23,11 +23,6 @@ const stories = [
       "I lost my elder sister to cervical cancer when she was only 39. Watching her suffer opened my eyes to how dangerous silence and stigma can be. Since then, I’ve made it my mission to speak to men and families about supporting the women in their lives to get screened and vaccinated."
   },
   {
-    name: "Chika, 35",
-    text:
-      "After watching the AWAKE documentary, I realized I hadn’t done a screening in years. I went to the nearest center the next week — thankfully, all was clear. I’ve since encouraged my friends and sisters to do the same."
-  },
-  {
     name: "Blessing, 42",
     text:
       "Cervical cancer took my mother when I was young. Joining the AWAKE campaign helped me heal and turn my pain into purpose. Now, I volunteer to spread awareness and help women access screening in rural areas."
@@ -134,7 +129,7 @@ const ShareYourStory = () => {
             </span>
           </label>
 
-          <Button type="submit" variant="primary" className="w-full">
+          <Button type="submit" variant="primary" className="w-full text-sm lg:text-base">
             Submit Story
           </Button>
         </form>
