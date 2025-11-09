@@ -73,7 +73,7 @@ const Donate = () => {
   };
 
   return (
-    <div className="max-w-7xl mx-auto px-1 py-3">
+    <div className="max-w-6xl mx-auto px-1 py-3">
       {/* Progress Section */}
       <div className="text-center mb-10 px-2">
         <p className="text-[14px] sm:text-[15px] md:text-[16px] text-gray-600 mb-10 lg:[mb-6] max-w-2xl mx-auto leading-relaxed">
@@ -99,7 +99,7 @@ const Donate = () => {
 
       {/* Payment Method Selection and Content */}
        <div className="px-2 sm:px-4 md:px-6">
-      <div className="max-w-[1140px] mx-auto space-y-4 mb-8">
+      <div className="max-w-5xl mx-auto space-y-4 mb-8">
         {/* Donation Guide Accordion */}
         <div>
           <div
@@ -181,7 +181,7 @@ const Donate = () => {
         {/* QR + Donate Button */}
         <div className="mt-8">
             <div className="bg-teal-primary h-[100px] rounded-t-lg flex justify-center items-center">
-                <h2 className="text-white font-semibold text-xl lg:text-2xl">Choose Your Donation Method</h2>
+                <h2 className="text-white font-semibold text-xl lg:text-2xl text-center">Choose Your Donation Method</h2>
             </div>
           <div className="bg-white border border-gray-300 rounded-b-xl shadow-md grid grid-cols-1 md:grid-cols-2 px-6 py-10 relative">
           
