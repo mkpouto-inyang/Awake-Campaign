@@ -1,12 +1,14 @@
 import { useState } from "react";
 import Button from "../components/Button";
+import { AnimatedProgressBar } from "../components/AnimatedProgressBar";
+
 
 const Donate = () => {
   const [selectedAmount, setSelectedAmount] = useState(7000);
   const [customAmount, setCustomAmount] = useState("");
   const [email, setEmail] = useState("");
   const [paymentMethod, setPaymentMethod] = useState("online");
-  const [currentAmount, setCurrentAmount] = useState(3200000);
+  const [currentAmount, setCurrentAmount] = useState(0);
 
   // Donation Payments
   // TODO: ADD A 'THANK YOU FOR YOUR DONATION PAGE'
@@ -21,7 +23,7 @@ const Donate = () => {
   }
 
   // Campaign progress data
-  const goalAmount = 5000000; // 5.0M goal
+  const goalAmount = 10000000; // 5.0M goal
   const progressPercentage = (currentAmount / goalAmount) * 100;
 
   // Preset donation amounts with descriptions
@@ -70,57 +72,41 @@ const Donate = () => {
   return (
     <div className="max-w-7xl mx-auto px-1 py-3">
       {/* Progress Section */}
-      <div className="text-center mb-12">
-        <p className="text-gray-600 mb-6 max-w-2xl mx-auto leading-relaxed">
+     <div className="text-center mb-10 px-2">
+  <p className="text-[14px] sm:text-[15px] md:text-[16px] text-gray-600 mb-10 lg:[mb-6] max-w-2xl mx-auto leading-relaxed">
           Every donation directly funds cervical cancer screenings, HPV
           vaccinations, and community outreach programs that save women's lives.
         </p>
-
-        {/* Progress Bar */}
-        <div className="mb-8 ">
-          <div className="flex justify-end items-center mb-2">
-            <span className="font-semibold text-gray-600">₦5.0M goal</span>
-          </div>
-          <div className="w-full bg-white rounded-full shadow-md h-3 relative">
-            <div
-              className="bg-teal-primary h-3 rounded-full transition-all duration-500"
-              style={{ width: `${progressPercentage}%` }}
-            ></div>
-            <span
-              className="absolute top-4 font-semibold text-gray-900 transition-all duration-500"
-              style={{
-                left: `${progressPercentage}%`,
-                transform: "translateX(-50%)",
-              }}
-            >
-              {formatCurrency(currentAmount)}
-            </span>
-          </div>
-        </div>
+        
+         <div className="w-[87%] max-w-6xl mx-auto autoShow">
+                {/* Progress Summary */}
+                <div className="flex justify-between items-center text-xs sm:text-sm mb-2">
+                  <span className="font-semibold text-gray-800">
+                    {formatCurrency(currentAmount)} raised
+                  </span>
+                  <span className="font-semibold text-gray-700">₦10 million goal</span>
+                </div>
+        
+                {/* Animated Progress Bar */}
+                <AnimatedProgressBar current={currentAmount} goal={goalAmount} />
+              </div>
       </div>
 
       {/* Donation Section Title */}
       <div className="text-center mb-8">
         <h2
-          className="text-xl font-bold text-gray-900 mb-5 leading-none"
-          style={{
-            fontFamily: "Outfit",
-            fontWeight: 700,
-            fontSize: "30px",
-            lineHeight: "100%",
-            letterSpacing: "0%",
-            marginTop: "80px",
-          }}
+          className="text-xl lg:text-2xl font-bold text-gray-900 mb-7 leading-none mt-[60px]"
         >
           Choose how you'd like to donate
         </h2>
-        <p className="text-sm text-gray-600">
+        {/* <p className="text-sm text-gray-600">
           Select your preferred donation method below
-        </p>
+        </p> */}
       </div>
 
       {/* Payment Method Selection and Content */}
-      <div className="p-0">
+      <div className="px-2 sm:px-4 md:px-6">
+
         {/* Payment Method Selection */}
         <div className="space-y-4 mb-8">
           {/* Quick Online Donations */}
@@ -149,27 +135,13 @@ const Donate = () => {
                   </svg>
                   <div>
                     <h3
-                      className="font-medium text-gray-900 leading-none"
-                      style={{
-                        fontFamily: "Outfit",
-                        fontWeight: 500,
-                        fontSize: "16px",
-                        lineHeight: "100%",
-                        letterSpacing: "0%",
-                      }}
+                      className="font-medium text-gray-900 leading-none text-base"
+                     
                     >
                       Quick Online Donations
                     </h3>
                     <p
-                      className="text-xs text-gray-600 mt-3 leading-none"
-                      style={{
-                        fontFamily: "Outfit",
-                        fontWeight: 400,
-                        fontSize: "12px",
-                        lineHeight: "100%",
-                        letterSpacing: "0%",
-                      }}
-                    >
+                      className="text-xs lg:text-sm text-gray-600 mt-3 leading-none" >
                       Select preset or custom amounts • Instant payment
                     </p>
                   </div>
@@ -237,7 +209,7 @@ const Donate = () => {
                       value={customAmount}
                       onChange={(e) => handleCustomAmount(e.target.value)}
                       placeholder="Enter amount"
-                      className="w-full pl-8 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-primary focus:border-teal-primary bg-white"
+                      className="w-full pl-8 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-primary focus:border-teal-primary bg-white placeholder:text-[12px]"
                     />
                   </div>
                 </div>
@@ -252,14 +224,14 @@ const Donate = () => {
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     placeholder="your.email@example.com"
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-primary focus:border-teal-primary bg-white"
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-primary focus:border-teal-primary bg-white placeholder:text-[12px]"
                     required
                   />
                 </div>
 
                 {/* Donate Button */}
                 <Button
-                  className="w-full py-4 text-base font-semibold"
+                  className="w-full py-4 text-[12px] lg:text-base font-semibold"
                   disabled={!email || (!selectedAmount && !customAmount)}
                   onClick={handleDonation}
                 >
@@ -317,14 +289,7 @@ const Donate = () => {
                       Bank Transfer
                     </h3>
                     <p
-                      className="text-xs text-gray-600 mt-3 leading-none"
-                      style={{
-                        fontFamily: "Outfit",
-                        fontWeight: 400,
-                        fontSize: "12px",
-                        lineHeight: "100%",
-                        letterSpacing: "0%",
-                      }}
+                      className="text-xs lg:text-sm text-gray-600 mt-3 leading-none"
                     >
                       Direct transfer to our account • Any amount
                     </p>
@@ -362,7 +327,7 @@ const Donate = () => {
                       Bank Name
                     </label>
                     <div className="flex items-center justify-between">
-                      <span className="font-normal text-gray-900">
+                      <span className="text-sm lg:text-base font-normal text-gray-900">
                         First Bank of Nigeria
                       </span>
                       <button
@@ -397,12 +362,12 @@ const Donate = () => {
                   </div>
 
                   {/* Account Name */}
-                  <div className="bg-white rounded-lg px-6 py-3 border border-teal-200">
+                  <div className="bg-white rounded-lg px-6 py-3 border border-teal-200 ">
                     <label className="block text-sm font-medium text-gray-600 mb-1">
                       Account Name
                     </label>
                     <div className="flex items-center justify-between">
-                      <span className="font-normal text-gray-900">
+                      <span className="font-normal text-gray-900 text-sm lg:text-base">
                         AWAKE Campaign Initiative
                       </span>
                       <button
@@ -444,7 +409,7 @@ const Donate = () => {
                       Account Number
                     </label>
                     <div className="flex items-center justify-between">
-                      <span className="font-normal text-gray-900 text-md">
+                      <span className="font-normal text-gray-900 text-md text-sm lg:text-base">
                         3091234567
                       </span>
                       <button

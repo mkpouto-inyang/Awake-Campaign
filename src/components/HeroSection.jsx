@@ -83,16 +83,16 @@ const HeroSection = () => {
           Join the Movement
         </Button> */}
         <Link to="/join-the-movement">
-  <Button
-    variant="primary"
-    className="
+          <Button
+            variant="primary"
+            className="
       text-xs smd:text-sm md:text-base
       px-6 md:px-8 lg:px-10
       py-2 lg:py-3 rounded-[6px] "
-  >
-    Join the Movement
-  </Button>
-</Link>
+          >
+            Join the Movement
+          </Button>
+        </Link>
       </div>
 
       <div className=" animate-slide-up w-[87%] max-w-6xl h-[300px] sm:h-[250px] md:h-[400px] lg:h-[550px] xl:h-[700px] bg-black rounded-2xl lg:rounded-3xl mx-auto shadow-2xl "></div>
