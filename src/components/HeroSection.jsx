@@ -8,7 +8,7 @@ import { AnimatedProgressBar } from "./AnimatedProgressBar";
 import { Link } from "react-router-dom";
 
 const HeroSection = () => {
-  const [currentAmount, setCurrentAmount] = useState(800000);
+  const [currentAmount, setCurrentAmount] = useState(0);
 
   // Campaign progress data
   const goalAmount = 10000000;

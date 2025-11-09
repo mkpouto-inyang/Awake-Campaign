@@ -15,7 +15,7 @@ const stories = [
   {
     name: "Anonymous",
     text:
-      "When we heard about the AWAKE Challenge, our student group created a street campaign to talk to women about the HPV vaccine. In just one week, we reached over 1,000 people with information that could save lives. We are proof that young people can spark big change."
+      "Before hearing about the Awake campaign, I had never heard about cervical cancer at all. This initiative has opened my eyes to being more cautious of my health"
   },
   {
     name: "Daniel, 28",

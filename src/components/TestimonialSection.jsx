@@ -3,6 +3,7 @@ import { Pagination } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/pagination";
 import RightArrow from "../assets/icons/RightArrow.svg";
+import { Link } from "react-router-dom";
 
 import Button from "./Button";
 
@@ -13,12 +14,12 @@ const testimonials = [
     age: 54,
   },
   {
-    quote: `“When we heard about the AWAKE Challenge, our student group created a street campaign to talk to women about the HPV vaccine. In just one week, we reached over 1,000 people with information that could save lives. We are proof that young people can spark big change.”`,
+    quote: `Before hearing about the Awake campaign, I had never heard about cervical cancer at all. This initiative has opened my eyes to being more cautious of my health”`,
     author: "Anonymous",
     age: null,
   },
   {
-    quote: `“I lost my elder sister to cervical cancer when she was only 39. Watching her suffer opened my eyes to how dangerous silence and stigma can be. Since then, I’ve made it my mission to speak to men and families about supporting the women in their lives to get screened and vaccinated. Cervical cancer is not just a women’s issue — it’s a family issue, and we all have a role to play.”`,
+    quote: `“I lost my elder sister to cervical cancer when she was only 39. Watching her suffer opened my eyes to how dangerous silence and stigma can be. Since then, I’ve made it my mission to speak to men and families about supporting the women in their lives to get screened and vaccinated. Cervical cancer is not just a women’s issue. it’s a family issue, and we all have a role to play.”`,
     author: "Daniel",
     age: 28,
   },
@@ -88,17 +89,19 @@ const TestimonialSection = () => {
       </div>
 
       <div className="flex justify-center mt-10 mb-20 px-12 autoShow">
-        <Button
-          variant="orangeOutline"
-          className="flex items-center text-[12px] md:text-[14px] lg:text-[16px] font-normal px-2 py-2 sm:px-6 sm:py-3 gap-2 w-[200px] md:w-[300px] lg:w-[350px]"
-        >
-          Read More Stories
-          <img
-            src={RightArrow}
-            alt="Right Arrow"
-            className="w-3 h-3 md:w-4 md:h-4"
-          />
-        </Button>
+        <Link to="/join-the-movement/share-your-story">
+          <Button
+            variant="orangeOutline"
+            className="flex items-center text-[12px] md:text-[14px] lg:text-[16px] font-normal px-2 py-2 sm:px-6 sm:py-3 gap-2 w-[200px] md:w-[300px] lg:w-[350px]"
+          >
+            Read More Stories
+            <img
+              src={RightArrow}
+              alt="Right Arrow"
+              className="w-3 h-3 md:w-4 md:h-4"
+            />
+          </Button>
+        </Link>
       </div>
     </section>
   );

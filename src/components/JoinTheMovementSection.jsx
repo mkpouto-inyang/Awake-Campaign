@@ -59,8 +59,7 @@ const JoinTheMovementSection = () => {
                   Winner gets ₦ 200,000
                 </p> */}
                 <p className="text-[#4A5565] text-sm lg:text-base text-center">
-                  Create a mini project to spread cervical cancer awareness in
-                  your community, incorporating the AWAKE film.
+                  Join the Awake challenge, to create impact in your community, and stand a chance to win awesome prizes. Details will be shared soon.
                 </p>
               </div>
 

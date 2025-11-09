@@ -85,16 +85,16 @@ const Footer = () => {
                   href="mailto:info@awakecampaign.com"
                   className="text-[12px] md:text-[14px] lg:text-[16px] text-text-grey-light hover:text-white transition-colors autoShow"
                 >
-                  info@awakecampaign.com
+                  awakecampaign@outlook.com
                 </a>
               </div>
-              <div className="flex items-center gap-3">
+              {/* <div className="flex items-center gap-3">
                 <img src={phone} alt="phone" className="w-5 h-5 autoShow" />
                 <div className="text-[12px] md:text-[14px] lg:text-[16px] text-text-grey-light autoShow">
                   <div className="autoShow">08022298713,</div>
                   <div className="autoShow">08022298713</div>
                 </div>
-              </div>
+              </div> */}
             </div>
 
             <h4 className="text-[14px] md:text-[16px] lg:text-[18px] font-bold mb-4 autoShow">
