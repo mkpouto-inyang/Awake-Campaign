@@ -34,8 +34,7 @@ const ContactPage = () => {
   return (
     <section className=" px-4 md:px-6 lg:px-8 py-[40px] md:py-[80px] max-w-6xl mx-auto">
       
-
-      <div className="flex flex-col md:flex-row rounded-lg overflow-hidden mb-[200px] relative">
+      <div className="flex flex-col md:flex-row rounded-lg overflow-hidden mb-[200px] relative animate-slide-up">
         
         {showToast && (
         <div className="absolute top-4 left-1/2 transform -translate-x-1/2 bg-teal-100 text-black px-6 py-3 rounded shadow-lg z-50 animate-fade-in-out text-sm w-full md:w-fit">

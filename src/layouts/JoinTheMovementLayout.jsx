@@ -10,7 +10,7 @@ const JoinTheMovementLayout = () => {
 
 
   return (
-    <div className="max-w-7xl mx-auto px-4 pb-10 py-[40px] lg:py-[80px]">
+    <div className="max-w-7xl mx-auto px-4 pb-10 py-[40px] lg:py-[80px] animate-slide-up">
       {/* Centered Heading */}
       <h1 className="text-2xl md:text-4xl lg:text-6xl font-bold text-gray-900 leading-tight text-center mb-[40px]">
         Join <span className="text-teal-primary">the Movement</span>

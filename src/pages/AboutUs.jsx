@@ -35,7 +35,7 @@ const AboutUs = () => {
 
   return (
     <section className="px-4 md:px-8 py-[50px] lg:py-[100px] max-w-6xl mx-auto">
-      <div className="bg-white shadow-[0_8px_24px_rgba(0,0,0,0.08)] rounded-xl overflow-hidden flex flex-col md:flex-row mb-14">
+      <div className="bg-white shadow-[0_8px_24px_rgba(0,0,0,0.08)] rounded-xl overflow-hidden flex flex-col md:flex-row mb-14 animate-slide-up">
 
           <div className="bg-white rounded-xl overflow-hidden shadow-md flex flex-col md:flex-row w-full">
             {/* Image */}
@@ -65,7 +65,7 @@ const AboutUs = () => {
         </div>
 
       {/* Meet the Team Heading */}
-      <div className="text-center mb-10">
+      <div className="text-center mb-10 animate-slide-up">
         <h2 className="text-[28px] md:text-[36px] lg:text-[60px] font-bold text-blue-dark">
           Meet <span className="text-teal-primary">the Team</span>
         </h2>
@@ -90,7 +90,7 @@ const AboutUs = () => {
       >
         {team.map((member, index) => (
           <SwiperSlide key={index}>
-            <div className="text-center mb-10 px-6 py-8 bg-white rounded-lg shadow-md">
+            <div className="text-center mb-10 px-6 py-8 bg-white rounded-lg shadow-md animate-slide-up">
               <div className="w-28 h-28 md:w-32 md:h-32 rounded-full overflow-hidden mx-auto mb-4">
                 <img
                   src={member.image}
