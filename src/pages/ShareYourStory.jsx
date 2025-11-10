@@ -128,47 +128,6 @@ const ShareYourStory = () => {
         </div>
       )}
 
-      {/* Story Submission Form */}
-      {/* <div className="bg-white shadow-lg p-6 rounded-xl mb-12">
-        <h2 className="text-xl font-semibold text-blue-dark mb-4">
-          Share your own story
-        </h2>
-        <form onSubmit={handleSubmit} className="space-y-4">
-          <input
-            type="text"
-            name="name"
-            value={formData.name}
-            onChange={handleChange}
-            placeholder="Your name (or Anonymous)"
-            className="w-full px-4 py-2 border border-gray-300 rounded-md text-sm"
-          />
-          <textarea
-            name="story"
-            value={formData.story}
-            onChange={handleChange}
-            rows="5"
-            placeholder="Tell us your story..."
-            className="w-full px-4 py-2 border border-gray-300 rounded-md text-sm"
-          ></textarea>
-
-          <label className="flex items-start gap-2 text-sm text-gray-700">
-            <input
-              type="checkbox"
-              required
-              className="mt-1 accent-teal-primary"
-            />
-            <span>
-              I consent to my story being featured on AWAKE’s social media and
-              other campaign platforms.
-            </span>
-          </label>
-
-          <Button type="submit" variant="primary" className="w-full text-sm lg:text-base">
-            Submit Story
-          </Button>
-        </form>
-      </div> */}
-
       <div className="bg-white shadow-lg p-6 rounded-xl mb-12 relative">
         {showToast && (
           <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-teal-100 text-black px-6 py-3 rounded shadow-lg z-50 animate-fade-in-out">
