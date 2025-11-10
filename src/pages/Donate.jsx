@@ -32,11 +32,11 @@ const Donate = () => {
   // Preset donation amounts with descriptions
   const donationOptions = [
     { amount: 7000, description: "1 cervical cancer screening" },
-    { amount: 15000, description: "2 cervical cancer screenings" },
-    { amount: 135000, description: "One dose of HPV vaccine" },
+    { amount: 14000, description: "2 cervical cancer screenings" },
+    { amount: 46500, description: "A full HPV dose cycle" },
     { amount: 700000, description: "Screen 100 women at a tour" },
-    { amount: 6700000, description: "50 free vaccines" },
-    { amount: 10000000, description: "Fund full outreach tour" },
+    { amount: 2325000, description: "50 free vaccines" },
+    { amount: 7000000, description: "Fund full outreach tour" },
   ];
 
   const handleAmountSelect = (amount) => {
