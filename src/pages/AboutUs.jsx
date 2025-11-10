@@ -3,66 +3,70 @@ import { Pagination } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/pagination";
 
-import teamImage from "../assets/icons/teamMemberImage.svg";
-import campaignPoster from "../assets/static-images/Awake-poster.jpeg"
+import IreBelles from "../assets/icons/teamMemberImage.svg";
+import MkImg from "../assets/static-images/Mk.jpg"
+import OluchiImg from "../assets/static-images/Oluchiii.jpg"
+import FathiaImg from "../assets/static-images/Fathiaaa.jpg"
+import campaignPoster from "../assets/static-images/Awake-poster.jpeg";
 
 const AboutUs = () => {
   const team = [
+     {
+      name: "Ire Belles",
+      role: "Campaign Lead/ Filmmaker",
+      image: IreBelles,
+    },
+    {
+      name: "Fathia Salauddin",
+      role: "Strategy",
+      image: FathiaImg,
+    },
     {
       name: "Mkpouto Inyang",
-      role: "Campaign strategist / the baddest",
-      image: teamImage,
+      role: "Web Development/ strategy",
+      image: MkImg,
     },
-    {
-      name: "Ire Belles",
-      role: "Founder & Filmmaker",
-      image: teamImage,
-    },
-    {
-      name: "Sebbecly Advocate",
-      role: "Health Advocacy Lead",
-      image: teamImage,
-    },
-    {
-      name: "Chinedu Okafor",
-      role: "Community Mobilizer",
-      image: teamImage,
-    },
+     {
+      name: "Oluchi Offor",
+      role: "Social Media Management",
+      image: OluchiImg,
+    }
   ];
 
   return (
-    <section className="px-4 md:px-8 py-[100px] max-w-6xl mx-auto">
-      {/* About Content */}
-      <div className="bg-white shadow-[0_8px_24px_rgba(0,0,0,0.08)] rounded-xl overflow-hidden flex flex-col md:flex-row mb-12">
-      {/* Poster Section (30%) */}
-      <div className="w-full md:w-[40%] h-64 md:h-auto">
-        <img
-          src={campaignPoster}
-          alt="Campaign Poster"
-          className="w-full"
-        />
-      </div>
+    <section className="px-4 md:px-8 py-[50px] lg:py-[100px] max-w-6xl mx-auto">
+      <div className="bg-white shadow-[0_8px_24px_rgba(0,0,0,0.08)] rounded-xl overflow-hidden flex flex-col md:flex-row mb-14">
 
-      {/* Text Section (70%) */}
-      <div className="w-full md:w-[70%] p-6 md:p-8 flex flex-col justify-center">
-        <p className="whitespace-pre-line text-sm md:text-base text-gray-800 leading-relaxed">
-          {`AWAKE is a youth-led movement tackling cervical cancer through awareness, action, and advocacy.
+          <div className="bg-white rounded-xl overflow-hidden shadow-md flex flex-col md:flex-row w-full">
+            {/* Image */}
+            <div className="w-full md:w-[40%]">
+              <img
+                src={campaignPoster}
+                alt="Poster"
+                className="w-full h-full object-cover block rounded-t-xl md:rounded-l-xl md:rounded-tr-none"
+              />
+            </div>
 
-It was founded by Nigerian filmmaker and spoken word artist Ireayoluwaintemi Olota (Ire Belles) after a documentary project exposed the silent crisis of cervical cancer in Nigeria.
+            {/* Text */}
+            <div className="w-full md:w-[60%] p-6 md:p-8">
+              <p className="text-sm md:text-base text-gray-800 leading-relaxed whitespace-pre-line">
+                {`AWAKE is a youth-led movement tackling cervical cancer in Nigeria through film, advocacy, and action.
 
-In partnership with Sebeccly Cancer Care and powered by creatives, health workers, and young advocates, AWAKE uses storytelling, film, and grassroots outreach to bring cervical health education to the mainstream.
+                It was founded by Nigerian filmmaker and spoken word artist Ireayooluwanitemi Olota,(Ire Belles) after a documentary project exposed the silent crisis of cervical cancer in Nigeria.
 
-Through screenings, campus events, social media, and partnerships with health organizations, AWAKE promotes early testing and vaccination, helping women across Nigeria take charge of their health.
+                In partnership with Sebeccly Cancer Care and powered by creatives, health workers, and young advocates, AWAKE uses storytelling, and community outreach to bring cervical health education to the mainstream.
 
-It’s more than awareness — it’s about saving lives through information, creativity, and collective effort.`}
-
-        </p>
-      </div>
-    </div>
+                Our goals are to educate 1 million Nigerians through documentary screenings and media, offer 1000 free cervical cancer screenings and 500 HPV vaccines and ultimately inspire collective advocacy against cervical cancer in Nigeria. 
+                
+                It’s more than awareness — it’s a movement to protect the future of women in Nigeria and ignite a generation that refuses to stay silent. We are AWAKE..`}
+              </p>
+            </div>
+          </div>
+        </div>
 
       {/* Meet the Team Heading */}
-      <div className="text-center mb-10 ">
-        <h2 className="text-[28px] md:text-[36px] font-bold text-blue-dark">
+      <div className="text-center mb-10">
+        <h2 className="text-[28px] md:text-[36px] lg:text-[60px] font-bold text-blue-dark">
           Meet <span className="text-teal-primary">the Team</span>
         </h2>
       </div>

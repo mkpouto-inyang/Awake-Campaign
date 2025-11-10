@@ -95,7 +95,16 @@ const HeroSection = () => {
         </Link>
       </div>
 
-      <div className=" animate-slide-up w-[87%] max-w-6xl h-[300px] sm:h-[250px] md:h-[400px] lg:h-[550px] xl:h-[700px] bg-black rounded-2xl lg:rounded-3xl mx-auto shadow-2xl "></div>
+      <div className="animate-slide-up w-[87%] max-w-6xl aspect-video bg-black rounded-2xl lg:rounded-3xl mx-auto shadow-2xl overflow-hidden">
+        <iframe
+          className="w-full h-full"
+          src="https://www.youtube.com/embed/AcGEG56ZJOg?autoplay=1&mute=1&rel=0&playsinline=1"
+          title="AWAKE Trailer"
+          frameBorder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowFullScreen
+        ></iframe>
+      </div>
 
       <div className="px-5 mb-8 lg:mb-20 mt-1 animate-slide-up">
         <p className="text-[12px] smd:text-[13px] md:text-[14px] lg:text-[16px] xl:text-[18px] max-w-7xl mx-auto text-teal-dark leading-relaxed text-center mt-6 lg:mt-4">
