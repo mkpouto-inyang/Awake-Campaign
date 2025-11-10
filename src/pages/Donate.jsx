@@ -276,7 +276,7 @@ const Donate = () => {
                 </div>
 
                 {/* Donate Button Option */}
-                <div className="flex flex-col items-center text-center">
+                <div className="flex flex-col items-center text-center justify-center">
                   <div className="bg-[#D5F5EC] rounded-full p-3 mb-4">
                     <img src={donateHeart} alt="Donate" className="w-5 h-5" />
                   </div>
@@ -316,7 +316,6 @@ const Donate = () => {
                   OR
                 </span>
               </div>
-
               {/* Bank Transfer Option */}
               <div className="max-w-md mx-auto text-center space-y-4">
                 <p className="text-sm text-gray-500">
