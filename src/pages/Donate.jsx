@@ -12,6 +12,13 @@ const Donate = () => {
   const [email, setEmail] = useState("");
   const [paymentMethod, setPaymentMethod] = useState("online");
   const [currentAmount, setCurrentAmount] = useState(0);
+    const [copied, setCopied] = useState("");
+
+  const handleCopy = (label, value) => {
+    navigator.clipboard.writeText(value);
+    setCopied(label);
+    setTimeout(() => setCopied(""), 1500);
+  };
 
   // Donation Payments
   // TODO: ADD A 'THANK YOU FOR YOUR DONATION PAGE'
@@ -26,7 +33,7 @@ const Donate = () => {
   };
 
   // Campaign progress data
-  const goalAmount = 10000000; // 5.0M goal
+  const goalAmount = 50000000; // 5.0M goal
   const progressPercentage = (currentAmount / goalAmount) * 100;
 
   // Preset donation amounts with descriptions
@@ -88,7 +95,7 @@ const Donate = () => {
               {formatCurrency(currentAmount)} raised
             </span>
             <span className="font-semibold text-gray-700">
-              ₦10 million goal
+              ₦50 million goal
             </span>
           </div>
 
@@ -179,17 +186,15 @@ const Donate = () => {
         </div>
 
         {/* QR + Donate Button */}
-        <div className="mt-8">
+        {/* <div className="mt-8 ">
             <div className="bg-teal-primary h-[100px] rounded-t-lg flex justify-center items-center">
                 <h2 className="text-white font-semibold text-xl lg:text-2xl text-center">Choose Your Donation Method</h2>
             </div>
-          <div className="bg-white border border-gray-300 rounded-b-xl shadow-md grid grid-cols-1 md:grid-cols-2 px-6 py-10 relative">
-          
-
-            {/* Divider */}
+          <div className=" border border-gray-300 rounded-b-xl shadow-md grid grid-cols-1 md:grid-cols-2 px-6 py-10 relative ">
+            
             <div className="hidden md:block absolute top-10 bottom-10 left-1/2 w-px bg-gray-300" />
 
-            {/* QR Option */}
+            
             <div className="flex flex-col items-center justify-center px-4 py-6 md:pr-8">
               <img src={qrIcon} alt="QR Icon" className="w-5 h-5 mb-2" />
               <h3 className="font-semibold text-gray-800 mb-3 text-lg">
@@ -205,7 +210,7 @@ const Donate = () => {
               </p>
             </div>
 
-            {/* Donate Button Option */}
+           
             <div className="flex flex-col items-center justify-center px-4 py-6 md:pl-8">
               <div className="bg-[#D5F5EC] rounded-full p-3 mb-4">
                 <img src={donateHeart} alt="Donate" className="w-5 h-5" />
@@ -239,7 +244,125 @@ const Donate = () => {
               <p className="text-sm text-gray-400 mt-3">Secured by <span className="text-[#29003D]">Payaza</span> </p>
             </div>
           </div>
+
+          
+        </div> */}
+
+        <div className="mt-8">
+  {/* Section Title */}
+  <div className="bg-teal-primary h-[100px] rounded-t-lg flex justify-center items-center">
+    <h2 className="text-white font-semibold text-xl lg:text-2xl text-center">
+      Choose Your Donation Method
+    </h2>
+  </div>
+
+  {/* Main Options: QR and Button */}
+  <div className="border border-gray-300 rounded-b-xl shadow-md px-6 py-10">
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+      {/* QR Code Option */}
+      <div className="flex flex-col items-center text-center">
+        <img src={qrIcon} alt="QR Icon" className="w-5 h-5 mb-2" />
+        <h3 className="font-semibold text-gray-800 mb-3 text-lg">Scan to Pay</h3>
+        <img
+          src={CustomQR}
+          alt="Donate QR"
+          className="w-[220px] h-[220px] object-contain mb-3"
+        />
+        <p className="text-sm text-gray-500">Open your camera app to scan</p>
+      </div>
+
+      {/* Donate Button Option */}
+      <div className="flex flex-col items-center text-center">
+        <div className="bg-[#D5F5EC] rounded-full p-3 mb-4">
+          <img src={donateHeart} alt="Donate" className="w-5 h-5" />
         </div>
+        <h3 className="text-black font-semibold text-lg mb-2">Click to Donate</h3>
+        <p className="text-sm text-gray-500 mb-4">
+          You'll be redirected to our secure payment page
+        </p>
+        <a
+          href="https://business.payaza.africa/pay/theawakecampaign"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <Button
+            size="sm"
+            variant="primary"
+            className="text-sm py-3 px-6 flex items-center gap-2 mt-4"
+          >
+            <img
+              src={heartIcon}
+              alt="heart icon"
+              className="w-4 h-4 horizontal-spin"
+            />
+            Donate Now
+          </Button>
+        </a>
+        <p className="text-sm text-gray-400 mt-3">
+          Secured by <span className="text-[#29003D]">Payaza</span>
+        </p>
+      </div>
+    </div>
+
+    {/* Divider */}
+    <div className="my-10 border-t border-gray-200 text-center">
+      <span className="relative top-[-14px] px-4 bg-white text-gray-400 text-sm">
+        OR
+      </span>
+    </div>
+
+    {/* Bank Transfer Option */}
+    <div className="max-w-md mx-auto text-center space-y-4">
+      <p className="text-sm text-gray-500">Prefer bank transfer? Copy the details below</p>
+
+    <div className="bg-gray-50 border border-gray-100 rounded-lg px-4 py-3 text-left text-sm space-y-4">
+  {/* Account Name */}
+  <div className="flex items-center justify-between">
+    <div>
+      <span className="block text-gray-400">Account Name</span>
+      <span className="font-medium text-gray-700">Belles Productions</span>
+    </div>
+    <button
+      onClick={() => handleCopy("accountName", "Belles Productions")}
+      className="text-xs text-teal-primary hover:underline"
+    >
+      {copied === "accountName" ? "Copied!" : "Copy"}
+    </button>
+  </div>
+
+  {/* Account Number */}
+  <div className="flex items-center justify-between">
+    <div>
+      <span className="block text-gray-400">Account Number</span>
+      <span className="font-medium text-gray-700">1308545176</span>
+    </div>
+    <button
+      onClick={() => handleCopy("accountNumber", "1308545176")}
+      className="text-xs text-teal-primary hover:underline"
+    >
+      {copied === "accountNumber" ? "Copied!" : "Copy"}
+    </button>
+  </div>
+
+  {/* Bank Name */}
+  <div className="flex items-center justify-between">
+    <div>
+      <span className="block text-gray-400">Bank Name</span>
+      <span className="font-medium text-gray-700">Providus Bank</span>
+    </div>
+    <button
+      onClick={() => handleCopy("bankName", "Providus Bank")}
+      className="text-xs text-teal-primary hover:underline"
+    >
+      {copied === "bankName" ? "Copied!" : "Copy"}
+    </button>
+  </div>
+</div>
+
+    </div>
+  </div>
+</div>
+
       </div>
     </div>
     </div>

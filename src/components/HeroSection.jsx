@@ -11,7 +11,7 @@ const HeroSection = () => {
   const [currentAmount, setCurrentAmount] = useState(0);
 
   // Campaign progress data
-  const goalAmount = 10000000;
+  const goalAmount = 50000000;
   const progressPercentage = (currentAmount / goalAmount) * 100;
 
   const formatCurrency = (amount) => {
@@ -173,7 +173,7 @@ const HeroSection = () => {
           <span className="font-semibold text-gray-800">
             {formatCurrency(currentAmount)} raised
           </span>
-          <span className="font-semibold text-gray-700">₦10 million goal</span>
+          <span className="font-semibold text-gray-700">₦50 million goal</span>
         </div>
 
         {/* Animated Progress Bar */}
