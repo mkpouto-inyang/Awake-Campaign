@@ -2,7 +2,6 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/pagination";
-
 import IreBelles from "../assets/icons/teamMemberImage.svg";
 import MkImg from "../assets/static-images/Mk.jpg"
 import OluchiImg from "../assets/static-images/Oluchiii.jpg"
@@ -11,7 +10,7 @@ import ChauntelleImg from "../assets/static-images/Chauntelle.jpg"
 import JoanImg from "../assets/static-images/Joan.jpg"
 import MaryImg from "../assets/static-images/Mary.jpg"
 import Chuka from "../assets/static-images/Chuka.jpg"
-import JohnMark from "../assets/static-images/John-Mark.jpg"
+import JohnMark from "../assets/static-images/johnmark.jpg"
 import Kamby from "../assets/static-images/kambilinachukwu.jpg"
 import Inyene from "../assets/static-images/inyene.jpg"
 import Precious from "../assets/static-images/Precious.jpg"
@@ -66,11 +65,11 @@ const AboutUs = () => {
       role: "Medical Personnel",
       image: MaryImg,
     }, 
-    // {
-    //   name: "Johnmark Nwaeri",
-    //   role: "Outreach coordinator",
-    //   image: JohnMark,
-    // }, 
+    {
+      name: "Johnmark Nwaeri",
+      role: "Outreach coordinator",
+      image: JohnMark,
+    }, 
     {
       name: "Inyene Akpata",
       role: "Influencer Partnerships",
