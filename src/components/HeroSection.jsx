@@ -118,7 +118,7 @@ const HeroSection = () => {
         <div className="hidden md:flex p-6 sm:p-8 md:p-10 shadow-2xl bg-white justify-around items-center gap-6 rounded-[12px] mb-[60px]">
           <div className="text-center">
             <p className="text-orange text-2xl lg:text-3xl font-semibold">
-              <CountUpNumber target={150} />+
+              <CountUpNumber target={285} />+
             </p>
             <p className="text-sm lg:text-base text-blue-dark">
               People Educated
@@ -146,7 +146,7 @@ const HeroSection = () => {
         <div className="flex flex-col gap-6 md:hidden mt-4 mb-10">
           <div className="p-5 shadow-md bg-white rounded-[8px] text-center">
             <p className="text-orange text-[20px] font-semibold mb-1">
-              <CountUpNumber target={150} />+
+              <CountUpNumber target={285} />+
             </p>
             <p className="text-[12px] text-blue-dark">People Educated</p>
           </div>
