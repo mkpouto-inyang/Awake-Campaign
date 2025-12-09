@@ -7,6 +7,16 @@ import IreBelles from "../assets/icons/teamMemberImage.svg";
 import MkImg from "../assets/static-images/Mk.jpg"
 import OluchiImg from "../assets/static-images/Oluchiii.jpg"
 import FathiaImg from "../assets/static-images/Fathiaaa.jpg"
+import ChauntelleImg from "../assets/static-images/Chauntelle.jpg"
+import JoanImg from "../assets/static-images/Joan.jpg"
+import MaryImg from "../assets/static-images/Mary.jpg"
+import Chuka from "../assets/static-images/Chuka.jpg"
+import JohnMark from "../assets/static-images/John-Mark.jpg"
+import Kamby from "../assets/static-images/kambilinachukwu.jpg"
+import Inyene from "../assets/static-images/inyene.jpg"
+import Precious from "../assets/static-images/Precious.jpg"
+import Julius from "../assets/static-images/Julius.jpg"
+
 import campaignPoster from "../assets/static-images/Awake-poster.jpeg";
 
 const AboutUs = () => {
@@ -17,20 +27,65 @@ const AboutUs = () => {
       image: IreBelles,
     },
     {
-      name: "Fathia Salauddin",
-      role: "Strategy",
-      image: FathiaImg,
+      name: "Mkpouto Inyang",
+      role: "Deputy Campaign Lead/ Web developer",
+      image: MkImg,
     },
     {
-      name: "Mkpouto Inyang",
-      role: "Web Development/ strategy",
-      image: MkImg,
+      name: "Fathia Salauddin",
+      role: "Partnerships/Strategy",
+      image: FathiaImg,
     },
      {
       name: "Oluchi Offor",
-      role: "Social Media Management",
+      role: "Social Media Manager",
       image: OluchiImg,
-    }
+    },
+     {
+      name: "Chauntelle Ejiogu",
+      role: "Public Relations",
+      image: ChauntelleImg,
+    },
+    {
+      name: "Chuka Osabiku",
+      role: "Media Professional",
+      image: Chuka,
+    }, 
+      {
+      name: "Joan Omovon",
+      role: "Writer",
+      image: JoanImg,
+    }, 
+    {
+      name: "Kambilinachukwu Undeani",
+      role: "Brand Partnerships",
+      image: Kamby,
+    }, 
+    {
+      name: "Mary Boluwatife",
+      role: "Medical Personnel",
+      image: MaryImg,
+    }, 
+    // {
+    //   name: "Johnmark Nwaeri",
+    //   role: "Outreach coordinator",
+    //   image: JohnMark,
+    // }, 
+    {
+      name: "Inyene Akpata",
+      role: "Influencer Partnerships",
+      image: Inyene,
+    }, 
+    {
+      name: "Precious Eke",
+      role: "Outreach Team Lead",
+      image: Precious,
+    },
+      {
+      name: "Julius Adekunle",
+      role: "Media Professional",
+      image: Julius,
+    }, 
   ];
 
   return (

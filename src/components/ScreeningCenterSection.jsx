@@ -51,7 +51,7 @@ const ScreeningCentres = () => {
 
   const getNearbyPlaces = async ({ lat, lng }) => {
     try {
-      const res = await fetch("http://localhost:3001/api/nearby", {
+      const res = await fetch("https://awake-server.onrender.com/api/nearby", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -90,7 +90,7 @@ const ScreeningCentres = () => {
     }
 
     try {
-      const res = await fetch("http://localhost:3001/api/autocomplete", {
+      const res = await fetch("https://awake-server.onrender.com/api/autocomplete", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
