@@ -7,11 +7,13 @@ import donateHeart from "../assets/icons/donate-heart.svg";
 import heartIcon from "../assets/icons/heart.svg";
 
 const Donate = () => {
+  const RAISED_AMOUNT = 2000000;
+
   const [selectedAmount, setSelectedAmount] = useState(7000);
   const [customAmount, setCustomAmount] = useState("");
   const [email, setEmail] = useState("");
   const [paymentMethod, setPaymentMethod] = useState("online");
-  const [currentAmount, setCurrentAmount] = useState(0);
+  const [currentAmount, setCurrentAmount] = useState(RAISED_AMOUNT);
   const [copied, setCopied] = useState("");
 
   const handleCopy = (label, value) => {
@@ -33,17 +35,17 @@ const Donate = () => {
   };
 
   // Campaign progress data
-  const goalAmount = 50000000; // 5.0M goal
+  const goalAmount = 20000000; // 5.0M goal
   const progressPercentage = (currentAmount / goalAmount) * 100;
 
   // Preset donation amounts with descriptions
   const donationOptions = [
     { amount: 7000, description: "1 cervical cancer screening" },
     { amount: 14000, description: "2 cervical cancer screenings" },
-    { amount: 46500, description: "A full HPV dose cycle" },
+    { amount: 32000, description: "A full HPV dose cycle" },
     { amount: 700000, description: "Screen 100 women at a tour" },
-    { amount: 2325000, description: "50 free vaccines" },
-    { amount: 7000000, description: "Fund full outreach tour" },
+    { amount: 1600000, description: "50 full-dose vaccines" },
+    { amount: 6000000, description: "Fund full outreach tour" },
   ];
 
   const handleAmountSelect = (amount) => {
@@ -95,7 +97,7 @@ const Donate = () => {
               {formatCurrency(currentAmount)} raised
             </span>
             <span className="font-semibold text-gray-700">
-              ₦50 million goal
+              ₦20 million goal
             </span>
           </div>
 

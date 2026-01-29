@@ -29,6 +29,7 @@ const ShareYourStory = () => {
   const [formData, setFormData] = useState({
     name: "",
     age: "",
+    email: "",
     story: "",
     consent: false,
   });
@@ -46,7 +47,7 @@ const ShareYourStory = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const { name, age, story, consent } = formData;
+    const { name, age, email, story, consent } = formData;
 
     try {
       const res = await fetch("https://formspree.io/f/mnnlalwo", {
@@ -57,6 +58,7 @@ const ShareYourStory = () => {
         body: JSON.stringify({
           name,
           age,
+          email,
           story,
           consent: consent ? "Yes" : "No",
           _subject: "New Story Submission",
@@ -66,7 +68,7 @@ const ShareYourStory = () => {
       if (res.ok) {
         setShowToast(true);
         setTimeout(() => setShowToast(false), 4000); // hide after 4s
-        setFormData({ name: "", age: "", story: "", consent: false });
+        setFormData({ name: "", age: "",  email: "", story: "", consent: false });
       } else {
         alert("Submission failed. Please try again.");
       }
@@ -156,6 +158,16 @@ const ShareYourStory = () => {
             onChange={handleChange}
             placeholder="Your age (optional)"
             className="w-full px-4 py-2 border border-gray-300 rounded-md text-sm"
+          />
+
+          <input
+            type="email"
+            name="email"
+            value={formData.email}
+            onChange={handleChange}
+            placeholder="Your email (required)"
+            className="w-full px-4 py-2 border border-gray-300 rounded-md text-sm"
+            required
           />
 
           <textarea

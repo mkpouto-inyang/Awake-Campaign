@@ -8,10 +8,11 @@ import { AnimatedProgressBar } from "./AnimatedProgressBar";
 import { Link } from "react-router-dom";
 
 const HeroSection = () => {
-  const [currentAmount, setCurrentAmount] = useState(0);
+const RAISED_AMOUNT = 2000000;
+const [currentAmount, setCurrentAmount] = useState(RAISED_AMOUNT);
 
   // Campaign progress data
-  const goalAmount = 50000000;
+  const goalAmount = 20000000;
   const progressPercentage = (currentAmount / goalAmount) * 100;
 
   const formatCurrency = (amount) => {
@@ -118,7 +119,7 @@ const HeroSection = () => {
         <div className="hidden md:flex p-6 sm:p-8 md:p-10 shadow-2xl bg-white justify-around items-center gap-6 rounded-[12px] mb-[60px]">
           <div className="text-center">
             <p className="text-orange text-2xl lg:text-3xl font-semibold">
-              <CountUpNumber target={285} />+
+              <CountUpNumber target={65} />k+
             </p>
             <p className="text-sm lg:text-base text-blue-dark">
               People Educated
@@ -146,7 +147,7 @@ const HeroSection = () => {
         <div className="flex flex-col gap-6 md:hidden mt-4 mb-10">
           <div className="p-5 shadow-md bg-white rounded-[8px] text-center">
             <p className="text-orange text-[20px] font-semibold mb-1">
-              <CountUpNumber target={285} />+
+              <CountUpNumber target={65} />k+
             </p>
             <p className="text-[12px] text-blue-dark">People Educated</p>
           </div>
@@ -173,7 +174,7 @@ const HeroSection = () => {
           <span className="font-semibold text-gray-800">
             {formatCurrency(currentAmount)} raised
           </span>
-          <span className="font-semibold text-gray-700">₦50 million goal</span>
+          <span className="font-semibold text-gray-700">₦20 million goal</span>
         </div>
 
         {/* Animated Progress Bar */}
