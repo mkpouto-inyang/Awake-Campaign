@@ -1,7 +1,7 @@
 import { useState } from "react";
 import Button from "../components/Button";
 import { AnimatedProgressBar } from "../components/AnimatedProgressBar";
-import CustomQR from "../assets/static-images/CustomQrCode.png";
+import UpdatedQR from "../assets/static-images/UpdatedQR.jpeg";
 import qrIcon from "../assets/icons/qrIcon.svg";
 import donateHeart from "../assets/icons/donate-heart.svg";
 import heartIcon from "../assets/icons/heart.svg";
@@ -40,12 +40,12 @@ const Donate = () => {
 
   // Preset donation amounts with descriptions
   const donationOptions = [
-    { amount: 7000, description: "1 cervical cancer screening" },
-    { amount: 14000, description: "2 cervical cancer screenings" },
-    { amount: 32000, description: "A full HPV dose cycle" },
-    { amount: 700000, description: "Screen 100 women at a tour" },
-    { amount: 1600000, description: "50 full-dose vaccines" },
-    { amount: 6000000, description: "Fund full outreach tour" },
+    { amount: 7000, description: "screens 1 woman" },
+    { amount: 30000, description: "fully vaccinates 1 woman" },
+    { amount: 70000, description: "Screens 10 women" },
+    { amount: 300000, description: "fully vaccinates 10 women" },
+    { amount: 7000000, description: "screens 1000 women" },
+    { amount: 15000000, description: "fully vaccinates 500 women" },
   ];
 
   const handleAmountSelect = (amount) => {
@@ -97,7 +97,7 @@ const Donate = () => {
               {formatCurrency(currentAmount)} raised
             </span>
             <span className="font-semibold text-gray-700">
-              ₦20 million goal
+              ₦25 million goal
             </span>
           </div>
 
@@ -268,7 +268,7 @@ const Donate = () => {
                     Scan to Pay
                   </h3>
                   <img
-                    src={CustomQR}
+                    src={UpdatedQR}
                     alt="Donate QR"
                     className="w-[220px] h-[220px] object-contain mb-3"
                   />
@@ -335,7 +335,7 @@ const Donate = () => {
                     </div>
                     <button
                       onClick={() =>
-                        handleCopy("accountName", "Belles Productions")
+                        handleCopy("accountName", "Payaza (Belles Productions)")
                       }
                       className="text-xs text-teal-primary hover:underline"
                     >
@@ -350,11 +350,11 @@ const Donate = () => {
                         Account Number
                       </span>
                       <span className="font-medium text-gray-700">
-                        1308545176
+                        9647257985
                       </span>
                     </div>
                     <button
-                      onClick={() => handleCopy("accountNumber", "1308545176")}
+                      onClick={() => handleCopy("accountNumber", "9647257985")}
                       className="text-xs text-teal-primary hover:underline"
                     >
                       {copied === "accountNumber" ? "Copied!" : "Copy"}

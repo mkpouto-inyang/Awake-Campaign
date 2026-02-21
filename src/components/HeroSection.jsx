@@ -174,7 +174,7 @@ const [currentAmount, setCurrentAmount] = useState(RAISED_AMOUNT);
           <span className="font-semibold text-gray-800">
             {formatCurrency(currentAmount)} raised
           </span>
-          <span className="font-semibold text-gray-700">₦20 million goal</span>
+          <span className="font-semibold text-gray-700">₦25 million goal</span>
         </div>
 
         {/* Animated Progress Bar */}
