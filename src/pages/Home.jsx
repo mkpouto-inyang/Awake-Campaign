@@ -16,7 +16,7 @@ const Home = () => {
         <SolutionSection />
         <KeyPartnerSection/>
         {/* <PartnersSection /> */}
-        {/* <WhatWeDoSection /> */}
+        <WhatWeDoSection />
         <JoinTheMovementSection />
         <TestimonialSection />
         <ScreeningCentres />
