@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import Button from "../components/Button";
 import Calendar from "../assets/icons/calendar.svg";
@@ -13,8 +13,21 @@ const CampaignEvents = () => {
   const [selectedMonth, setSelectedMonth] = useState("all");
   const navigate = useNavigate();
 
-  // LOGGING THE RESULTS OF THE EVENT QUERY
-  client.fetch(eventsQuery).then(console.log)
+  const [cmsEvents, setCmsEvents] = useState([])
+
+  const fetchEvents = async () => {
+    let events = await client.fetch(eventsQuery)
+    return events
+  }
+
+  useEffect(() => {
+    const loadEvents = async () => {
+      let returnedEvents = await fetchEvents()
+      setCmsEvents(returnedEvents)
+      console.log(returnedEvents)
+    }
+    loadEvents()
+  }, [])
 
   const handleEventClick = (eventId) => {
     navigate(`/campaign-events/${eventId}`);
@@ -28,123 +41,7 @@ const CampaignEvents = () => {
     { id: "workplace", label: "Workplace Wellness" },
   ];
 
-  const events = [
-    {
-      id: 1,
-      title:
-        "Documentary Premiere - 'Awake: The Fight Against Cervical Cancer'",
-      category: "screening",
-      date: "2023-11-15",
-      time: "7:00 PM",
-      location: "Lagos Continental Hotel, Victoria Island",
-      description:
-        "Official premiere of our documentary with panel discussion featuring medical experts and survivors.",
-      status: "completed",
-      attendees: 450,
-      impact: "Reached 2.3M viewers through media coverage",
-      image: "/api/placeholder/400/250",
-    },
-    {
-      id: 2,
-      title: "Community Screening Tour - Surulere",
-      category: "screening",
-      date: "2023-11-22",
-      time: "4:00 PM",
-      location: "Surulere Community Center",
-      description:
-        "Free documentary screening with health talks and Q&A session with healthcare professionals.",
-      status: "completed",
-      attendees: 320,
-      impact: "150 women registered for follow-up screenings",
-      image: "/api/placeholder/400/250",
-    },
-    {
-      id: 3,
-      title: "Free Cervical Cancer Screening & Vaccination Drive",
-      category: "medical",
-      date: "2023-11-29",
-      time: "9:00 AM - 4:00 PM",
-      location: "Lagos University Teaching Hospital (LUTH)",
-      description:
-        "Comprehensive screening and vaccination program for women and girls aged 9-45.",
-      status: "completed",
-      attendees: 680,
-      impact: "500 women screened, 250 vaccinated",
-      image: "/api/placeholder/400/250",
-    },
-    {
-      id: 4,
-      title: "Mother-Daughter Day Special",
-      category: "community",
-      date: "2024-03-08",
-      time: "10:00 AM - 2:00 PM",
-      location: "Tafawa Balewa Square, Lagos Island",
-      description:
-        "International Women's Day event bringing mothers and daughters together for health education.",
-      status: "completed",
-      attendees: 850,
-      impact: "400 mother-daughter pairs participated",
-      image: "/api/placeholder/400/250",
-    },
-    {
-      id: 5,
-      title: "Men Who Champion Her Forum",
-      category: "community",
-      date: "2024-01-18",
-      time: "6:00 PM",
-      location: "Civic Centre, Victoria Island",
-      description:
-        "Forum empowering men to become advocates for cervical cancer prevention in their communities.",
-      status: "completed",
-      attendees: 280,
-      impact: "200+ men pledged as community advocates",
-      image: "/api/placeholder/400/250",
-    },
-    {
-      id: 6,
-      title: "Workplace Wellness Pop-up - First Bank HQ",
-      category: "workplace",
-      date: "2023-12-10",
-      time: "12:00 PM - 3:00 PM",
-      location: "First Bank Headquarters, Marina",
-      description:
-        "On-site health screenings, vaccinations, and educational sessions for employees.",
-      status: "completed",
-      attendees: 420,
-      impact: "300 employees screened, 180 vaccinated",
-      image: "/api/placeholder/400/250",
-    },
-    {
-      id: 7,
-      title: "University Campus Tour - University of Lagos",
-      category: "screening",
-      date: "2024-02-14",
-      time: "2:00 PM",
-      location: "UNILAG Main Auditorium",
-      description:
-        "Educational screening and awareness program targeting young women in higher education.",
-      status: "completed",
-      attendees: 600,
-      impact: "450 students registered for health programs",
-      image: "/api/placeholder/400/250",
-    },
-    {
-      id: 8,
-      title: "Faith Community Outreach - Redeemed Christian Church",
-      category: "community",
-      date: "2024-04-21",
-      time: "11:00 AM",
-      location: "RCCG City of David Parish, Ikeja",
-      description:
-        "Sunday service documentary screening followed by health education and free consultations.",
-      status: "completed",
-      attendees: 750,
-      impact: "500+ congregation members educated",
-      image: "/api/placeholder/400/250",
-    },
-  ];
-
-  const filteredEvents = events.filter((event) => {
+  const filteredEvents = cmsEvents.filter((event) => {
     const categoryMatch =
       selectedCategory === "all" || event.category === selectedCategory;
     const eventDate = new Date(event.date);
@@ -168,7 +65,7 @@ const CampaignEvents = () => {
 
   const formatDate = (dateString) => {
     const date = new Date(dateString);
-    return date.toLocaleDateString("en-US", {
+    return date.toLocaleDateString("en-NG", {
       weekday: "long",
       year: "numeric",
       month: "long",
@@ -286,19 +183,12 @@ const CampaignEvents = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {filteredEvents.map((event) => (
               <div
-                key={event.id}
+                key={event._id}
                 className="group bg-white rounded-xl border border-gray-200 overflow-hidden hover:shadow-lg transition-all duration-300 cursor-pointer"
-                onClick={() => handleEventClick(event.id)}
+                onClick={() => handleEventClick(event._id)}
               >
                 <div className="h-48 bg-gray-100 relative overflow-hidden">
-                  <div className="absolute top-4 left-4 z-10">
-                    <span className="bg-white text-gray-700 text-xs px-3 py-1.5 rounded-full font-medium shadow-sm">
-                      {
-                        eventCategories.find((cat) => cat.id === event.category)
-                          ?.label
-                      }
-                    </span>
-                  </div>
+                  <img src={event.thumbnailUrl} />
                   {/* <div className="absolute top-4 right-4 z-10">
                     <span className="bg-green-100 text-green-800 text-xs px-3 py-1.5 rounded-full font-medium">
                       Completed
@@ -325,12 +215,12 @@ const CampaignEvents = () => {
                     <div className="flex items-center gap-3">
                       <img src={Location} alt="Location Icon" className="w-4 h-4" />
                       <span className="font-medium">Venue:</span>
-                      <span className="line-clamp-1">{event.location}</span>
+                      <span className="line-clamp-1">{event.venue}</span>
                     </div>
                     <div className="flex items-center gap-3">
                       <img src={Users} alt="Users Icon" className="w-4 h-4" />
                       <span className="font-medium">Attended:</span>
-                      <span>{event.attendees} people</span>
+                      <span>{event.attended} people</span>
                     </div>
                   </div>
 
