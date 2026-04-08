@@ -6,6 +6,7 @@ import { visionTool } from "@sanity/vision"
 export const config = defineConfig({
   projectId: "geort75z",
   dataset: "production",
+  apiVersion: "2025-11-18",
   basePath: "/studio",
   plugins: [
     structureTool(), visionTool()

@@ -1,4 +1,5 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import './App.css'
 import Home from './pages/Home'
 import AboutUs from './pages/AboutUs'
@@ -9,9 +10,11 @@ import AwakeChallenge from './pages/AwakeChallenge'
 import CampaignEvents from './pages/CampaignEvents'
 import EventDetail from './pages/EventDetail'
 import Layout from './layouts/Layout'
-import { AuthProvider } from './contexts/AuthContext'
+import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
 import JoinTheMovementLayout from './layouts/JoinTheMovementLayout'
 import StudioPage from './pages/Studio'
+
+const queryClient = new QueryClient()
 
 // function App() {
 //   return (
@@ -46,7 +49,7 @@ import { LoadScript } from "@react-google-maps/api";
 
 function App() {
   return (
-    <AuthProvider>
+    <QueryClientProvider client={queryClient}>
       <LoadScript
         googleMapsApiKey={import.meta.env.VITE_GOOGLE_MAPS_API_KEY}
         libraries={["places"]}
@@ -69,7 +72,8 @@ function App() {
           </Routes>
         </BrowserRouter>
       </LoadScript>
-    </AuthProvider>
+      <ReactQueryDevtools initialIsOpen={false} />
+    </QueryClientProvider>
   );
 }
 
