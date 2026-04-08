@@ -1,49 +1,28 @@
-import { useState, useEffect } from "react";
+import { useState, Suspense } from "react";
 import { useNavigate } from "react-router-dom";
+import { useSuspenseQuery } from '@tanstack/react-query'
 import Button from "../components/Button";
-import Calendar from "../assets/icons/calendar.svg";
-import Location from "../assets/icons/location.svg";
-import Users from "../assets/icons/grayUsers.svg";
-import Clock from "../assets/icons/gray-clock.svg";
 import { client } from "../lib/sanityClient"
 import { eventsQuery } from "../lib/queries";
+import EventCard from "../components/EventCard";
 
-const CampaignEvents = () => {
+
+
+const EventsGrid = () => {
+  const navigate = useNavigate();
   const [selectedCategory, setSelectedCategory] = useState("all");
   const [selectedMonth, setSelectedMonth] = useState("all");
-  const navigate = useNavigate();
 
-  const [cmsEvents, setCmsEvents] = useState([])
+  const { data } = useSuspenseQuery({
+    queryKey: ['cmsEvents'],
+    queryFn: () => client.fetch(eventsQuery),
+  })
 
-  const fetchEvents = async () => {
-    let events = await client.fetch(eventsQuery)
-    return events
-  }
+  const events = data || []
 
-  useEffect(() => {
-    const loadEvents = async () => {
-      let returnedEvents = await fetchEvents()
-      setCmsEvents(returnedEvents)
-      console.log(returnedEvents)
-    }
-    loadEvents()
-  }, [])
-
-  const handleEventClick = (eventId) => {
-    navigate(`/campaign-events/${eventId}`);
-  };
-
-  const eventCategories = [
-    { id: "all", label: "All Events" },
-    { id: "screening", label: "Documentary Screenings" },
-    { id: "medical", label: "Medical Outreach" },
-    { id: "community", label: "Community Engagement" },
-    { id: "workplace", label: "Workplace Wellness" },
-  ];
-
-  const filteredEvents = cmsEvents.filter((event) => {
+  const filteredEvents = events.filter((event) => {
     const categoryMatch =
-      selectedCategory === "all" || event.category === selectedCategory;
+      selectedCategory === "all" || event.category?.title === selectedCategory;
     const eventDate = new Date(event.date);
     const eventMonth = eventDate.getMonth() + 1;
     const eventYear = eventDate.getFullYear();
@@ -63,16 +42,106 @@ const CampaignEvents = () => {
     return categoryMatch && monthMatch;
   });
 
-  const formatDate = (dateString) => {
-    const date = new Date(dateString);
-    return date.toLocaleDateString("en-NG", {
-      weekday: "long",
-      year: "numeric",
-      month: "long",
-      day: "numeric",
-    });
+  const handleEventClick = (eventId) => {
+    navigate(`/campaign-events/${eventId}`);
   };
 
+  const eventCategories = [
+    { id: "all", label: "All Events" },
+    { id: "screening", label: "Documentary Screenings" },
+    { id: "medical", label: "Medical Outreach" },
+    { id: "community", label: "Community Engagement" },
+    { id: "workplace", label: "Workplace Wellness" },
+  ];
+
+  return (
+    <>
+      {/* Filters Section */}
+      <div className="bg-white py-12" id="events-section">
+        <div className="max-w-7xl mx-auto px-4">
+          <div className="flex flex-col sm:flex-row gap-6 items-left justify-between">
+            <div className="flex flex-col sm:flex-row gap-4">
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-2">
+                  Event Type
+                </label>
+                <select
+                  value={selectedCategory}
+                  onChange={(e) => setSelectedCategory(e.target.value)}
+                  className="border border-gray-200 rounded-lg px-4 py-3 bg-white min-w-[200px] focus:border-teal-primary transition-all duration-200"
+                >
+                  {eventCategories.map((category) => (
+                    <option key={category.id} value={category.id}>
+                      {category.label}
+                    </option>
+                  ))}
+                </select>
+              </div>
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-2">
+                  Month
+                </label>
+                <select
+                  value={selectedMonth}
+                  onChange={(e) => setSelectedMonth(e.target.value)}
+                  className="border border-gray-200 rounded-lg px-4 py-3 bg-white min-w-[180px] focus:border-teal-primary transition-all duration-200"
+                >
+                  <option value="all">All Months</option>
+                  <option value="2023-11">November 2023</option>
+                  <option value="2023-12">December 2023</option>
+                  <option value="2024-01">January 2024</option>
+                  <option value="2024-02">February 2024</option>
+                  <option value="2024-03">March 2024</option>
+                  <option value="2024-04">April 2024</option>
+                </select>
+              </div>
+            </div>
+            {/* <div className="text-gray-600 text-sm">
+              Showing {filteredEvents.length} of {events.length} events
+            </div> */}
+          </div>
+        </div>
+      </div>
+
+      {/* Events Grid */}
+      <div className="pt-8 bg-white">
+        <div className="max-w-7xl mx-auto px-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {filteredEvents.map((event) => (
+              <EventCard
+                key={event._id}
+                event={event}
+                onEventClick={handleEventClick}
+              />
+            ))}
+          </div>
+
+          {filteredEvents.length === 0 && (
+            <div className="text-center py-20">
+              <h3 className="text-xl font-semibold text-gray-900 mb-4">
+                No events found
+              </h3>
+              <p className="text-gray-600 mb-8 max-w-md mx-auto">
+                Try adjusting your filters to discover more events.
+              </p>
+              <Button
+                variant="outline"
+                onClick={() => {
+                  setSelectedCategory("all");
+                  setSelectedMonth("all");
+                }}
+              >
+                Reset Filters
+              </Button>
+            </div>
+          )}
+        </div>
+      </div>
+    </>
+  );
+};
+
+const CampaignEvents = () => {
   return (
     <div className="min-h-screen bg-white py-[80px]">
       {/* Hero Section */}
@@ -130,142 +199,10 @@ const CampaignEvents = () => {
         </div>
       </div>
 
-      {/* Filters Section */}
-      <div className="bg-white py-12" id="events-section">
-        <div className="max-w-7xl mx-auto px-4">
-          <div className="flex flex-col sm:flex-row gap-6 items-left justify-between">
-            <div className="flex flex-col sm:flex-row gap-4">
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
-                  Event Type
-                </label>
-                <select
-                  value={selectedCategory}
-                  onChange={(e) => setSelectedCategory(e.target.value)}
-                  className="border border-gray-200 rounded-lg px-4 py-3 bg-white min-w-[200px] focus:border-teal-primary transition-all duration-200"
-                >
-                  {eventCategories.map((category) => (
-                    <option key={category.id} value={category.id}>
-                      {category.label}
-                    </option>
-                  ))}
-                </select>
-              </div>
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
-                  Month
-                </label>
-                <select
-                  value={selectedMonth}
-                  onChange={(e) => setSelectedMonth(e.target.value)}
-                  className="border border-gray-200 rounded-lg px-4 py-3 bg-white min-w-[180px] focus:border-teal-primary transition-all duration-200"
-                >
-                  <option value="all">All Months</option>
-                  <option value="2023-11">November 2023</option>
-                  <option value="2023-12">December 2023</option>
-                  <option value="2024-01">January 2024</option>
-                  <option value="2024-02">February 2024</option>
-                  <option value="2024-03">March 2024</option>
-                  <option value="2024-04">April 2024</option>
-                </select>
-              </div>
-            </div>
-            {/* <div className="text-gray-600 text-sm">
-              Showing {filteredEvents.length} of {events.length} events
-            </div> */}
-          </div>
-        </div>
-      </div>
-
-      {/* Events Grid */}
-      <div className="pt-8 bg-white">
-        <div className="max-w-7xl mx-auto px-4">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {filteredEvents.map((event) => (
-              <div
-                key={event._id}
-                className="group bg-white rounded-xl border border-gray-200 overflow-hidden hover:shadow-lg transition-all duration-300 cursor-pointer"
-                onClick={() => handleEventClick(event._id)}
-              >
-                <div className="h-48 bg-gray-100 relative overflow-hidden">
-                  <img src={event.thumbnailUrl} />
-                  {/* <div className="absolute top-4 right-4 z-10">
-                    <span className="bg-green-100 text-green-800 text-xs px-3 py-1.5 rounded-full font-medium">
-                      Completed
-                    </span>
-                  </div> */}
-                </div>
-
-                <div className="p-6">
-                  <h3 className="text-lg font-semibold text-gray-900 mb-3 leading-tight line-clamp-2">
-                    {event.title}
-                  </h3>
-
-                  <div className="space-y-2 mb-4 text-sm text-gray-600">
-                    <div className="flex items-center gap-3">
-                      <img src={Calendar} alt="Calendar Icon" className="w-4 h-4" />
-                      <span className="font-medium">Date:</span>
-                      <span>{formatDate(event.date)}</span>
-                    </div>
-                    <div className="flex items-center gap-3">
-                      <img src={Clock} alt="Time Icon" className="w-4 h-4" />
-                      <span className="font-medium">Time:</span>
-                      <span>{event.time}</span>
-                    </div>
-                    <div className="flex items-center gap-3">
-                      <img src={Location} alt="Location Icon" className="w-4 h-4" />
-                      <span className="font-medium">Venue:</span>
-                      <span className="line-clamp-1">{event.venue}</span>
-                    </div>
-                    <div className="flex items-center gap-3">
-                      <img src={Users} alt="Users Icon" className="w-4 h-4" />
-                      <span className="font-medium">Attended:</span>
-                      <span>{event.attended} people</span>
-                    </div>
-                  </div>
-
-                  {/* <p className="text-gray-600 text-sm mb-4 leading-relaxed line-clamp-2">
-                    {event.description}
-                  </p>
-
-                  <div className="bg-teal-50 rounded-lg p-3 mb-4">
-                    <div className="text-sm text-teal-800">
-                      <span className="font-medium">Impact: </span>
-                      {event.impact}
-                    </div>
-                  </div> */}
-
-                  <div className="text-center">
-                    <span className="text-teal-primary text-sm font-medium group-hover:text-teal-primary transition-colors">
-                      View details →
-                    </span>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-
-          {filteredEvents.length === 0 && (
-            <div className="text-center py-20">
-              <h3 className="text-xl font-semibold text-gray-900 mb-4">
-                No events found
-              </h3>
-              <p className="text-gray-600 mb-8 max-w-md mx-auto">
-                Try adjusting your filters to discover more events.
-              </p>
-              <Button
-                variant="outline"
-                onClick={() => {
-                  setSelectedCategory("all");
-                  setSelectedMonth("all");
-                }}
-              >
-                Reset Filters
-              </Button>
-            </div>
-          )}
-        </div>
-      </div>
+      {/* Events Section with Suspense */}
+      <Suspense fallback={<div className="text-center py-20">Loading events...</div>}>
+        <EventsGrid />
+      </Suspense>
 
       {/* Call to Action Section */}
       {/* <div className="bg-gray-50 py-20">
