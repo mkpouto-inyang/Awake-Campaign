@@ -1,9 +1,26 @@
 import { useParams, useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import Button from "../components/Button";
-import LoginModal from "../components/LoginModal";
+import { PortableText } from '@portabletext/react'
 import { client } from "../lib/sanityClient"
 import { singleEventByIdQuery } from "../lib/queries";
+
+const portableTextComponents = {
+  block: {
+    h1: ({ children }) => (
+      <h1 className="text-3xl font-bold mt-6 mb-4">{children}</h1>
+    ),
+    h2: ({ children }) => (
+      <h2 className="text-2xl font-semibold mt-5 mb-3">{children}</h2>
+    ),
+    h3: ({ children }) => (
+      <h3 className="text-xl font-semibold mt-4 mb-2">{children}</h3>
+    ),
+    normal: ({ children }) => (
+      <p className="text-gray-700 mb-3 leading-relaxed">{children}</p>
+    ),
+  },
+};
 
 const EventDetail = () => {
   const navigate = useNavigate();
@@ -31,7 +48,7 @@ const EventDetail = () => {
 
   // Auto-transition images every 4 seconds
   useEffect(() => {
-    if (!event?.gallery || event.gallery.length <= 1) return;
+    if (!event?.gallery || event.gallery?.length <= 1) return;
 
     const interval = setInterval(() => {
       setCurrentImageIndex((prev) => (prev + 1) % event.gallery.length);
@@ -216,9 +233,7 @@ const EventDetail = () => {
             <div className="group relative mb-8">
                 <div className="relative">
                   <div className="prose prose-gray max-w-none">
-                    <p>
-                      {event.description}
-                    </p>
+                      <PortableText value={event.overview} components={portableTextComponents} />
                   </div>
                 </div>
             </div>
