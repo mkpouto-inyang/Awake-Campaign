@@ -4,6 +4,7 @@ import Button from "../components/Button";
 import { PortableText } from '@portabletext/react'
 import { client } from "../lib/sanityClient"
 import { singleEventByIdQuery } from "../lib/queries";
+import { useQuery } from "@tanstack/react-query";
 
 const portableTextComponents = {
   block: {
@@ -26,51 +27,48 @@ const EventDetail = () => {
   const navigate = useNavigate();
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [event, setEvent] = useState(null)
   const { eventId } = useParams();
 
   
   const fetchSingleEvent = async (eventId) => {
-    let events = await client.fetch(singleEventByIdQuery, {id: eventId})
-    return events
-  }
+    let event = await client.fetch(singleEventByIdQuery, {id: eventId})
 
-  useEffect(() => {
-    const loadEvent = async (eventId) => {
-      let returnedEvent = await fetchSingleEvent(eventId)
-      setEvent(returnedEvent)
-      console.log(returnedEvent)
+    if (!event) {
+      throw new Error("Event not found")
     }
 
+    return event
+  }
 
-    loadEvent(eventId)
-  }, [eventId])
+  const { isPending, isError, data, error } = useQuery({
+    queryKey: ['events', eventId],
+    queryFn: () => fetchSingleEvent(eventId),
+    enabled: !!eventId
+  })
+
+  if (isPending) {
+    return <span>Loading...</span>
+  }
+
+  if (isError) {
+    console.log(error.message)
+    return <span>Error</span>
+  }
+
+  const event = data
+
+
 
   // Auto-transition images every 4 seconds
   useEffect(() => {
-    if (!event?.gallery || event.gallery?.length <= 1) return;
+    if (!event || !event.gallery || event.gallery.length <= 1) return;
 
     const interval = setInterval(() => {
       setCurrentImageIndex((prev) => (prev + 1) % event.gallery.length);
     }, 4000);
 
     return () => clearInterval(interval);
-  }, [event?.gallery]);
-
-  if (!event) {
-    return (
-      <div className="min-h-screen flex items-center justify-center">
-        <div className="text-center">
-          <h1 className="text-xl font-bold text-gray-900 mb-4">
-            Event Not Found
-          </h1>
-          <Button onClick={() => navigate("/campaign-events")}>
-            Back to Events
-          </Button>
-        </div>
-      </div>
-    );
-  }
+  }, [event]);
 
   return (
     <div className="min-h-screen bg-white">

@@ -15,8 +15,7 @@ const CampaignEvents = () => {
   // // LOGGING THE RESULTS OF THE EVENT QUERY
   // client.fetch(eventsQuery).then(console.log)
 
-const [cmsEvents, setCmsEvents] = useState([])
-
+  // TODO: Check Sanity API error object and throw errors.
   const fetchEvents = async () => {
     let events = await client.fetch(eventsQuery)
     return events
