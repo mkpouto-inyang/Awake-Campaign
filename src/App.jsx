@@ -12,6 +12,7 @@ import Layout from './layouts/Layout'
 import { AuthProvider } from './contexts/AuthContext'
 import JoinTheMovementLayout from './layouts/JoinTheMovementLayout'
 import StudioPage from './pages/Studio'
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 
 // function App() {
 //   return (
@@ -44,9 +45,11 @@ import StudioPage from './pages/Studio'
 
 import { LoadScript } from "@react-google-maps/api";
 
+const queryClient = new QueryClient()
+
 function App() {
   return (
-    <AuthProvider>
+    <QueryClientProvider client={queryClient}>
       <LoadScript
         googleMapsApiKey={import.meta.env.VITE_GOOGLE_MAPS_API_KEY}
         libraries={["places"]}
@@ -69,7 +72,7 @@ function App() {
           </Routes>
         </BrowserRouter>
       </LoadScript>
-    </AuthProvider>
+    </QueryClientProvider>
   );
 }
 

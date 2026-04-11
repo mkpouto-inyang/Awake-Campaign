@@ -1,13 +1,10 @@
 import { useState, useEffect} from "react";
 import { useNavigate } from "react-router-dom";
 import Button from "../components/Button";
-import Calendar from "../assets/icons/calendar.svg";
-import Location from "../assets/icons/location.svg";
-import Users from "../assets/icons/grayUsers.svg";
-import Clock from "../assets/icons/gray-clock.svg";
 import { client } from "../lib/sanityClient"
 import { eventsQuery } from "../lib/queries";
 import EventCard from "../components/EventCard";
+import { useQuery } from "@tanstack/react-query";
 
 
 const CampaignEvents = () => {
@@ -25,29 +22,36 @@ const [cmsEvents, setCmsEvents] = useState([])
     return events
   }
 
-  useEffect(() => {
-    const loadEvents = async () => {
-      let returnedEvents = await fetchEvents()
-      setCmsEvents(returnedEvents)
-      console.log(returnedEvents)
-    }
-    loadEvents()
-  }, [])
+  const { isPending, isError, data, error } = useQuery({
+    queryKey: ['events'],
+    queryFn: fetchEvents
+  })
   
 
   const handleEventClick = (eventId) => {
     navigate(`/campaign-events/${eventId}`);
   };
 
-  const eventCategories = [
-    { id: "all", label: "All Events" },
-    { id: "screening", label: "Documentary Screenings" },
-    { id: "medical", label: "Medical Outreach" },
-    { id: "community", label: "Community Engagement" },
-    { id: "workplace", label: "Workplace Wellness" },
-  ];
+  // const eventCategories = [
+  //   { id: "all", label: "All Events" },
+  //   { id: "screening", label: "Documentary Screenings" },
+  //   { id: "medical", label: "Medical Outreach" },
+  //   { id: "community", label: "Community Engagement" },
+  //   { id: "workplace", label: "Workplace Wellness" },
+  // ];
 
-  const events = cmsEvents;
+  // MK TODO, Implemenet loading and error pages
+
+  if (isPending) {
+    return <span>Loading...</span>
+  }
+
+  if (isError) {
+    console.log(error.message)
+    return <span>Error</span>
+  }
+
+  const events = data;
 
   const filteredEvents = events.filter((event) => {
     const categoryMatch =
