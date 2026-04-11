@@ -7,6 +7,7 @@ import Users from "../assets/icons/grayUsers.svg";
 import Clock from "../assets/icons/gray-clock.svg";
 import { client } from "../lib/sanityClient"
 import { eventsQuery } from "../lib/queries";
+import EventCard from "../components/EventCard";
 
 
 const CampaignEvents = () => {
@@ -82,18 +83,6 @@ const [cmsEvents, setCmsEvents] = useState([])
 
   return (
     <div className="min-h-screen bg-white py-[80px]">
-      {/* Hero Section */}
-      {/* <div className="bg-white pt-10 pb-12">
-        <div className="max-w-7xl mx-auto px-4 text-center">
-          <h1 className="text-4xl md:text-6xl font-bold mb-6 text-gray-900 leading-tight">
-            Our Impact <span className="text-teal-primary">Stories</span>
-          </h1>
-          <p className="text-xl text-gray-600 mb-6 max-w-3xl mx-auto leading-relaxed">
-            Discover the powerful events and initiatives we've completed in our
-            mission to prevent cervical cancer across Nigeria
-          </p>
-        </div>
-      </div> */}
 
       {/* Campaign Stats */}
       <div className="bg-teal-primary max-w-7xl mx-auto rounded-xl py-20">
@@ -187,7 +176,7 @@ const [cmsEvents, setCmsEvents] = useState([])
       {/* Events Grid */}
       <div className="pt-8 bg-white">
         <div className="max-w-7xl mx-auto px-4">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {/* <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {filteredEvents.map((event) => (
               <div
                 key={event.id}
@@ -196,11 +185,6 @@ const [cmsEvents, setCmsEvents] = useState([])
               >
                 <div className="h-48 bg-gray-100 relative overflow-hidden">
                   <img src={event.thumbnailUrl} />
-                  {/* <div className="absolute top-4 right-4 z-10">
-                    <span className="bg-green-100 text-green-800 text-xs px-3 py-1.5 rounded-full font-medium">
-                      Completed
-                    </span>
-                  </div> */}
                 </div>
 
                 <div className="p-6">
@@ -231,17 +215,6 @@ const [cmsEvents, setCmsEvents] = useState([])
                     </div>
                   </div>
 
-                  {/* <p className="text-gray-600 text-sm mb-4 leading-relaxed line-clamp-2">
-                    {event.description}
-                  </p>
-
-                  <div className="bg-teal-50 rounded-lg p-3 mb-4">
-                    <div className="text-sm text-teal-800">
-                      <span className="font-medium">Impact: </span>
-                      {event.impact}
-                    </div>
-                  </div> */}
-
                   <div 
                   className="text-center">
                     <span className="text-teal-primary text-sm font-medium group-hover:text-teal-primary transition-colors">
@@ -250,6 +223,22 @@ const [cmsEvents, setCmsEvents] = useState([])
                   </div>
                 </div>
               </div>
+            ))}
+          </div> */}
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {filteredEvents.map((event) => (
+              <EventCard
+                key={event._id}
+                title={event.title}
+                date={event.date}
+                time={event.time}
+                venue={event.venue}
+                attended={`${event.attended} people`}
+                image={event.thumbnailUrl}
+                onClick={() => handleEventClick(event._id)}
+                showViewDetails={true}
+              />
             ))}
           </div>
 
@@ -274,60 +263,6 @@ const [cmsEvents, setCmsEvents] = useState([])
           )}
         </div>
       </div>
-
-      {/* Call to Action Section */}
-      {/* <div className="bg-gray-50 py-20">
-        <div className="max-w-4xl mx-auto px-6 text-center">
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
-            Want to Host an Event?
-          </h2>
-          <p className="text-lg text-gray-600 mb-12 max-w-2xl mx-auto">
-            Help us reach more communities by hosting a documentary screening or 
-            medical outreach event in your area.
-          </p>
-
-          <div className="flex flex-col sm:flex-row gap-4 justify-center mb-16">
-            <Button
-              size="lg"
-              variant="primary"
-              onClick={() => console.log("Host event clicked")}
-            >
-              Host an Event
-            </Button>
-            <Button
-              size="lg"
-              variant="outline"
-              onClick={() => console.log("Partner with us clicked")}
-            >
-              Partner with Us
-            </Button>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {[
-              {
-                title: "Free Film Access",
-                desc: "Get access to our documentary and screening materials",
-              },
-              {
-                title: "Medical Support",
-                desc: "Connect with healthcare professionals in your area",
-              },
-              {
-                title: "Marketing Kit",
-                desc: "Receive promotional materials and digital assets",
-              },
-            ].map((benefit, index) => (
-              <div key={index} className="text-center">
-                <h4 className="text-lg font-semibold text-gray-900 mb-2">
-                  {benefit.title}
-                </h4>
-                <p className="text-gray-600">{benefit.desc}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </div> */}
     </div>
   );
 };

@@ -1,44 +1,124 @@
 import Calendar from "../assets/icons/calendar.svg";
 import Location from "../assets/icons/location.svg";
 import Users from "../assets/icons/grayUsers.svg";
+import Clock from "../assets/icons/gray-clock.svg";
 
+const EventCard = ({
+  title,
+  date,
+  time,
+  venue,
+  attended,
+  image,
+  onClick,
+  showViewDetails = false,
+}) => {
+  const formatDate = (dateString) => {
+    if (!dateString) return "";
+    const parsed = new Date(dateString);
+    if (isNaN(parsed)) return dateString;
 
-const EventCard = ({ title, date, location, attendees, image }) => {
+    return parsed.toLocaleDateString("en-US", {
+      weekday: "long",
+      year: "numeric",
+      month: "long",
+      day: "numeric",
+    });
+  };
+
   return (
-    <div>
-        <div className=" max-w-[400px] mb-12 rounded-[10px] shadow-lg bg-white mx-auto">
-        <img src={image} alt={title} className="w-full h-auto rounded-t-[10px]" />
+    // <div
+    //   className={`group bg-white rounded-xl border border-gray-200 overflow-hidden hover:shadow-lg transition-all duration-300 ${
+    //     onClick ? "cursor-pointer" : ""
+    //   }`}
+    //   onClick={onClick}
+    // >
+    //   <div className="h-48 bg-gray-100 relative overflow-hidden">
+    //     <img
+    //       src={image}
+    //       alt={title}
+    //       className="w-full h-full object-cover"
+    //     />
+    //   </div>
 
-        <div className="p-[20px]">
-            <p className="text-[#101828] font-semibold text-[16px] md:text-[18px] lg:text-[20px] mb-[20px]">
-            {title}
-            </p>
+    //   <div className="p-6">
+    //     <h3 className="text-lg font-semibold text-gray-900 mb-3 leading-tight line-clamp-2">
+    //       {title}
+    //     </h3>
 
-            <div className="flex gap-[16px] items-center mb-2">
-            <img src={Calendar} alt="Calendar Icon" className="w-[14px] h-[14px] lg:w-4 lg:h-4" />
-            <p className="text-[#4A5565] text-[13px]  md:text-[14px] lg:text-base">{date}</p>
+
+    //     {showViewDetails && (
+    //       <div className="text-center">
+    //         <span className="text-teal-primary text-sm font-medium group-hover:text-teal-primary transition-colors">
+    //           View details →
+    //         </span>
+    //       </div>
+    //     )}
+    //   </div>
+    // </div>
+
+    <div
+  className={`group bg-white rounded-xl border border-gray-200 overflow-hidden hover:shadow-lg transition-all duration-300 h-full flex flex-col ${
+    onClick ? "cursor-pointer" : ""
+  }`}
+  onClick={onClick}
+>
+  <div className="h-48 bg-gray-100 relative overflow-hidden flex-shrink-0">
+    <img
+      src={image}
+      alt={title}
+      className="w-full h-full object-cover"
+    />
+  </div>
+
+  <div className="p-6 flex flex-col flex-1">
+    <h3 className="text-lg font-semibold text-gray-900 mb-3 leading-tight line-clamp-2 min-h-[56px]">
+      {title}
+    </h3>
+
+          <div className="space-y-2 mb-4 text-sm text-gray-600">
+          {date && (
+            <div className="flex items-center gap-3">
+              <img src={Calendar} alt="Calendar Icon" className="w-4 h-4" />
+              <span className="font-medium">Date:</span>
+              <span>{formatDate(date)}</span>
             </div>
+          )}
 
-            <div className="flex gap-[16px] items-center mb-2">
-            <img src={Location} alt="Location Icon" className="w-[14px] h-[14px] lg:w-4 lg:h-4" />
-            <p className="text-[#4A5565] text-[13px] md:text-[14px] lg:text-base">{location}</p>
+          {time && (
+            <div className="flex items-center gap-3">
+              <img src={Clock} alt="Time Icon" className="w-4 h-4" />
+              <span className="font-medium">Time:</span>
+              <span>{time}</span>
             </div>
+          )}
 
-            <div className="flex gap-[16px] items-center">
-            <img src={Users} alt="User Icon" className="w-[14px] h-[14px] lg:w-4 lg:h-4" />
-            <p className="text-[#4A5565] text-[13px] md:text-[14px] lg:text-base">{attendees}</p>
+          {venue && (
+            <div className="flex items-center gap-3">
+              <img src={Location} alt="Location Icon" className="w-4 h-4" />
+              <span className="font-medium">Venue:</span>
+              <span className="line-clamp-1">{venue}</span>
             </div>
+          )}
+
+          {attended && (
+            <div className="flex items-center gap-3">
+              <img src={Users} alt="Users Icon" className="w-4 h-4" />
+              <span className="font-medium">Attended:</span>
+              <span>{attended}</span>
+            </div>
+          )}
         </div>
 
-        <div className="p-5">
-            <div className="text-center">
-                <span className="text-teal-600 text-[12px] md:text-[14px] lg:text-[16px] font-medium hover:text-teal-700 transition-colors cursor-pointer">
-                View details →
-                </span>
-            </div>
-        </div>
-        </div>
-    </div>
+    {showViewDetails && (
+      <div className="text-center mt-auto">
+        <span className="text-teal-primary text-sm font-medium">
+          View details →
+        </span>
+      </div>
+    )}
+  </div>
+</div>
   );
 };
 
