@@ -46,6 +46,19 @@ const EventDetail = () => {
     enabled: !!eventId
   })
 
+  // Auto-transition images every 4 seconds
+  useEffect(() => {
+    const gallery = data?.gallery
+
+    if (!gallery || gallery.length <= 1) return;
+
+    const interval = setInterval(() => {
+      setCurrentImageIndex((prev) => (prev + 1) % gallery.length);
+    }, 4000);
+
+    return () => clearInterval(interval);
+  }, [data?.gallery]);
+
   if (isPending) {
     return <span>Loading...</span>
   }
@@ -56,19 +69,6 @@ const EventDetail = () => {
   }
 
   const event = data
-
-
-
-  // Auto-transition images every 4 seconds
-  useEffect(() => {
-    if (!event || !event.gallery || event.gallery.length <= 1) return;
-
-    const interval = setInterval(() => {
-      setCurrentImageIndex((prev) => (prev + 1) % event.gallery.length);
-    }, 4000);
-
-    return () => clearInterval(interval);
-  }, [event]);
 
   return (
     <div className="min-h-screen bg-white">
