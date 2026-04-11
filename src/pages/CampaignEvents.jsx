@@ -1,10 +1,8 @@
 import { useState, useEffect} from "react";
 import { useNavigate } from "react-router-dom";
 import Button from "../components/Button";
-import { client } from "../lib/sanityClient"
-import { eventsQuery } from "../lib/queries";
 import EventCard from "../components/EventCard";
-import { useQuery } from "@tanstack/react-query";
+import { useEvents } from "../hooks/useEvents";
 
 
 const CampaignEvents = () => {
@@ -12,20 +10,7 @@ const CampaignEvents = () => {
   const [selectedMonth, setSelectedMonth] = useState("all");
   const navigate = useNavigate();
 
-  // // LOGGING THE RESULTS OF THE EVENT QUERY
-  // client.fetch(eventsQuery).then(console.log)
-
-  // TODO: Check Sanity API error object and throw errors.
-  const fetchEvents = async () => {
-    let events = await client.fetch(eventsQuery)
-    return events
-  }
-
-  const { isPending, isError, data, error } = useQuery({
-    queryKey: ['events'],
-    queryFn: fetchEvents
-  })
-  
+  const { isPending, isError, data, error } = useEvents()
 
   const handleEventClick = (eventId) => {
     navigate(`/campaign-events/${eventId}`);
