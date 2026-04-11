@@ -4,6 +4,7 @@ import Button from "../components/Button";
 import EventCard from "../components/EventCard";
 import { useEvents } from "../hooks/useEvents";
 
+// TODO: Add loading skeleton
 
 const CampaignEvents = () => {
   const [selectedCategory, setSelectedCategory] = useState("all");
@@ -24,18 +25,14 @@ const CampaignEvents = () => {
   //   { id: "workplace", label: "Workplace Wellness" },
   // ];
 
-  // MK TODO, Implemenet loading and error pages
-
-  if (isPending) {
-    return <span>Loading...</span>
-  }
+  // MK TODO, Implement loading and error pages
 
   if (isError) {
     console.log(error.message)
     return <span>Error</span>
   }
 
-  const events = data;
+  const events = data ?? [];
 
   const filteredEvents = events.filter((event) => {
     const categoryMatch =
@@ -215,7 +212,12 @@ const CampaignEvents = () => {
           </div> */}
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {filteredEvents.map((event) => (
+            { isPending ? (
+              Array.from( {length: 6 }).map((_, i) => (
+                <div key={i} className="h-64 bg-gray-100 animate-pulse rounded-xl" />
+              ))
+            ) : (
+              filteredEvents.map((event) => (
               <EventCard
                 key={event._id}
                 title={event.title}
@@ -227,7 +229,8 @@ const CampaignEvents = () => {
                 onClick={() => handleEventClick(event._id)}
                 showViewDetails={true}
               />
-            ))}
+            ))
+            )}
           </div>
 
           {filteredEvents.length === 0 && (
