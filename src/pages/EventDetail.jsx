@@ -8,6 +8,7 @@ import Location from "../assets/icons/location.svg";
 import Users from "../assets/icons/grayUsers.svg";
 import { client } from "../lib/sanityClient";
 import { singleEventByIdQuery } from "../lib/queries";
+import { useQuery } from "@tanstack/react-query";
 
 const portableTextComponents = {
   block: {
@@ -40,6 +41,44 @@ const EventDetail = () => {
   const [event, setEvent] = useState(null);
 
   const fetchSingleEvent = async (eventId) => {
+    let event = await client.fetch(singleEventByIdQuery, {id: eventId})
+
+    if (!event) {
+      throw new Error("Event not found")
+    }
+
+    return event
+  }
+
+  const { isPending, isError, data, error } = useQuery({
+    queryKey: ['events', eventId],
+    queryFn: () => fetchSingleEvent(eventId),
+    enabled: !!eventId
+  })
+
+  // Auto-transition images every 4 seconds
+  useEffect(() => {
+    const gallery = data?.gallery
+
+    if (!gallery || gallery.length <= 1) return;
+
+    const interval = setInterval(() => {
+      setCurrentImageIndex((prev) => (prev + 1) % gallery.length);
+    }, 4000);
+
+    return () => clearInterval(interval);
+  }, [data?.gallery]);
+
+  if (isPending) {
+    return <span>Loading...</span>
+  }
+
+  if (isError) {
+    console.log(error.message)
+    return <span>Error</span>
+  }
+
+  const event = data
     const returnedEvent = await client.fetch(singleEventByIdQuery, { id: eventId });
     return returnedEvent;
   };

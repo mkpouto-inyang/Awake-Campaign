@@ -1,53 +1,38 @@
 import { useState, useEffect} from "react";
 import { useNavigate } from "react-router-dom";
 import Button from "../components/Button";
-import Calendar from "../assets/icons/calendar.svg";
-import Location from "../assets/icons/location.svg";
-import Users from "../assets/icons/grayUsers.svg";
-import Clock from "../assets/icons/gray-clock.svg";
-import { client } from "../lib/sanityClient"
-import { eventsQuery } from "../lib/queries";
 import EventCard from "../components/EventCard";
+import { useEvents } from "../hooks/useEvents";
 
+// TODO: Add loading skeleton
 
 const CampaignEvents = () => {
   const [selectedCategory, setSelectedCategory] = useState("all");
   const [selectedMonth, setSelectedMonth] = useState("all");
   const navigate = useNavigate();
 
-  // // LOGGING THE RESULTS OF THE EVENT QUERY
-  // client.fetch(eventsQuery).then(console.log)
-
-const [cmsEvents, setCmsEvents] = useState([])
-
-  const fetchEvents = async () => {
-    let events = await client.fetch(eventsQuery)
-    return events
-  }
-
-  useEffect(() => {
-    const loadEvents = async () => {
-      let returnedEvents = await fetchEvents()
-      setCmsEvents(returnedEvents)
-      console.log(returnedEvents)
-    }
-    loadEvents()
-  }, [])
-  
+  const { isPending, isError, data, error } = useEvents()
 
   const handleEventClick = (eventId) => {
     navigate(`/campaign-events/${eventId}`);
   };
 
-  const eventCategories = [
-    { id: "all", label: "All Events" },
-    { id: "screening", label: "Documentary Screenings" },
-    { id: "medical", label: "Medical Outreach" },
-    { id: "community", label: "Community Engagement" },
-    { id: "workplace", label: "Workplace Wellness" },
-  ];
+  // const eventCategories = [
+  //   { id: "all", label: "All Events" },
+  //   { id: "screening", label: "Documentary Screenings" },
+  //   { id: "medical", label: "Medical Outreach" },
+  //   { id: "community", label: "Community Engagement" },
+  //   { id: "workplace", label: "Workplace Wellness" },
+  // ];
 
-  const events = cmsEvents;
+  // MK TODO, Implement loading and error pages
+
+  if (isError) {
+    console.log(error.message)
+    return <span>Error</span>
+  }
+
+  const events = data ?? [];
 
   const filteredEvents = events.filter((event) => {
     const categoryMatch =
@@ -227,7 +212,12 @@ const [cmsEvents, setCmsEvents] = useState([])
           </div> */}
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {filteredEvents.map((event) => (
+            { isPending ? (
+              Array.from( {length: 6 }).map((_, i) => (
+                <div key={i} className="h-64 bg-gray-100 animate-pulse rounded-xl" />
+              ))
+            ) : (
+              filteredEvents.map((event) => (
               <EventCard
                 key={event._id}
                 title={event.title}
@@ -239,7 +229,8 @@ const [cmsEvents, setCmsEvents] = useState([])
                 onClick={() => handleEventClick(event._id)}
                 showViewDetails={true}
               />
-            ))}
+            ))
+            )}
           </div>
 
           {filteredEvents.length === 0 && (
